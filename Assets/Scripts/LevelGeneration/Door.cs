@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UntitledFPS
 {
+    [ExecuteInEditMode]
     public class Door : MonoBehaviour
     {
         private Room m_room = null;
@@ -21,6 +22,7 @@ namespace UntitledFPS
             m_attached = true;
             m_attachedDoor = door;
             if (door.attached == false) door.Attach(this);
+            m_room.SetPreviousDoor(this);
         }
     }
 }

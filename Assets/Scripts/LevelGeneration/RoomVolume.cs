@@ -9,6 +9,35 @@ namespace UntitledFPS
         [SerializeField] private Vector3 m_roomSize = Vector3.zero;
         [SerializeField] private int m_roomScale = 1;
 
+        [SerializeField] private Transform m_voxelParent;
+
+        [ContextMenu("Populate")]
+        public void PopulateVoxels()
+        {
+            if (m_voxelParent == null)
+            {
+                Debug.LogWarning("Please Assign Voxel Parent In Inspector");
+                return;
+            }
+
+            for (int x = 0; x < m_roomSize.x; x++)
+            {
+                for (int y = 0; y < m_roomSize.y; y++)
+                {
+                    for (int z = 0; z < m_roomSize.z; z++)
+                    {
+                        VoxelVolume v = VoxelVolume.CreateVoxel(m_roomScale);
+                        v.transform.position = new Vector3(
+                            (x * m_roomScale + m_roomScale / 2f) - (m_roomSize.x * m_roomScale) / 2,
+                            (y * m_roomScale + m_roomScale / 2f) - (m_roomSize.y * m_roomScale) / 2,
+                            (z * m_roomScale + m_roomScale / 2f) - (m_roomSize.z * m_roomScale) / 2
+                        );
+                        v.transform.parent = m_voxelParent;
+                    }
+                }
+            }
+        }
+
         private void OnDrawGizmos()
         {
 #if UNITY_EDITOR
@@ -21,23 +50,6 @@ namespace UntitledFPS
             Gizmos.DrawWireCube(transform.position, size * m_roomScale);
 
             Gizmos.color = gizmoColors;
-#endif
-        }
-        void OnDrawGizmosSelected()
-        {
-#if UNITY_EDITOR
-            // Gizmos.color = Color.red;
-
-            // //Draw the suspension
-            // Gizmos.DrawLine(
-            //     Vector3.zero,
-            //     Vector3.up
-            // );
-
-            // //draw force application point
-            // Gizmos.DrawWireSphere(Vector3.zero, 5f);
-
-            // Gizmos.color = Color.white;
 #endif
         }
     }

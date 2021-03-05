@@ -4,27 +4,17 @@ using UnityEngine;
 
 namespace UntitledFPS
 {
+    [ExecuteInEditMode]
     public class Room : MonoBehaviour
     {
         [SerializeField] private Door[] m_doors;
         public Door[] doors { get { return m_doors; } }
 
-        void OnDrawGizmosSelected()
+        private Door m_previousAttached;
+
+        public void SetPreviousDoor(Door previous)
         {
-#if UNITY_EDITOR
-            // Gizmos.color = Color.red;
-
-            // //Draw the suspension
-            // Gizmos.DrawLine(
-            //     Vector3.zero,
-            //     Vector3.up
-            // );
-
-            // //draw force application point
-            // Gizmos.DrawWireSphere(Vector3.zero, 5f);
-
-            // Gizmos.color = Color.white;
-#endif
+            m_previousAttached = previous;
         }
 
         public Door ChooseDoor()
@@ -38,6 +28,37 @@ namespace UntitledFPS
                 Door d = unTried[ind];
                 unTried.RemoveAt(ind);
                 if (d.attached == false) selectedDoor = d;
+            }
+            return selectedDoor;
+        }
+
+        public Door pickDoor(float straightness, System.Random random)
+        {
+            if (doors.Length < 2) return doors[0];
+
+            int angleToMatch = Random.Range(0f, 1f) > straightness ? 90 : 180;
+
+            Door selectedDoor = null;
+            List<Door> unTried = new List<Door>(doors);
+            while (unTried.Count > 0 && selectedDoor == null)
+            {
+                int ind = random.Next(unTried.Count);
+                Door d = unTried[ind];
+                unTried.RemoveAt(ind);
+                if (d.attached == false && (int)Mathf.Abs(m_previousAttached.transform.eulerAngles.y - d.transform.eulerAngles.y) % angleToMatch == 0)
+                    selectedDoor = d;
+            }
+
+            if (selectedDoor == null)
+            {
+                foreach (var door in doors)
+                {
+                    if (door.attached == false)
+                    {
+                        selectedDoor = door;
+                        break;
+                    }
+                }
             }
             return selectedDoor;
         }
