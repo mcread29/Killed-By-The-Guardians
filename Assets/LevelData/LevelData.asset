@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a185472d289a7645ad260b8c39bf580, type: 3}
+  m_Name: LevelData
+  m_EditorClassIdentifier: 
+  m_minLength: 5
+  m_maxLength: 10
+  m_straightness: 0.8
+  m_testRooms:
+    m_items:
+    - m_item: {fileID: 0}
+      m_weight: 0
+  m_startRooms:
+  - {fileID: 6657880768228161519, guid: 9e3a256c25652754f8d30ffa57cd8c4d, type: 3}
+  m_availableRooms:
+  - {fileID: 3005058850385112561, guid: 114dd58dacca3cc42b3e88c22cc3cf1d, type: 3}
+  - {fileID: 3005058850385112561, guid: d73c3ad022a0ca849af6fbb244bff762, type: 3}
+  - {fileID: 3005058850385112561, guid: abf0c3d2a3d208e48854e49333fffdde, type: 3}
+  m_endingRooms:
+  - {fileID: 6657880768228161519, guid: 9e3a256c25652754f8d30ffa57cd8c4d, type: 3}
