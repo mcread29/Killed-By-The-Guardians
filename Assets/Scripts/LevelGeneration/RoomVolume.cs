@@ -4,14 +4,33 @@ using UnityEngine;
 
 namespace UntitledFPS
 {
+    [ExecuteInEditMode]
     public class RoomVolume : MonoBehaviour
     {
         [SerializeField] private Vector3 m_roomSize = Vector3.zero;
         [SerializeField] private int m_roomScale = 1;
 
         [SerializeField] private Transform m_voxelParent;
+        [HideInInspector]
+        [SerializeField] private List<VoxelVolume> m_voxels;
 
-        [ContextMenu("Populate")]
+        public int count { get { return m_voxels.Count; } }
+
+        public VoxelVolume this[int index]
+        {
+            get => m_voxels[index];
+        }
+
+        private void Awake()
+        {
+            m_voxels = new List<VoxelVolume>();
+            foreach (Transform t in transform)
+            {
+                VoxelVolume v = t.GetComponent<VoxelVolume>();
+                if (v) m_voxels.Add(v);
+            }
+        }
+
         public void PopulateVoxels()
         {
             if (m_voxelParent == null)
@@ -19,6 +38,7 @@ namespace UntitledFPS
                 Debug.LogWarning("Please Assign Voxel Parent In Inspector");
                 return;
             }
+
 
             for (int x = 0; x < m_roomSize.x; x++)
             {
@@ -35,6 +55,15 @@ namespace UntitledFPS
                         v.transform.parent = m_voxelParent;
                     }
                 }
+            }
+        }
+
+        public void Clear()
+        {
+            if (m_voxelParent.childCount > 0)
+            {
+                GameObject.DestroyImmediate(m_voxelParent.GetChild(0).gameObject);
+                if (m_voxelParent.childCount > 0) Clear();
             }
         }
 

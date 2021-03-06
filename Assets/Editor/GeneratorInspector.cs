@@ -25,8 +25,7 @@ namespace UntitledFPS
 
             if (GUILayout.Button("Generate"))
             {
-                if (generator.transform.childCount > 0)
-                    generator.Clear();
+                generator.Clear();
                 generator.Generate();
             }
             if (GUILayout.Button("Clear"))

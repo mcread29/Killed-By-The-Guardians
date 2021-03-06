@@ -17,6 +17,25 @@ namespace UntitledFPS
             return voxel;
         }
 
+        public static bool operator ==(VoxelVolume volumeA, VoxelVolume volumeB)
+        {
+            Vector3 aT = volumeA.transform.position;
+            Vector3 bT = volumeB.transform.position;
+            return aT.x == bT.x && aT.y == bT.y && aT.z == bT.z;
+        }
+
+        public static bool operator !=(VoxelVolume volumeA, VoxelVolume volumeB)
+        {
+            Vector3 aT = volumeA.transform.position;
+            Vector3 bT = volumeB.transform.position;
+            return aT.x != bT.x && aT.y != bT.y && aT.z != bT.z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as VoxelVolume);
+        }
+
         private void OnDrawGizmos()
         {
 #if UNITY_EDITOR
