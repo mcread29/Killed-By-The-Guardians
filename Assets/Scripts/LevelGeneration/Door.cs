@@ -22,7 +22,17 @@ namespace UntitledFPS
             m_attached = true;
             m_attachedDoor = door;
             if (door.attached == false) door.Attach(this);
+            gameObject.SetActive(false);
             m_room.SetPreviousDoor(this);
+        }
+
+        public void Detach()
+        {
+            m_attached = false;
+            if (m_attachedDoor.attached) m_attachedDoor.Detach();
+            m_attachedDoor = null;
+            gameObject.SetActive(true);
+            m_room.SetPreviousDoor(null);
         }
     }
 }

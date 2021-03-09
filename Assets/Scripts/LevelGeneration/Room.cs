@@ -24,21 +24,6 @@ namespace UntitledFPS
             m_previousAttached = previous;
         }
 
-        public bool CheckRoomOverlap(Room room)
-        {
-            Debug.Log(gameObject.name + ", " + room.gameObject.name);
-            Debug.Log(m_volume.count + ", " + room.volume.count);
-            for (int i = 0; i < m_volume.count; i++)
-            {
-                for (int j = 0; j < room.volume.count; j++)
-                {
-                    Debug.Log("\t" + i + m_volume[i] + ", " + j + room.volume[j]);
-                    if (m_volume[i] == room.volume[j]) return true;
-                }
-            }
-            return false;
-        }
-
         public Door ChooseNextDoor()
         {
             Door selectedDoor = null;
