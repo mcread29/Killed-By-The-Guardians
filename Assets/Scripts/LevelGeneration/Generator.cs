@@ -22,6 +22,7 @@ namespace UntitledFPS
 
     public class Generator : MonoBehaviour
     {
+        [SerializeField] private int m_numRooms = 10;
         [SerializeField] private LevelData m_data;
 
         private System.Random m_random;
@@ -37,7 +38,7 @@ namespace UntitledFPS
             int ind = Random.Range(0, m_data.startRooms.Length);
             Room startRoom = Instantiate(m_data.startRooms[ind], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
             m_rooms.Add(startRoom);
-            newRoom(startRoom, 20);
+            newRoom(startRoom, m_numRooms);
 
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying)

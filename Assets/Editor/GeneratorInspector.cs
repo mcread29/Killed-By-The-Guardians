@@ -8,6 +8,7 @@ namespace UntitledFPS
     [CustomEditor(typeof(Generator))]
     public class GeneratorInspector : Editor
     {
+        SerializedProperty m_numRooms;
         SerializedProperty m_data;
         Generator generator;
 
@@ -15,11 +16,13 @@ namespace UntitledFPS
         {
             generator = (Generator)target;
             m_data = serializedObject.FindProperty("m_data");
+            m_numRooms = serializedObject.FindProperty("m_numRooms");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+            EditorGUILayout.PropertyField(m_numRooms);
             EditorGUILayout.PropertyField(m_data);
             serializedObject.ApplyModifiedProperties();
 
