@@ -30,6 +30,10 @@ namespace UntitledFPS
         [SerializeField] private float m_straightness = 1;
         public float straightness { get { return m_straightness; } }
 
+        [Range(1, 5)]
+        [SerializeField] private int m_branches;
+        public int branches { get { return m_branches; } }
+
         [SerializeField] private Room[] m_startRooms;
         public Room[] startRooms { get { return m_startRooms; } }
 

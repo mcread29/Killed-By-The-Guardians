@@ -18,6 +18,7 @@ namespace UntitledFPS
         Room4,
         Room5,
         Room6,
+        BossRoom1
     }
 
     public class Generator : MonoBehaviour
@@ -34,10 +35,8 @@ namespace UntitledFPS
             m_rooms = new List<Room>();
             m_random = new System.Random();
 
-            int mumRooms = Random.Range(m_data.minLength, m_data.maxLength);
-            int ind = Random.Range(0, m_data.startRooms.Length);
-            Room startRoom = Instantiate(m_data.startRooms[ind], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
-            m_rooms.Add(startRoom);
+            int numRooms = Random.Range(m_data.minLength, m_data.maxLength);
+            Room startRoom = addStartRoom();
             newRoom(startRoom, m_numRooms);
 
 #if UNITY_EDITOR
@@ -48,6 +47,14 @@ namespace UntitledFPS
 #else
             loadNextScene();
 #endif
+        }
+
+        private Room addStartRoom()
+        {
+            int ind = Random.Range(0, m_data.startRooms.Length);
+            Room startRoom = Instantiate(m_data.startRooms[ind], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
+            m_rooms.Add(startRoom);
+            return startRoom;
         }
 
         private void loadNextScene()
@@ -111,15 +118,17 @@ namespace UntitledFPS
 
         private bool newRoom(Room previousRoom, int roomCount)
         {
+            Room[] availableRooms = roomCount < 1 ? m_data.endingRooms : m_data.availableRooms;
+
             Door doorToAttach = null;
             Room nextRoom = null;
             Door nextDoor = null;
-            List<Room> untriedRooms = new List<Room>(m_data.availableRooms);
+            List<Room> untriedRooms = new List<Room>(availableRooms);
 
             do
             {
                 int roomInd = m_random.Next(untriedRooms.Count);
-                nextRoom = Instantiate(m_data.availableRooms[roomInd], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
+                nextRoom = Instantiate(availableRooms[roomInd], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
                 untriedRooms.RemoveAt(roomInd);
 
                 List<Door> untriedNewDoors = new List<Door>(nextRoom.doors);
@@ -152,7 +161,7 @@ namespace UntitledFPS
                         else
                         {
                             m_rooms.Add(nextRoom);
-                            bool success = roomCount < 1 || newRoom(nextRoom, roomCount - 1);
+                            bool success = newRoom(nextRoom, roomCount - 1);
                             if (success)
                             {
                                 doorToAttach.Attach(nextDoor);
