@@ -18,7 +18,8 @@ namespace UntitledFPS
         Room4,
         Room5,
         Room6,
-        BossRoom1
+        BossRoom1,
+        TestRoom
     }
 
     public class Generator : MonoBehaviour
@@ -119,6 +120,7 @@ namespace UntitledFPS
         private bool newRoom(Room previousRoom, int roomCount)
         {
             Room[] availableRooms = roomCount < 1 ? m_data.endingRooms : m_data.availableRooms;
+            // Room[] availableRooms = m_data.availableRooms;
 
             Door doorToAttach = null;
             Room nextRoom = null;
@@ -161,7 +163,7 @@ namespace UntitledFPS
                         else
                         {
                             m_rooms.Add(nextRoom);
-                            bool success = newRoom(nextRoom, roomCount - 1);
+                            bool success = roomCount < 1 || newRoom(nextRoom, roomCount - 1);
                             if (success)
                             {
                                 doorToAttach.Attach(nextDoor);
