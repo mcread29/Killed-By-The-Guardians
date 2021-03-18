@@ -19,7 +19,8 @@ namespace UntitledFPS
         Room5,
         Room6,
         BossRoom1,
-        TestRoom
+        TestRoom,
+        RoughRoom1
     }
 
     public class Generator : MonoBehaviour
