@@ -7,16 +7,24 @@ namespace UntitledFPS
     public class Gun : MonoBehaviour
     {
         [SerializeField] private GunData m_data;
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private Barrel m_barrel;
 
+        private bool m_firing = false;
+
+        private float m_fireTimer = 0;
+
+        private void Awake()
+        {
+            m_barrel.SetDamage(m_data.damage);
+            m_barrel.SetFireRate(m_data.fireRate);
         }
 
-        // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetMouseButtonDown(0))
+                m_barrel.firing = true;
+            if (Input.GetMouseButtonUp(0))
+                m_barrel.Reset();
         }
     }
 }
