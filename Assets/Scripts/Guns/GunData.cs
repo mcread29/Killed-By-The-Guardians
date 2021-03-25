@@ -22,6 +22,9 @@ namespace UntitledFPS
         [SerializeField] private int m_damage;
         public int damage { get { return m_damage; } }
 
+        [SerializeField] private LayerMask m_damageLayer;
+        public LayerMask damageLayer { get { return m_damageLayer; } }
+
         [MenuItem("Assets/Create/GunData")]
         public static void CreateMyAsset()
         {

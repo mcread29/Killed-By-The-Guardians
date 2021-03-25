@@ -16,6 +16,8 @@ namespace UntitledFPS
 
         private Rigidbody m_rigidBody;
 
+        public System.Action<GameObject, int> onCollisionEnter;
+
         private int m_damage = 0;
         public int damage
         {
@@ -34,6 +36,11 @@ namespace UntitledFPS
             m_rigidBody.velocity = transform.forward * m_speed;
             m_lifeTime += Time.deltaTime;
             if (m_lifeTime >= m_maxLifespan) Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            onCollisionEnter(other.gameObject, damage);
         }
     }
 }

@@ -13,8 +13,6 @@ namespace UntitledFPS
         [SerializeField] private GunData m_data;
         [SerializeField] private Barrel m_barrel;
 
-        private float m_fireTimer = 0;
-
         private Health m_health;
 
         private void Awake()
@@ -24,11 +22,14 @@ namespace UntitledFPS
 
             m_barrel.SetDamage(m_data.damage);
             m_barrel.SetFireRate(m_data.fireRate);
+
+            m_barrel.SetCollisionCallback(TriggerHit);
         }
 
         void die()
         {
             //DO OTHER DEATH THINGS HERE
+            Debug.Log("DIE DIE DIE");
             gameObject.SetActive(false);
         }
 
@@ -47,6 +48,15 @@ namespace UntitledFPS
                 {
                     m_barrel.firing = true;
                 }
+            }
+        }
+
+        private void TriggerHit(GameObject other, int damage)
+        {
+            if (other.layer == m_data.damageLayer && other.GetComponent<Health>() != null)
+            {
+                Debug.Log("WOWZA: " + other.name + ", " + other.layer);
+                other.GetComponent<Health>().TakeDamage(damage);
             }
         }
     }

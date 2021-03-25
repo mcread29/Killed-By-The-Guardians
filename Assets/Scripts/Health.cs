@@ -11,18 +11,30 @@ namespace UntitledFPS
 
         public System.Action onDeath;
 
+        [SerializeField] private float m_hitStun = 1;
+        private float m_stunTimer = 0;
+
         private void Awake()
         {
             m_health = m_maxHealth;
         }
 
+        private void Update()
+        {
+            m_stunTimer -= Time.deltaTime;
+        }
+
         public void TakeDamage(int damage)
         {
+            Debug.Log(m_stunTimer);
+            if (m_stunTimer > 0) return;
+
+            Debug.Log(gameObject.name + " TOOK " + damage + " PTS OF DAMAGE AND NOW HAS " + m_health + " HEALTH");
             m_health = Mathf.Max(m_health - damage);
+            m_stunTimer = m_hitStun;
             if (m_health < 1)
             {
-                if (onDeath != null)
-                    onDeath();
+                if (onDeath != null) onDeath();
             }
         }
 
