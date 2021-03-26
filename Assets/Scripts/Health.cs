@@ -26,7 +26,6 @@ namespace UntitledFPS
 
         public void TakeDamage(int damage)
         {
-            Debug.Log(m_stunTimer);
             if (m_stunTimer > 0) return;
 
             Debug.Log(gameObject.name + " TOOK " + damage + " PTS OF DAMAGE AND NOW HAS " + m_health + " HEALTH");

@@ -6,66 +6,21 @@ namespace UntitledFPS
 {
     public class Barrel : MonoBehaviour
     {
-        [SerializeField] private Missile m_missile;
+        [SerializeField] private GameObject m_muzzleFlash;
+        [SerializeField] private float m_speed;
 
-        private bool m_firing = false;
-        public bool firing
+        public void Fire(GunData data)
         {
-            get { return m_firing; }
-            set { m_firing = value; }
-        }
+            Projectile projectile = GameObject.Instantiate(data.projectile, transform.position, transform.rotation);
+            projectile.SetData(data);
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * m_speed);
+            projectile.gameObject.layer = gameObject.layer;
 
-        private float m_fireTimer;
-        private float m_fireRate;
-
-        private System.Action<GameObject, int> m_onCollisionEnter;
-        private int m_damage;
-
-        private void Awake()
-        {
-            m_fireTimer = 0;
-        }
-
-        private void fire()
-        {
-            Missile missile = GameObject.Instantiate(m_missile, transform.position, transform.rotation);
-            missile.onCollisionEnter = m_onCollisionEnter;
-            missile.damage = m_damage;
-        }
-
-        private void Update()
-        {
-            if (m_firing)
+            if (m_muzzleFlash != null)
             {
-                m_fireTimer += Time.deltaTime;
-                if (m_fireTimer >= 1 / m_fireRate)
-                {
-                    m_fireTimer = 0;
-                    fire();
-                }
+                GameObject muzzleflash = Instantiate(m_muzzleFlash, transform.position, transform.rotation, transform) as GameObject;
+                Destroy(muzzleflash, 1.5f); // Lifetime of muzzle effect.
             }
-        }
-
-        public void SetDamage(int damage)
-        {
-            m_damage = damage;
-        }
-
-        public void SetFireRate(float fireRate)
-        {
-            m_fireRate = fireRate;
-            m_fireTimer = 1f / fireRate;
-        }
-
-        public void SetCollisionCallback(System.Action<GameObject, int> callback)
-        {
-            m_onCollisionEnter = callback;
-        }
-
-        public void Reset()
-        {
-            m_firing = false;
-            m_fireTimer = 1f / m_fireRate;
         }
     }
 }
