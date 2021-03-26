@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 584390908296382980}
   - component: {fileID: 81388678529568369}
   - component: {fileID: 7142295599662351316}
+  - component: {fileID: 5846950458625169370}
   m_Layer: 0
   m_Name: EnemyTowerTall
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5846950458625169370
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3194100609695164678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 777310be5bf9d55419489caeff44f447, type: 3}

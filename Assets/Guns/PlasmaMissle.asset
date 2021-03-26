@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af771a1f6825d64ab301af4ef7d55d0, type: 3}
-  m_Name: MultiShotTurretData
+  m_Name: PlasmaMissle
   m_EditorClassIdentifier: 
   m_fireType: 0
-  m_fireRate: 0.4
-  m_damage: 1
+  m_fireRate: 8
+  m_damage: 15
   m_damageLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
+  m_projectile: {fileID: 4167865299981379275, guid: 148db06e51f37c34a8f56179274e2d74, type: 3}
