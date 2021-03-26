@@ -31,11 +31,7 @@ namespace UntitledFPS
         private void OnTriggerEnter(Collider other)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
-            {
-                Debug.Log("Point of contact: " + hit.point);
-            }
-            Debug.Log(other.name);
+            Physics.Raycast(transform.position, transform.forward, out hit);
 
             Health health = other.GetComponentInParent<Health>();
             if (other.gameObject.layer != gameObject.layer)

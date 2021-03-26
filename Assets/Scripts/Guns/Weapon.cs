@@ -7,7 +7,7 @@ namespace UntitledFPS
     public class Weapon : MonoBehaviour
     {
         [SerializeField] protected GunData m_data;
-        [SerializeField] protected Barrel m_barrel;
+        [SerializeField] protected Barrel[] m_barrels;
 
         protected bool m_firing = false;
         protected float m_fireTimer = 0;
@@ -20,7 +20,10 @@ namespace UntitledFPS
                 if (m_fireTimer >= 1 / m_data.fireRate)
                 {
                     m_fireTimer = 0;
-                    m_barrel.Fire(m_data);
+                    foreach (Barrel barrel in m_barrels)
+                    {
+                        barrel.Fire(m_data);
+                    }
                 }
             }
         }
