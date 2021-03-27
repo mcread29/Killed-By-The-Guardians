@@ -7,8 +7,8 @@ namespace UntitledFPS
     [ExecuteInEditMode]
     public class Room : MonoBehaviour
     {
-        [SerializeField] private RoomName m_roomName;
-        public RoomName roomName { get { return m_roomName; } }
+        [SerializeField] private string m_roomName;
+        public string roomName { get { return m_roomName; } }
 
         [SerializeField] private Door[] m_doors;
         public Door[] doors { get { return m_doors; } }
