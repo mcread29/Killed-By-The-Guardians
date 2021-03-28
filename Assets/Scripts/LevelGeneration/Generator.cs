@@ -65,7 +65,7 @@ namespace UntitledFPS
             Destroy(m_rooms[0].gameObject);
             m_rooms.RemoveAt(0);
 
-            string roomName = room.roomName.ToString();
+            string roomName = room.roomName;
             SceneManager.LoadScene(roomName, LoadSceneMode.Additive);
             SceneManager.sceneLoaded += roomSceneLoaded(room, roomName);
         }

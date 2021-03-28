@@ -40,6 +40,7 @@ namespace FPSController
         private bool readyToJump = true;
         private float jumpCooldown = 0.25f;
         public float jumpForce = 550f;
+        public int extraJumps = 1;
 
         //Input
         float x, y;
@@ -162,8 +163,9 @@ namespace FPSController
 
         private void Jump()
         {
-            if (grounded && readyToJump)
+            if ((grounded || extraJumps > 0) && readyToJump)
             {
+                if (!grounded || !readyToJump) extraJumps--;
                 readyToJump = false;
 
                 //Add jump forces
@@ -280,6 +282,7 @@ namespace FPSController
                 if (IsFloor(normal))
                 {
                     grounded = true;
+                    extraJumps = 1;
                     cancellingGrounded = false;
                     normalVector = normal;
                     CancelInvoke(nameof(StopGrounded));

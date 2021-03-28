@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UntitledFPS
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : Damager
     {
         [Tooltip("Lifespan in seconds")]
         [SerializeField] private int m_maxLifespan = 60;
@@ -13,8 +13,6 @@ namespace UntitledFPS
         [SerializeField] private GameObject m_hitExplosion;
 
         private Rigidbody m_rigidBody;
-        private int m_damage;
-        private LayerMask m_damageLayer;
 
         private void Awake()
         {
@@ -31,11 +29,7 @@ namespace UntitledFPS
         private void OnTriggerEnter(Collider other)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
-            {
-                Debug.Log("Point of contact: " + hit.point);
-            }
-            Debug.Log(other.name);
+            Physics.Raycast(transform.position, transform.forward, out hit);
 
             Health health = other.GetComponentInParent<Health>();
             if (other.gameObject.layer != gameObject.layer)
@@ -49,20 +43,11 @@ namespace UntitledFPS
                 {
 
                     GameObject impactP = Instantiate(m_hitExplosion, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
+                    impactP.layer = gameObject.layer;
+                    impactP.GetComponent<Damager>().SetData(m_damage, m_damageLayer);
                     Destroy(impactP, 5.0f);
                 }
             }
-        }
-
-        public bool IsInLayerMask(GameObject obj, LayerMask layerMask)
-        {
-            return ((layerMask.value & (1 << obj.layer)) > 0);
-        }
-
-        public void SetData(GunData data)
-        {
-            m_damage = data.damage;
-            m_damageLayer = data.damageLayer;
         }
     }
 }
