@@ -10,6 +10,9 @@ namespace UntitledFPS
         [SerializeField] private Transform m_barrelParent;
         [SerializeField] private Transform m_playerTransform;
 
+        [Range(-90, 90)]
+        [SerializeField] private int m_maxRotation = 0;
+
         private Health m_health;
 
         private void Awake()
@@ -31,8 +34,9 @@ namespace UntitledFPS
             {
                 Quaternion prevRotation = m_barrelParent.rotation;
                 m_barrelParent.LookAt(m_playerTransform);
+
                 Vector3 rotation = m_barrelParent.transform.localRotation.eulerAngles;
-                if (rotation.x < 270 || rotation.y > 360)
+                if (((rotation.x + 90) % 360) - 90 > m_maxRotation)
                 {
                     m_barrelParent.rotation = prevRotation;
                     m_firing = false;
