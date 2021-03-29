@@ -28,8 +28,8 @@ namespace UntitledFPS
         {
             if (m_stunTimer > 0) return;
 
-            Debug.Log(gameObject.name + " TOOK " + damage + " PTS OF DAMAGE AND NOW HAS " + m_health + " HEALTH");
             m_health = Mathf.Max(m_health - damage);
+            Debug.Log(gameObject.name + " TOOK " + damage + " PTS OF DAMAGE AND NOW HAS " + m_health + " HEALTH");
             m_stunTimer = m_hitStun;
             if (m_health < 1)
             {

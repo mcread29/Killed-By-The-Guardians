@@ -26,28 +26,38 @@ namespace UntitledFPS
             if (m_lifeTime >= m_maxLifespan) Destroy(gameObject);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void FixedUpdate()
         {
             RaycastHit hit;
-            Physics.Raycast(transform.position, transform.forward, out hit);
+            float dist = m_rigidBody.velocity.magnitude * Time.deltaTime;
+            Vector3 dir = transform.GetComponent<Rigidbody>().velocity;
+            if (transform.GetComponent<Rigidbody>().useGravity)
+                dir += Physics.gravity * Time.deltaTime;
+            dir = dir.normalized;
 
-            Health health = other.GetComponentInParent<Health>();
-            if (other.gameObject.layer != gameObject.layer)
+            if (Physics.SphereCast(transform.position, 0.01f, dir, out hit, dist))
             {
-                if (IsInLayerMask(other.gameObject, m_damageLayer) && health != null)
+                Health health = hit.transform.GetComponentInParent<Health>();
+                if (hit.transform.gameObject.layer != gameObject.layer)
                 {
-                    health.TakeDamage(m_damage);
-                }
-                Destroy(gameObject);
-                if (m_hitExplosion != null)
-                {
-
-                    GameObject impactP = Instantiate(m_hitExplosion, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
-                    impactP.layer = gameObject.layer;
-                    impactP.GetComponent<Damager>().SetData(m_damage, m_damageLayer);
-                    Destroy(impactP, 5.0f);
+                    if (IsInLayerMask(hit.transform.gameObject, m_damageLayer) && health != null)
+                    {
+                        health.TakeDamage(m_damage);
+                    }
+                    Destroy(gameObject);
+                    if (m_hitExplosion != null)
+                    {
+                        GameObject impactP = Instantiate(m_hitExplosion, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
+                        impactP.layer = gameObject.layer;
+                        impactP.GetComponent<Damager>().SetData(m_damage, m_damageLayer);
+                        Destroy(impactP, 5.0f);
+                    }
                 }
             }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
         }
     }
 }
