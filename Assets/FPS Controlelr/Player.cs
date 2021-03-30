@@ -15,16 +15,25 @@ namespace UntitledFPS
             m_health = GetComponent<Health>();
         }
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-
+            m_health.updateHealth += changeHealth;
+            if (m_health.shields) m_health.shields.updateShileds += changeShields;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDestroy()
         {
+            m_health.updateHealth -= changeHealth;
+        }
 
+        private void changeHealth(float newHealth, float maxHealth)
+        {
+            UI.Instance.SetHealth(newHealth / maxHealth);
+        }
+
+        private void changeShields(float newShields, float maxShields)
+        {
+            UI.Instance.SetShields(newShields / maxShields);
         }
     }
 }

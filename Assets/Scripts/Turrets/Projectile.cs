@@ -49,7 +49,8 @@ namespace UntitledFPS
                     {
                         GameObject impactP = Instantiate(m_hitExplosion, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
                         impactP.layer = gameObject.layer;
-                        impactP.GetComponent<Damager>().SetData(m_damage, m_damageLayer);
+                        Damager splashDamage = impactP.GetComponent<Damager>();
+                        if (splashDamage != null) splashDamage.SetData(m_damage, m_damageLayer);
                         Destroy(impactP, 5.0f);
                     }
                 }
