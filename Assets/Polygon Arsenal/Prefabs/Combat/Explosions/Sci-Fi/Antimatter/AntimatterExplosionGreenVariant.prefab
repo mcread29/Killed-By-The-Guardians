@@ -14761,6 +14761,8 @@ GameObject:
   - component: {fileID: 5019905309259111275}
   - component: {fileID: 5020988928091219391}
   - component: {fileID: 5115035592121306907}
+  - component: {fileID: 411468718466134700}
+  - component: {fileID: 8224056661854484218}
   m_Layer: 0
   m_Name: AntimatterExplosionGreenVariant
   m_TagString: Untagged
@@ -19654,6 +19656,31 @@ MonoBehaviour:
   destroyWhenDone: 1
   soundPrefabIsChild: 0
   pitchRandomMultiplier: 1.1
+--- !u!135 &411468718466134700
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147493673352259391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8224056661854484218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147493673352259391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d050528d2750b04418b8f619f548c1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5147539589264220243
 GameObject:
   m_ObjectHideFlags: 0
