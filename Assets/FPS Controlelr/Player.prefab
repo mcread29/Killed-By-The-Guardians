@@ -264,7 +264,7 @@ MonoBehaviour:
   maxSlopeAngle: 35
   slideForce: 400
   slideCounterMovement: 0.2
-  jumpForce: 550
+  jumpForce: 630
   extraJumps: 1
 --- !u!54 &1370162576825436373
 Rigidbody:
@@ -1373,6 +1373,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1370162577020071160}
     m_Modifications:
+    - target: {fileID: 4530582950254029150, guid: c6889ec069522684d8e370ca165ca692, type: 3}
+      propertyPath: m_speed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530582950254029150, guid: c6889ec069522684d8e370ca165ca692, type: 3}
+      propertyPath: m_muzzleFlash
+      value: 
+      objectReference: {fileID: 1675971964201354, guid: 954b3d249b3cbf343bde9521d2b27cbe, type: 3}
+    - target: {fileID: 4635271990741259536, guid: c6889ec069522684d8e370ca165ca692, type: 3}
+      propertyPath: m_Name
+      value: Barrel
+      objectReference: {fileID: 0}
     - target: {fileID: 8319996739047364665, guid: c6889ec069522684d8e370ca165ca692, type: 3}
       propertyPath: m_Name
       value: Gun2

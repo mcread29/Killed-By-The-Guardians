@@ -453,7 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_missile: {fileID: 1022153811902346738, guid: 608adc006d8c6f64bb944137c3622fb8, type: 3}
+  m_muzzleFlash: {fileID: 0}
+  m_speed: 0
 --- !u!1 &5037106968298254655
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,8 +839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168ff4b2c3bcae44e871bb76083453e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_data: {fileID: 11400000, guid: 1e4a99901b9ab134da7562a63d943c8d, type: 2}
-  m_barrel: {fileID: 4530582950254029150}
+  m_data: {fileID: 11400000, guid: a8b9764ca8cde004b86edcead87076b1, type: 2}
+  m_barrels:
+  - {fileID: 4530582950254029150}
 --- !u!1 &8589396620290307410
 GameObject:
   m_ObjectHideFlags: 0
