@@ -9,7 +9,7 @@ namespace UntitledFPS
         protected int m_damage;
         protected LayerMask m_damageLayer;
 
-        public void SetData(GunData data)
+        public virtual void SetData(GunData data)
         {
             m_damage = data.damage;
             m_damageLayer = data.damageLayer;

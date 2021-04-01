@@ -10,8 +10,7 @@ namespace UntitledFPS
         [SerializeField] private int m_maxLifespan = 60;
         private float m_lifeTime = 0;
 
-        [SerializeField] private GameObject m_hitExplosion;
-
+        private GameObject m_hitExplosion;
         private Rigidbody m_rigidBody;
 
         private void Awake()
@@ -56,9 +55,10 @@ namespace UntitledFPS
                 }
             }
         }
-
-        private void OnTriggerEnter(Collider other)
+        public override void SetData(GunData data)
         {
+            base.SetData(data);
+            m_hitExplosion = data.hitExplosion;
         }
     }
 }

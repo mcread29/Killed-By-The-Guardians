@@ -28,6 +28,15 @@ namespace UntitledFPS
         [SerializeField] private Projectile m_projectile;
         public Projectile projectile { get { return m_projectile; } }
 
+        [SerializeField] private GameObject m_muzzleFlash;
+        public GameObject muzzleFlash { get { return m_muzzleFlash; } }
+
+        [SerializeField] private GameObject m_hitExplosion;
+        public GameObject hitExplosion { get { return m_hitExplosion; } }
+
+        [SerializeField] private float m_shotSpeed;
+        public float shotSpeed { get { return m_shotSpeed; } }
+
         [MenuItem("Assets/Create/GunData")]
         public static void CreateMyAsset()
         {

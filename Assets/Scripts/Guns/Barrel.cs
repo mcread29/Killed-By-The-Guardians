@@ -6,19 +6,16 @@ namespace UntitledFPS
 {
     public class Barrel : MonoBehaviour
     {
-        [SerializeField] private GameObject m_muzzleFlash;
-        [SerializeField] private float m_speed;
-
         public void Fire(GunData data)
         {
             Projectile projectile = GameObject.Instantiate(data.projectile, transform.position, transform.rotation);
             projectile.SetData(data);
-            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * m_speed);
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * data.shotSpeed);
             projectile.gameObject.layer = gameObject.layer;
 
-            if (m_muzzleFlash != null)
+            if (data.muzzleFlash != null)
             {
-                GameObject muzzleflash = Instantiate(m_muzzleFlash, transform.position, transform.rotation, transform) as GameObject;
+                GameObject muzzleflash = Instantiate(data.muzzleFlash, transform.position, transform.rotation, transform) as GameObject;
                 Destroy(muzzleflash, 1.5f); // Lifetime of muzzle effect.
             }
         }
