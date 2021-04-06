@@ -31,6 +31,8 @@ namespace UntitledFPS
         private System.Random m_random;
         private List<Room> m_rooms;
 
+        private Player m_player;
+
         [ContextMenu("Generate")]
         public void Generate()
         {
@@ -39,7 +41,12 @@ namespace UntitledFPS
 
             int numRooms = Random.Range(m_data.minLength, m_data.maxLength);
             Room startRoom = addStartRoom();
-            newRoom(startRoom, m_numRooms);
+
+            bool successfullGeneration = false;
+            while (successfullGeneration == false)
+            {
+                successfullGeneration = newRoom(startRoom, numRooms);
+            }
 
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying)
@@ -94,16 +101,23 @@ namespace UntitledFPS
             {
                 rootGameObject.transform.position = room.gameObject.transform.position;
                 RoomSceneRoot root = rootGameObject.GetComponent<RoomSceneRoot>();
+
                 if (root != null)
                 {
+                    root.DestroyLighting();
+
+                    if (root.player != null && m_player == null) m_player = root.player;
+                    else if (root.player != null)
+                    {
+                        Destroy(root.player.gameObject);
+                        root.SetPlayer(m_player);
+                    }
+
                     for (int i = 0; i < room.doors.Length; i++)
                     {
                         Door door = room.doors[i];
                         if (door.attached)
-                        {
-                            Debug.Log(scene.name + ": " + door.name + ", " + door.attached);
                             root.room.doors[i].Attach();
-                        }
                     }
                 }
             }
@@ -121,14 +135,13 @@ namespace UntitledFPS
         private bool newRoom(Room previousRoom, int roomCount)
         {
             Room[] availableRooms = roomCount < 1 ? m_data.endingRooms : m_data.availableRooms;
-            // Room[] availableRooms = m_data.availableRooms;
 
             Door doorToAttach = null;
             Room nextRoom = null;
             Door nextDoor = null;
             List<Room> untriedRooms = new List<Room>(availableRooms);
 
-            do
+            while (untriedRooms.Count > 0)
             {
                 int roomInd = m_random.Next(untriedRooms.Count);
                 nextRoom = Instantiate(availableRooms[roomInd], Vector3.zero, Quaternion.Euler(0, 0, 0), transform);
@@ -177,7 +190,7 @@ namespace UntitledFPS
 
                 m_rooms.Remove(nextRoom);
                 DestroyImmediate(nextRoom.gameObject);
-            } while (untriedRooms.Count > 0);
+            }
             return false;
         }
 

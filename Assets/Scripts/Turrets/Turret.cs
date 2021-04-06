@@ -49,5 +49,10 @@ namespace UntitledFPS
 
             base.Update();
         }
+
+        public void SetLookat(Transform lookAt)
+        {
+            m_playerTransform = lookAt;
+        }
     }
 }
