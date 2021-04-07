@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxLifespan: 60
-  m_hitExplosion: {fileID: 4014174160149418830, guid: 56a47dd04b5fd1948927ade235eb15bc, type: 3}
 --- !u!1001 &3541263811467555248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +53,22 @@ PrefabInstance:
     - target: {fileID: 1155232492876960, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
       propertyPath: m_Name
       value: TurretMissileBlackHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155232492876960, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229630837805212, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242299619192506, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445656044401990, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4275000025682274, guid: a6c3677c591d9974f9fd1e3b096891d3, type: 3}
       propertyPath: m_RootOrder
