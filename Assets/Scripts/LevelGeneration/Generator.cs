@@ -25,7 +25,7 @@ namespace UntitledFPS
 
     public class Generator : MonoBehaviour
     {
-        [SerializeField] private int m_numRooms = 10;
+        [SerializeField] private int m_numAttempts = 10;
         [SerializeField] private LevelData m_data;
 
         private System.Random m_random;
@@ -40,12 +40,27 @@ namespace UntitledFPS
             m_random = new System.Random();
 
             int numRooms = Random.Range(m_data.minLength, m_data.maxLength);
-            Room startRoom = addStartRoom();
 
             bool successfullGeneration = false;
-            while (successfullGeneration == false)
+            int attempts = 0;
+            while (successfullGeneration == false && attempts < m_numAttempts)
             {
+                Room startRoom = addStartRoom();
                 successfullGeneration = newRoom(startRoom, numRooms);
+
+                if (successfullGeneration == false)
+                {
+                    GameObject attempt = new GameObject("ATTEMPT " + attempts);
+
+                    List<Transform> children = new List<Transform>();
+                    for (int i = 0; i < transform.childCount; i++)
+                        children.Add(transform.GetChild(i));
+                    foreach (Transform t in children)
+                        t.SetParent(attempt.transform);
+
+                    attempt.SetActive(false);
+                    attempts++;
+                }
             }
 
 #if UNITY_EDITOR
@@ -169,7 +184,8 @@ namespace UntitledFPS
 
                         foreach (var room in m_rooms)
                         {
-                            overlap = overlap || nextRoom.volume.CheckVolume(room.volume);
+                            bool checkOverlap = nextRoom.volume.CheckVolume(room.volume);
+                            overlap = overlap || checkOverlap;
                             if (overlap) break;
                         }
 
@@ -189,6 +205,7 @@ namespace UntitledFPS
                 }
 
                 m_rooms.Remove(nextRoom);
+                // nextRoom.gameObject.SetActive(false);
                 DestroyImmediate(nextRoom.gameObject);
             }
             return false;

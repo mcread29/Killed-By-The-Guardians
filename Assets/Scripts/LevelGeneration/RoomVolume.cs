@@ -33,7 +33,7 @@ namespace UntitledFPS
                 volumes.Add(vol);
             }
 
-            bool overlap = volumes[0].CheckVolume(volumes[1], true);
+            bool overlap = volumes[0].CheckVolume(volumes[1]); //, true);
             Debug.Log("OVERLAP: " + overlap);
         }
 
@@ -64,7 +64,16 @@ namespace UntitledFPS
                 {
                     VoxelVolume ours = m_voxelParent.GetChild(i).GetComponent<VoxelVolume>();
                     VoxelVolume theirs = volume.m_voxelParent.GetChild(j).GetComponent<VoxelVolume>();
-                    if (ours.CheckOverlap(theirs, debug)) return true;
+                    if (ours.CheckOverlap(theirs, debug))
+                    {
+                        if (debug)
+                        {
+                            ours.name = "OVERLAP";
+                            theirs.name = "OVERLAP";
+                            Debug.Log("OVERLAP AT: " + transform.name + " " + i + " | " + volume.transform.name + " " + j);
+                        }
+                        return true;
+                    }
                 }
             }
             return false;
