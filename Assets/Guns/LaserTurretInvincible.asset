@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af771a1f6825d64ab301af4ef7d55d0, type: 3}
-  m_Name: RocketMissileStationary
+  m_Name: LaserTurretInvincible
   m_EditorClassIdentifier: 
-  m_fireType: 0
-  m_fireRate: 0.8
-  m_damage: 10
+  m_fireType: 1
+  m_fireRate: 2
+  m_damage: 30
   m_damageLayer:
     serializedVersion: 2
-    m_Bits: 192
-  m_projectile: {fileID: 350825366382683564, guid: 39a83c406a185ea409805a384ce288fd, type: 3}
-  m_muzzleFlash: {fileID: 6498258636758702078, guid: f56840a515685fe499132d21e0b570f4, type: 3}
-  m_hitExplosion: {fileID: 5389899697556038766, guid: a8f931d504e5d0c44a04902849830337, type: 3}
-  m_shotSpeed: 1300
+    m_Bits: 64
+  m_projectile: {fileID: 4069269631510109128, guid: 53ddffff1dd075849b39a9280e874f7c, type: 3}
+  m_muzzleFlash: {fileID: 2310538910347395804, guid: 1628f89c6e2183245978eaac0aeb44dd, type: 3}
+  m_hitExplosion: {fileID: 819661553804831122, guid: 6aab132959f78914285d2ff9ad73a505, type: 3}
+  m_shotSpeed: 5000
