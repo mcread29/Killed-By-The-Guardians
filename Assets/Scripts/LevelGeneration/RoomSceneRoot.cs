@@ -12,9 +12,9 @@ namespace UntitledFPS
         [SerializeField] private Room m_room;
         public Room room { get { return m_room; } }
 
-        [SerializeField] private GameObject m_staticObjects;
+        [SerializeField] private RoomSection[] m_sections;
 
-        private Turret[] m_enemies;
+        [SerializeField] private GameObject m_staticObjects;
 
         [SerializeField] private Player m_player;
         public Player player
@@ -25,21 +25,27 @@ namespace UntitledFPS
 
         private void Awake()
         {
+            foreach (RoomSection section in m_sections)
+            {
+                section.gameObject.SetActive(false);
+            }
             DestroyLighting();
         }
 
-        private void getEnemies()
+        private void Start()
         {
-            m_enemies = GetComponentsInChildren<Turret>();
+            foreach (RoomSection section in m_sections)
+            {
+                section.gameObject.SetActive(true);
+            }
         }
 
         public void SetPlayer(Player player)
         {
             m_player = player;
-            if (m_enemies == null) getEnemies();
-            foreach (Turret t in m_enemies)
+            foreach (RoomSection section in m_sections)
             {
-                t.SetLookat(player.transform);
+                section.SetPlayer(player);
             }
         }
 

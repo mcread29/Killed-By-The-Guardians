@@ -36,7 +36,6 @@ namespace UntitledFPS
         [ContextMenu("Generate")]
         public void Generate()
         {
-            m_rooms = new List<Room>();
             m_random = new System.Random();
 
             int numRooms = Random.Range(m_data.minLength, m_data.maxLength);
@@ -45,6 +44,7 @@ namespace UntitledFPS
             int attempts = 0;
             while (successfullGeneration == false && attempts < m_numAttempts)
             {
+                m_rooms = new List<Room>();
                 Room startRoom = addStartRoom();
                 successfullGeneration = newRoom(startRoom, numRooms);
 
@@ -84,7 +84,7 @@ namespace UntitledFPS
         private void loadNextScene()
         {
             Room room = m_rooms[0];
-            Destroy(m_rooms[0].gameObject);
+            m_rooms[0].gameObject.SetActive(false);
             m_rooms.RemoveAt(0);
 
             string roomName = room.roomName;
@@ -132,7 +132,9 @@ namespace UntitledFPS
                     {
                         Door door = room.doors[i];
                         if (door.attached)
+                        {
                             root.room.doors[i].Attach();
+                        }
                     }
                 }
             }

@@ -54,5 +54,11 @@ namespace UntitledFPS
         {
             m_playerTransform = lookAt;
         }
+
+        public void Spawn()
+        {
+            //TEMP REPLACE WITH OTHER STUFF
+            gameObject.SetActive(true);
+        }
     }
 }
