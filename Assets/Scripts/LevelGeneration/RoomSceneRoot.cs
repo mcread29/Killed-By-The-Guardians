@@ -25,27 +25,32 @@ namespace UntitledFPS
 
         private void Awake()
         {
-            foreach (RoomSection section in m_sections)
+            if (m_sections != null)
             {
-                section.gameObject.SetActive(false);
+                foreach (RoomSection section in m_sections)
+                {
+                    section.gameObject.SetActive(false);
+                }
             }
             DestroyLighting();
-        }
-
-        private void Start()
-        {
-            foreach (RoomSection section in m_sections)
+            if (m_sections != null)
             {
-                section.gameObject.SetActive(true);
+                foreach (RoomSection section in m_sections)
+                {
+                    section.gameObject.SetActive(true);
+                }
             }
         }
 
         public void SetPlayer(Player player)
         {
             m_player = player;
-            foreach (RoomSection section in m_sections)
+            if (m_sections != null)
             {
-                section.SetPlayer(player);
+                foreach (RoomSection section in m_sections)
+                {
+                    section.SetTurretLookAt(player.transform);
+                }
             }
         }
 

@@ -6,19 +6,24 @@ namespace UntitledFPS
 {
     public class RoomSection : MonoBehaviour
     {
-        [SerializeField] private Turret[] m_enemiesForSection;
-        public Turret[] enemiesForSection { get { return m_enemiesForSection; } }
+        [SerializeField] private Spawnable[] m_enemiesForSection;
 
-        private bool m_playerSet = false;
+        private bool m_enabled = false;
         private bool m_started = false;
 
-        public void SetPlayer(Player player)
+        public void SetTurretLookAt(Transform transform)
         {
-            foreach (Turret t in m_enemiesForSection)
+            if (m_enemiesForSection != null)
             {
-                if (t != null) t.SetLookat(player.transform);
+                foreach (Spawnable s in m_enemiesForSection)
+                {
+                    if (s != null)
+                    {
+                        Turret t = s.GetComponent<Turret>();
+                        if (t != null) t.SetTransformLookat(transform);
+                    }
+                }
             }
-            m_playerSet = true;
         }
 
         private void Start()
@@ -28,17 +33,24 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(m_started + ", " + m_playerSet);
-            if (m_started && m_playerSet && other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (m_started && m_enabled && other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 if (m_enemiesForSection != null)
                 {
-                    foreach (Turret t in m_enemiesForSection)
+                    Debug.Log(m_started + ", " + m_enabled + ", " + other.gameObject.layer);
+                    foreach (Spawnable t in m_enemiesForSection)
                     {
                         if (t != null) t.Spawn();
                     }
+                    m_enabled = false;
                 }
             }
+            m_enabled = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            //DISABLE SHIT??
         }
     }
 }

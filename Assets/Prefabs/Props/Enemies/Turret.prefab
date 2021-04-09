@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 750
 --- !u!1 &8952425801056976770
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,6 +6028,7 @@ GameObject:
   - component: {fileID: 9093155617031454386}
   - component: {fileID: 9093155617031454387}
   - component: {fileID: 7448657272806195869}
+  - component: {fileID: 6989760713631683516}
   m_Layer: 7
   m_Name: Turret
   m_TagString: Untagged
@@ -6065,9 +6065,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 2bf4db49101b0a243ba6debfb8122fb9, type: 2}
-  m_barrel: {fileID: 8411000349737324594}
+  m_barrels: []
   m_barrelParent: {fileID: 9093155616986745903}
   m_playerTransform: {fileID: 0}
+  m_maxRotation: 0
 --- !u!114 &7448657272806195869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6082,6 +6083,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 5
   m_hitStun: 1
+--- !u!114 &6989760713631683516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9093155617031454397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d6b11af8c99504eac99533ec895ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data: {fileID: 0}
+  m_barrels: []
 --- !u!1001 &9093155618434808546
 PrefabInstance:
   m_ObjectHideFlags: 0

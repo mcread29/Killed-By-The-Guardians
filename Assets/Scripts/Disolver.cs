@@ -16,11 +16,7 @@ namespace UntitledFPS
             myRenderer = GetComponentInChildren<Renderer>();
             m_PropertyBlock = new MaterialPropertyBlock();
 
-            ActionTweenProperty p = new ActionTweenProperty(1, -1, (val) =>
-            {
-                setDisolve(val);
-                Debug.Log(val);
-            });
+            ActionTweenProperty p = new ActionTweenProperty(1, -1, (val) => setDisolve(val));
             Go.to(this, m_disolveTime, new GoTweenConfig().addTweenProperty(p));
         }
 

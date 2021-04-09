@@ -5,8 +5,11 @@ using UnityEngine;
 namespace UntitledFPS
 {
     [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Spawnable))]
     public class Turret : Weapon
     {
+        public static System.Action<Transform> SetLookAt;
+
         [SerializeField] private Transform m_barrelParent;
         [SerializeField] private Transform m_playerTransform;
 
@@ -19,6 +22,8 @@ namespace UntitledFPS
         {
             m_health = GetComponent<Health>();
             m_health.onDeath += die;
+
+            Turret.SetLookAt += SetTransformLookat;
         }
 
         void die()
@@ -50,15 +55,10 @@ namespace UntitledFPS
             base.Update();
         }
 
-        public void SetLookat(Transform lookAt)
+        public void SetTransformLookat(Transform lookAt)
         {
+            Debug.Log("PLAYER SET");
             m_playerTransform = lookAt;
-        }
-
-        public void Spawn()
-        {
-            //TEMP REPLACE WITH OTHER STUFF
-            gameObject.SetActive(true);
         }
     }
 }

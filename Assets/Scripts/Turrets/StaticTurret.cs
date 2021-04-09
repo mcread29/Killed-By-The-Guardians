@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UntitledFPS
 {
+    [RequireComponent(typeof(Spawnable))]
     public class StaticTurret : Weapon
     {
         [SerializeField] private float m_fireDelay = 0;
@@ -23,12 +24,6 @@ namespace UntitledFPS
             {
                 m_fireDelay -= Time.deltaTime;
             }
-        }
-
-        public void Spawn()
-        {
-            //TEMP REPLACE WITH OTHER STUFF
-            gameObject.SetActive(true);
         }
     }
 }

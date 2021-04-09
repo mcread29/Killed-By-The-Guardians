@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_muzzleFlash: {fileID: 1437590563578698, guid: e548d7af48f2c2b40b7d0cb4f965276b, type: 3}
-  m_speed: 1200
 --- !u!1 &770016839383086107
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +170,7 @@ GameObject:
   - component: {fileID: 770016839389202111}
   - component: {fileID: 770016839389202110}
   - component: {fileID: 770016839389202105}
+  - component: {fileID: 7441374792143786338}
   m_Layer: 7
   m_Name: RocketMissileStationary
   m_TagString: Untagged
@@ -212,6 +211,7 @@ MonoBehaviour:
   - {fileID: 770016838163942571}
   m_barrelParent: {fileID: 770016839388772644}
   m_playerTransform: {fileID: 0}
+  m_maxRotation: 0
 --- !u!114 &770016839389202105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +226,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 50
   m_hitStun: 0.1
+--- !u!114 &7441374792143786338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770016839389202104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d6b11af8c99504eac99533ec895ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_data: {fileID: 0}
+  m_barrels: []
 --- !u!1 &770016839918491111
 GameObject:
   m_ObjectHideFlags: 0

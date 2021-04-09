@@ -33,12 +33,15 @@ namespace UntitledFPS
 
         private Player m_player;
 
+        private int m_numRooms;
+        private List<RoomSceneRoot> m_roomSceneRoots;
+
         [ContextMenu("Generate")]
         public void Generate()
         {
             m_random = new System.Random();
 
-            int numRooms = Random.Range(m_data.minLength, m_data.maxLength);
+            int numRooms = m_numRooms = Random.Range(m_data.minLength, m_data.maxLength);
 
             bool successfullGeneration = false;
             int attempts = 0;
@@ -62,6 +65,8 @@ namespace UntitledFPS
                     attempts++;
                 }
             }
+
+            m_roomSceneRoots = new List<RoomSceneRoot>();
 
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying)
@@ -121,19 +126,28 @@ namespace UntitledFPS
                 {
                     root.DestroyLighting();
 
-                    if (root.player != null && m_player == null) m_player = root.player;
+                    if (root.player != null && m_player == null)
+                    {
+                        m_player = root.player;
+                    }
                     else if (root.player != null)
                     {
                         Destroy(root.player.gameObject);
-                        root.SetPlayer(m_player);
                     }
 
                     for (int i = 0; i < room.doors.Length; i++)
                     {
                         Door door = room.doors[i];
-                        if (door.attached)
+                        if (door.attached) root.room.doors[i].Attach();
+                    }
+
+                    m_roomSceneRoots.Add(root);
+                    if (m_roomSceneRoots.Count > -m_numRooms)
+                    {
+                        foreach (RoomSceneRoot roomSceneRoot in m_roomSceneRoots)
                         {
-                            root.room.doors[i].Attach();
+                            root.SetPlayer(m_player);
+                            Debug.Log(Turret.SetLookAt);
                         }
                     }
                 }
