@@ -25,13 +25,6 @@ namespace UntitledFPS
 
         private void Awake()
         {
-            if (m_sections != null)
-            {
-                foreach (RoomSection section in m_sections)
-                {
-                    section.gameObject.SetActive(false);
-                }
-            }
             bool inGenerator = false;
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
