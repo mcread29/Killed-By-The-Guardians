@@ -8,7 +8,7 @@ namespace UntitledFPS
     {
         [SerializeField] private Spawnable[] m_enemiesForSection;
 
-        private bool m_enabled = false;
+        private bool m_spawnedInitial = false;
         private bool m_started = false;
 
         public void SetTurretLookAt(Transform transform)
@@ -26,23 +26,24 @@ namespace UntitledFPS
             }
         }
 
-        private void Start()
+        public void SetStarted()
         {
             m_started = true;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (m_started && m_enabled && other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (m_started && m_spawnedInitial == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 if (m_enemiesForSection != null)
                 {
                     foreach (Spawnable t in m_enemiesForSection)
+                    {
                         if (t != null) t.Spawn();
-                    m_enabled = false;
+                    }
+                    m_spawnedInitial = true;
                 }
             }
-            m_enabled = true;
         }
 
         private void OnTriggerExit(Collider other)
