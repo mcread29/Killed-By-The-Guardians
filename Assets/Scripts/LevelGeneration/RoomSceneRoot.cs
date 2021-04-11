@@ -32,13 +32,19 @@ namespace UntitledFPS
                     section.gameObject.SetActive(false);
                 }
             }
-            DestroyLighting();
-            if (m_sections != null)
+            bool inGenerator = false;
+            for (int i = 0; i < SceneManager.sceneCount; i++)
             {
-                foreach (RoomSection section in m_sections)
-                {
-                    section.gameObject.SetActive(true);
-                }
+                if (SceneManager.GetSceneAt(i).name == "LevelGeneration") inGenerator = true;
+            }
+
+            if (inGenerator)
+            {
+                DestroyLighting();
+            }
+            else
+            {
+                StartRoom();
             }
         }
 
