@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7054605969636631056}
   - component: {fileID: 2685223047171230829}
   - component: {fileID: 146287472571409055}
+  - component: {fileID: 2983673226107288192}
   m_Layer: 7
   m_Name: Barrel
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2983673226107288192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146287472571409054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
 --- !u!1 &514299211698089848
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d6b11af8c99504eac99533ec895ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_data: {fileID: 0}
-  m_barrels: []
 --- !u!1 &514299211698524391
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +231,7 @@ GameObject:
   - component: {fileID: 6270204723181577836}
   - component: {fileID: 5372296789678943904}
   - component: {fileID: 5070999367511582754}
+  - component: {fileID: 3456461691628119188}
   m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
@@ -267,10 +280,10 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
-  - {fileID: 2100000, guid: 69271010e6a10004597959abd8866679, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
+  - {fileID: 2100000, guid: 8333fa987bc48a749a016f4874b94b61, type: 2}
   - {fileID: 2100000, guid: a77a16e4a33fa0244a1dd93ffbe8664d, type: 2}
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,6 +319,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3909233067320746374, guid: 9b229a428c2560a418cd3223ff4c4e52, type: 3}
+--- !u!114 &3456461691628119188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070999367511582757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
 --- !u!1 &7978189291375267845
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +344,7 @@ GameObject:
   - component: {fileID: 157225921042489413}
   - component: {fileID: 6093895423826795634}
   - component: {fileID: 7978189291375267842}
+  - component: {fileID: 3562988377303306100}
   m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
@@ -366,8 +393,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69271010e6a10004597959abd8866679, type: 2}
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 8333fa987bc48a749a016f4874b94b61, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   - {fileID: 2100000, guid: a77a16e4a33fa0244a1dd93ffbe8664d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -404,3 +431,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8839368762345780380, guid: 9b229a428c2560a418cd3223ff4c4e52, type: 3}
+--- !u!114 &3562988377303306100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7978189291375267845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
