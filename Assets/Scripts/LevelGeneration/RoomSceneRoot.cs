@@ -54,6 +54,17 @@ namespace UntitledFPS
             }
         }
 
+        public void StartRoom()
+        {
+            if (m_sections != null)
+            {
+                foreach (RoomSection section in m_sections)
+                {
+                    section.SetStarted();
+                }
+            }
+        }
+
         public void DestroyLighting()
         {
             Destroy(m_lighting.gameObject);

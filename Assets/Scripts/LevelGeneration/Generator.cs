@@ -106,7 +106,6 @@ namespace UntitledFPS
                 {
                     StartCoroutine(moveAfterLoad(scene, room));
                     SceneManager.sceneLoaded -= a;
-                    if (m_rooms.Count > 0) loadNextScene();
                 }
             };
             return a;
@@ -129,11 +128,10 @@ namespace UntitledFPS
                     if (root.player != null && m_player == null)
                     {
                         m_player = root.player;
+                        m_player.gameObject.SetActive(false);
                     }
                     else if (root.player != null)
-                    {
                         Destroy(root.player.gameObject);
-                    }
 
                     for (int i = 0; i < room.doors.Length; i++)
                     {
@@ -142,13 +140,15 @@ namespace UntitledFPS
                     }
 
                     m_roomSceneRoots.Add(root);
-                    if (m_roomSceneRoots.Count > -m_numRooms)
+                    root.SetPlayer(m_player);
+
+                    if (m_rooms.Count > 0) loadNextScene();
+                    else
                     {
+                        yield return new WaitForEndOfFrame();
+                        m_player.gameObject.SetActive(true);
                         foreach (RoomSceneRoot roomSceneRoot in m_roomSceneRoots)
-                        {
-                            root.SetPlayer(m_player);
-                            Debug.Log(Turret.SetLookAt);
-                        }
+                            roomSceneRoot.StartRoom();
                     }
                 }
             }
@@ -221,7 +221,6 @@ namespace UntitledFPS
                 }
 
                 m_rooms.Remove(nextRoom);
-                // nextRoom.gameObject.SetActive(false);
                 DestroyImmediate(nextRoom.gameObject);
             }
             return false;

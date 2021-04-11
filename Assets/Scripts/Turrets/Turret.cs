@@ -57,7 +57,6 @@ namespace UntitledFPS
 
         public void SetTransformLookat(Transform lookAt)
         {
-            Debug.Log("PLAYER SET");
             m_playerTransform = lookAt;
         }
     }

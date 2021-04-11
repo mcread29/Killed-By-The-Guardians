@@ -36,6 +36,8 @@ namespace UntitledFPS
 
             if (Physics.SphereCast(transform.position, 0.01f, dir, out hit, dist))
             {
+                if (hit.collider.isTrigger) return;
+
                 Health health = hit.transform.GetComponentInParent<Health>();
                 if (hit.transform.gameObject.layer != gameObject.layer)
                 {
