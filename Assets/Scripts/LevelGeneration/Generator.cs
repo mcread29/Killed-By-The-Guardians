@@ -127,13 +127,9 @@ namespace UntitledFPS
                     root.DestroyLighting();
 
                     if (root.player != null && m_player == null)
-                    {
                         m_player = root.player;
-                    }
                     else if (root.player != null)
-                    {
                         Destroy(root.player.gameObject);
-                    }
 
                     for (int i = 0; i < room.doors.Length; i++)
                     {
@@ -145,10 +141,7 @@ namespace UntitledFPS
                     if (m_roomSceneRoots.Count > -m_numRooms)
                     {
                         foreach (RoomSceneRoot roomSceneRoot in m_roomSceneRoots)
-                        {
                             root.SetPlayer(m_player);
-                            Debug.Log(Turret.SetLookAt);
-                        }
                     }
                 }
             }
@@ -221,7 +214,6 @@ namespace UntitledFPS
                 }
 
                 m_rooms.Remove(nextRoom);
-                // nextRoom.gameObject.SetActive(false);
                 DestroyImmediate(nextRoom.gameObject);
             }
             return false;

@@ -37,11 +37,8 @@ namespace UntitledFPS
             {
                 if (m_enemiesForSection != null)
                 {
-                    Debug.Log(m_started + ", " + m_enabled + ", " + other.gameObject.layer);
                     foreach (Spawnable t in m_enemiesForSection)
-                    {
                         if (t != null) t.Spawn();
-                    }
                     m_enabled = false;
                 }
             }
