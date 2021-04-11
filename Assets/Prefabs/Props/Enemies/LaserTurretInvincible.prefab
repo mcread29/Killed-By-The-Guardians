@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8491310020881583031}
   - component: {fileID: 630636024511699995}
   - component: {fileID: 3749877974285064386}
+  - component: {fileID: 2824379307870898974}
   m_Layer: 0
   m_Name: mediumBlaster_front_half_sentinel
   m_TagString: Untagged
@@ -59,8 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a28b70d6f0a2fca4ba7f3af580d4e180, type: 2}
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: cfa4f7104cfcecb4dac5d80a2ba3a85c, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2824379307870898974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271443223757792630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
 --- !u!1 &1576304556166514717
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +107,7 @@ GameObject:
   - component: {fileID: 2210132759468495527}
   - component: {fileID: 1810800500008433867}
   - component: {fileID: 1576304556166514722}
+  - component: {fileID: 411879432522447709}
   m_Layer: 0
   m_Name: LaserTurretInvincible
   m_TagString: Untagged
@@ -149,6 +164,18 @@ MonoBehaviour:
   m_barrels:
   - {fileID: 1810800499148569693}
   m_fireDelay: 0.5
+--- !u!114 &411879432522447709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576304556166514717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d6b11af8c99504eac99533ec895ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1810800499148569692
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +230,7 @@ GameObject:
   - component: {fileID: 2582142955925543140}
   - component: {fileID: 7646501967206559495}
   - component: {fileID: 8659358422157555595}
+  - component: {fileID: 3674012771218584375}
   m_Layer: 0
   m_Name: barrel_carmine
   m_TagString: Untagged
@@ -251,8 +279,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1337848175040720729, guid: ca25f2d22b80487479f3f166d1f92193, type: 3}
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,6 +302,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3674012771218584375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840803112832676084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
 --- !u!1 &8333389432371994707
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +327,7 @@ GameObject:
   - component: {fileID: 5365996522168502264}
   - component: {fileID: 3549330610068741491}
   - component: {fileID: 1810800499248468274}
+  - component: {fileID: 1722199844847943197}
   m_Layer: 0
   m_Name: silencer_beveled
   m_TagString: Untagged
@@ -334,7 +376,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -368,6 +410,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1722199844847943197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333389432371994707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
 --- !u!1 &8907217909944746765
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +434,7 @@ GameObject:
   - component: {fileID: 7369327406152296468}
   - component: {fileID: 7540049997220835760}
   - component: {fileID: 7454426638140647625}
+  - component: {fileID: 6871529158835497633}
   m_Layer: 0
   m_Name: mediumBlaster_center_half_wireframe
   m_TagString: Untagged
@@ -427,7 +483,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a28b70d6f0a2fca4ba7f3af580d4e180, type: 2}
+  - {fileID: 2100000, guid: cfa4f7104cfcecb4dac5d80a2ba3a85c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -449,3 +505,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6871529158835497633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907217909944746765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disolveTime: 0.75
