@@ -33,7 +33,7 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            if (m_started && m_spawnedInitial == false && other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (m_started && m_spawnedInitial == false && other.tag == "Player")
             {
                 if (m_enemiesForSection != null)
                 {
