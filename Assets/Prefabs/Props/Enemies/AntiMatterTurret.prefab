@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!259 &1877429810152145697
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257085909141258775}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.01
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &2303013671381041183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,6 +33,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &6566627876235741453
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599690134564121625}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.01
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &4999352343525010748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,12 +80,13 @@ GameObject:
   - component: {fileID: 3978227123236019984}
   - component: {fileID: 3978227123236019987}
   - component: {fileID: 3504167956547106642}
+  - component: {fileID: 3187283959222316911}
   m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3978227123236019986
 Transform:
@@ -289,14 +330,14 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -304,7 +345,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -353,6 +394,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &3187283959222316911
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978227123236019997}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.01
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!1 &3978227123652924963
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +428,7 @@ GameObject:
   - component: {fileID: 3978227123652924966}
   - component: {fileID: 3978227123652924961}
   - component: {fileID: 846567889445722400}
+  - component: {fileID: 92280204771208622}
   m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -15796,14 +15858,14 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3fa33e0d85e2fb4db4616fee012ff76, type: 2}
+  - {fileID: 2100000, guid: 007279752aa92c24491ba51bba2379bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15860,6 +15922,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &92280204771208622
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978227123652924963}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.01
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
+--- !u!259 &7826213936379384503
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336006169503110859}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.01
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &1291425057892008016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16091,15 +16193,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4741939503092544242, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
       propertyPath: m_Name
       value: Rocket1
       objectReference: {fileID: 0}
+    - target: {fileID: 1195516115540599552, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
---- !u!4 &598747040466831100 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+--- !u!1 &6336006169503110859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
   m_PrefabInstance: {fileID: 1136477482236174615}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2257085909141258775 stripped
@@ -16107,9 +16245,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1195516115540599552, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
   m_PrefabInstance: {fileID: 1136477482236174615}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6336006169503110859 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+--- !u!4 &598747040466831100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
   m_PrefabInstance: {fileID: 1136477482236174615}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3599690134564121625 stripped

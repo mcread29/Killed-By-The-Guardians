@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 630636024511699995}
   - component: {fileID: 3749877974285064386}
   - component: {fileID: 2824379307870898974}
+  - component: {fileID: 9176810275949402372}
   m_Layer: 0
   m_Name: mediumBlaster_front_half_sentinel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8491310020881583031
 Transform:
@@ -53,7 +54,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -69,7 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -95,7 +96,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disolveTime: 0.75
+  m_disolveTime: 1
+--- !u!259 &9176810275949402372
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271443223757792630}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 2
+  m_ResolutionY: 2
+  m_ResolutionZ: 2
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 0
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!1 &1576304556166514717
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,12 +252,13 @@ GameObject:
   - component: {fileID: 7646501967206559495}
   - component: {fileID: 8659358422157555595}
   - component: {fileID: 3674012771218584375}
+  - component: {fileID: 4548883107345929448}
   m_Layer: 0
   m_Name: barrel_carmine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2582142955925543140
 Transform:
@@ -272,7 +294,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -288,7 +310,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -314,7 +336,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disolveTime: 0.75
+  m_disolveTime: 1
+--- !u!259 &4548883107345929448
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840803112832676084}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 2
+  m_ResolutionY: 2
+  m_ResolutionZ: 2
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 0
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!1 &8333389432371994707
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,12 +370,13 @@ GameObject:
   - component: {fileID: 3549330610068741491}
   - component: {fileID: 1810800499248468274}
   - component: {fileID: 1722199844847943197}
+  - component: {fileID: 4530452399338981780}
   m_Layer: 0
   m_Name: silencer_beveled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7693133862323289651
 Transform:
@@ -369,7 +412,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -384,7 +427,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -422,7 +465,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disolveTime: 0.75
+  m_disolveTime: 1
+--- !u!259 &4530452399338981780
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333389432371994707}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 2
+  m_ResolutionY: 2
+  m_ResolutionZ: 2
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 0
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!1 &8907217909944746765
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,12 +498,13 @@ GameObject:
   - component: {fileID: 7540049997220835760}
   - component: {fileID: 7454426638140647625}
   - component: {fileID: 6871529158835497633}
+  - component: {fileID: 4239913278967049702}
   m_Layer: 0
   m_Name: mediumBlaster_center_half_wireframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7369327406152296468
 Transform:
@@ -476,7 +540,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -491,7 +555,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -517,4 +581,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cac7cfa6334aa1419b3dc27b11a5229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disolveTime: 0.75
+  m_disolveTime: 1
+--- !u!259 &4239913278967049702
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907217909944746765}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 2
+  m_ResolutionY: 2
+  m_ResolutionZ: 2
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 0
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1

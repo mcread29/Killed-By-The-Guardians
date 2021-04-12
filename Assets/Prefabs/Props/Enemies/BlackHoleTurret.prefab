@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!259 &3477639557173919715
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556461500651157046}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &4784129440060179120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,6 +33,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &88834968996827259
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574214942115907019}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &2063580082094374974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +267,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ed2855708754b43b530cb2632539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!259 &5420547825318483108
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2962979871555688504}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &6536649926398149277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +300,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &7462334193372769899
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980936300011580357}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &5207982587599118036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,12 +347,13 @@ GameObject:
   - component: {fileID: 5338760695628374525}
   - component: {fileID: 5338760695628374526}
   - component: {fileID: 2583208096173330867}
+  - component: {fileID: 3517990721400501041}
   m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &5338760695628374527
 Transform:
@@ -516,7 +597,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -531,7 +612,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -580,6 +661,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &3517990721400501041
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338760695628374512}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!1 &5338760697089730766
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,12 +695,13 @@ GameObject:
   - component: {fileID: 5338760697089730763}
   - component: {fileID: 5338760697089730764}
   - component: {fileID: 8682620925678903003}
+  - component: {fileID: 2906735974756418744}
   m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &5338760697089730765
 Transform:
@@ -16023,7 +16125,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -16038,7 +16140,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -16087,6 +16189,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &2906735974756418744
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338760697089730766}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
+--- !u!259 &7308697389158928445
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693730181705048810}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &2395901267488947215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16100,6 +16242,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disolveTime: 1
+--- !u!259 &2418086414202601523
+LightProbeProxyVolume:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711908846407471383}
+  m_Enabled: 1
+  m_BoundingBoxMode: 1
+  m_ResolutionX: 4
+  m_ResolutionY: 4
+  m_ResolutionZ: 4
+  m_ResolutionProbesPerUnit: 0.25
+  m_BoundingBoxSize: {x: Infinity, y: Infinity, z: Infinity}
+  m_BoundingBoxOrigin: {x: 0, y: 0, z: 0}
+  m_ResolutionMode: 1
+  m_ProbePositionMode: 0
+  m_RefreshMode: 0
+  m_QualityMode: 1
+  m_DataFormat: 1
 --- !u!114 &56319052764337160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16176,9 +16338,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -4741939503092544242, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
       propertyPath: m_Name
       value: Rocket1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195516115540599552, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
@@ -16187,14 +16385,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1195516115540599552, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
   m_PrefabInstance: {fileID: 1670731403076261174}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5693730181705048810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
-  m_PrefabInstance: {fileID: 1670731403076261174}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1199391429631029981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+  m_PrefabInstance: {fileID: 1670731403076261174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5693730181705048810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
   m_PrefabInstance: {fileID: 1670731403076261174}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2962979871555688504 stripped
@@ -16265,9 +16463,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -4741939503092544242, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
       propertyPath: m_Name
       value: Rocket1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195516115540599552, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812095262087506294, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353330256845240284, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842358671397510562, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445962355458659216, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9307542bf208ec64e9465c2c26063826, type: 3}
