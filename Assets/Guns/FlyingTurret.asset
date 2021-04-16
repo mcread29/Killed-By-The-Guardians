@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af771a1f6825d64ab301af4ef7d55d0, type: 3}
+  m_Name: FlyingTurret
+  m_EditorClassIdentifier: 
+  m_fireType: 0
+  m_fireRate: 1.2
+  m_damage: 10
+  m_damageLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  m_projectile: {fileID: 70809178704094327, guid: 2c9049cfc4b5f50498a57621b6b37b29, type: 3}
+  m_muzzleFlash: {fileID: 5943286700034658571, guid: 102b18b1f19fd7944943e0192230616f, type: 3}
+  m_hitExplosion: {fileID: 7910931338433661575, guid: 59bd091c776dbe640adc745193f8c06e, type: 3}
+  m_shotSpeed: 1200

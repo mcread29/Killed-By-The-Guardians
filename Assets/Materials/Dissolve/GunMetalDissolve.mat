@@ -22,10 +22,10 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GunMetalDissolve
   m_Shader: {fileID: -6465566751694194690, guid: e07abd8b4615f2d458de9c3551dc8f48, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT
+  m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2475
   stringTagMap:
     MotionVector: User
@@ -156,8 +156,8 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -182,7 +182,7 @@ Material:
     - _DistortionSrcBlend: 1
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 0
+    - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _EmissiveColorMode: 1
@@ -267,7 +267,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_0bca5a545912418a82569748e5150a59: {r: 0.21306513, g: 0.26415092, b: 0.2564112, a: 0}
+    - Color_0bca5a545912418a82569748e5150a59: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
     - Color_427e3475188842aca4431437d2c46d0b: {r: 32768, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
