@@ -25,6 +25,12 @@ namespace UntitledFPS
 
     public class Generator : MonoBehaviour
     {
+        private static Generator m_instance;
+        public static Generator Instance { get { return m_instance; } }
+
+        private bool m_finishedGenerating = false;
+        public bool finishedGenerating { get { return m_finishedGenerating; } }
+
         [SerializeField] private int m_numAttempts = 10;
         [SerializeField] private LevelData m_data;
 
@@ -34,7 +40,16 @@ namespace UntitledFPS
         private Player m_player;
 
         private int m_numRooms;
-        private List<RoomSceneRoot> m_roomSceneRoots;
+        private List<(Room, RoomSceneRoot)> m_roomSceneRoots;
+        private List<Door> m_allDoors;
+
+        private void Awake()
+        {
+            if (m_instance != null)
+                Destroy(gameObject);
+            else
+                m_instance = this;
+        }
 
         [ContextMenu("Generate")]
         public void Generate()
@@ -66,7 +81,8 @@ namespace UntitledFPS
                 }
             }
 
-            m_roomSceneRoots = new List<RoomSceneRoot>();
+            m_roomSceneRoots = new List<(Room, RoomSceneRoot)>();
+            m_allDoors = new List<Door>();
 
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying)
@@ -135,20 +151,54 @@ namespace UntitledFPS
 
                     for (int i = 0; i < room.doors.Length; i++)
                     {
-                        Door door = room.doors[i];
-                        if (door.attached) root.room.doors[i].Attach();
+                        m_allDoors.Add(root.room.doors[i]);
                     }
 
-                    m_roomSceneRoots.Add(root);
+                    m_roomSceneRoots.Add((room, root));
+
                     root.SetPlayer(m_player);
 
                     if (m_rooms.Count > 0) loadNextScene();
                     else
                     {
                         yield return new WaitForEndOfFrame();
+
+                        while (m_allDoors.Count > 0)
+                        {
+                            int ind = -1;
+                            Vector3 pos = Vector3.positiveInfinity;
+                            for (int i = 0; i < m_allDoors.Count; i++)
+                            {
+                                Vector3 newPos = m_allDoors[i].transform.position;
+                                float dist = Vector3.Distance(pos, newPos);
+
+                                if (pos.x == Mathf.Infinity)
+                                    pos = newPos;
+                                else
+                                {
+                                    if (dist < 0.1f)
+                                    {
+                                        ind = i;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (ind > 0)
+                            {
+                                m_allDoors[0].Attach(m_allDoors[ind]);
+                                m_allDoors.RemoveAt(ind);
+                            }
+                            m_allDoors.RemoveAt(0);
+                        }
+
                         m_player.gameObject.SetActive(true);
-                        foreach (RoomSceneRoot roomSceneRoot in m_roomSceneRoots)
-                            roomSceneRoot.StartRoom();
+                        m_finishedGenerating = true;
+
+                        foreach ((Room r, RoomSceneRoot rcr) in m_roomSceneRoots)
+                        {
+                            rcr.room.AttachDoors();
+                        }
                     }
                 }
             }

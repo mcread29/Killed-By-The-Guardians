@@ -10,8 +10,12 @@ namespace UntitledFPS
         [SerializeField] private string m_roomName;
         public string roomName { get { return m_roomName; } }
 
+        [SerializeField] private bool m_startRoom;
+
         [SerializeField] private Door[] m_doors;
         public Door[] doors { get { return m_doors; } }
+
+        private bool m_roomFinished = false;
 
         private Door m_previousAttached;
         private RoomVolume m_volume;
@@ -20,6 +24,36 @@ namespace UntitledFPS
         private void Awake()
         {
             m_volume = GetComponent<RoomVolume>();
+        }
+
+        public void AttachDoors()
+        {
+            foreach (Door door in m_doors)
+            {
+                door.enterDoor += enterDoor;
+                if (m_startRoom) door.Open();
+            }
+        }
+
+        private void enterDoor()
+        {
+            if (m_startRoom == false && m_roomFinished == false)
+            {
+                foreach (Door door in m_doors)
+                {
+                    door.Close();
+                }
+            }
+        }
+
+        public void FinishRoom()
+        {
+            m_roomFinished = true;
+            foreach (Door door in m_doors)
+            {
+                if (door.attached)
+                    door.Open();
+            }
         }
 
         public void SetPreviousDoor(Door previous)

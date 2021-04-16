@@ -14,6 +14,8 @@ namespace UntitledFPS
 
         [SerializeField] private RoomSection[] m_sections;
 
+        private int m_sectionsComplete = 0;
+
         [SerializeField] private GameObject m_staticObjects;
 
         [SerializeField] private Player m_player;
@@ -25,6 +27,7 @@ namespace UntitledFPS
 
         private void Awake()
         {
+            m_sectionsComplete = 0;
             bool inGenerator = false;
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
@@ -49,6 +52,7 @@ namespace UntitledFPS
                 foreach (RoomSection section in m_sections)
                 {
                     section.SetTurretLookAt(player.transform);
+                    section.sectionComplete += sectionComplete;
                 }
             }
         }
@@ -59,8 +63,18 @@ namespace UntitledFPS
             {
                 foreach (RoomSection section in m_sections)
                 {
-                    section.SetStarted();
+                    section.sectionComplete += sectionComplete;
                 }
+            }
+        }
+
+        private void sectionComplete(RoomSection section)
+        {
+            section.sectionComplete -= sectionComplete;
+            m_sectionsComplete++;
+            if (m_sectionsComplete >= m_sections.Length)
+            {
+                m_room.FinishRoom();
             }
         }
 
