@@ -8,8 +8,16 @@ namespace UntitledFPS
     {
         [SerializeField] private Spawnable[] m_enemiesForSection;
 
+        private List<Turret> m_turrets;
+
         private bool m_spawnedInitial = false;
-        private bool m_started = false;
+
+        public System.Action<RoomSection> sectionComplete;
+
+        private void Awake()
+        {
+            m_turrets = new List<Turret>();
+        }
 
         public void SetTurretLookAt(Transform transform)
         {
@@ -20,20 +28,28 @@ namespace UntitledFPS
                     if (s != null)
                     {
                         Turret t = s.GetComponent<Turret>();
-                        if (t != null) t.SetTransformLookat(transform);
+                        if (t != null)
+                        {
+                            m_turrets.Add(t);
+                            System.Action remove = null;
+                            remove = () =>
+                            {
+                                m_turrets.Remove(t);
+                                if (m_turrets.Count <= 0 && sectionComplete != null) sectionComplete(this);
+                                t.health.onDeath -= remove;
+                            };
+                            t.health.onDeath += remove;
+                            t.SetTransformLookat(transform);
+                        }
                     }
                 }
             }
         }
 
-        public void SetStarted()
-        {
-            m_started = true;
-        }
-
         private void OnTriggerEnter(Collider other)
         {
-            if (m_started && m_spawnedInitial == false && other.tag == "Player")
+            bool generatorCheck = Generator.Instance == null || Generator.Instance.finishedGenerating;
+            if (generatorCheck && m_spawnedInitial == false && other.tag == "Player")
             {
                 if (m_enemiesForSection != null)
                 {

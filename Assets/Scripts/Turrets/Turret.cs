@@ -17,12 +17,20 @@ namespace UntitledFPS
         [SerializeField] private int m_maxRotation = 0;
 
         private Health m_health;
+        public Health health
+        {
+            get
+            {
+                if (m_health == null) m_health = GetComponent<Health>();
+                return m_health;
+            }
+        }
+
+        public bool dead { get { return health.dead; } }
 
         private void Awake()
         {
-            m_health = GetComponent<Health>();
-            m_health.onDeath += die;
-
+            health.onDeath += die;
             Turret.SetLookAt += SetTransformLookat;
         }
 
