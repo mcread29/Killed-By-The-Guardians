@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af771a1f6825d64ab301af4ef7d55d0, type: 3}
+  m_Name: LavaTurret
+  m_EditorClassIdentifier: 
+  m_fireType: 0
+  m_fireRate: 0.5
+  m_damage: 100
+  m_damageLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  m_projectile: {fileID: 4982397914954641541, guid: 36130768a6d821a42a75fd7ab8ab0a5f, type: 3}
+  m_muzzleFlash: {fileID: 4622317530954869634, guid: ecd94160ba482364a93ca4a57779ab36, type: 3}
+  m_hitExplosion: {fileID: 2737877515960539584, guid: 507c116615a8ac242ba2d96672f66484, type: 3}
+  m_shotSpeed: 700
