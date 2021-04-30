@@ -11,6 +11,7 @@ namespace UntitledFPS
         public string roomName { get { return m_roomName; } }
 
         [SerializeField] private bool m_startRoom;
+        [SerializeField] private bool m_endRoom;
 
         [SerializeField] private Door[] m_doors;
         public Door[] doors { get { return m_doors; } }

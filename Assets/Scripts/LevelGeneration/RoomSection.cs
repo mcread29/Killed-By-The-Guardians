@@ -14,13 +14,9 @@ namespace UntitledFPS
 
         public System.Action<RoomSection> sectionComplete;
 
-        private void Awake()
-        {
-            m_turrets = new List<Turret>();
-        }
-
         public void SetTurretLookAt(Transform transform)
         {
+            m_turrets = new List<Turret>();
             if (m_enemiesForSection != null)
             {
                 foreach (Spawnable s in m_enemiesForSection)

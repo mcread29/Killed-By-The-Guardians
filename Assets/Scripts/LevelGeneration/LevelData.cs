@@ -34,15 +34,16 @@ namespace UntitledFPS
         [SerializeField] private int m_branches;
         public int branches { get { return m_branches; } }
 
-        [SerializeField] private Room[] m_startRooms;
-        public Room[] startRooms { get { return m_startRooms; } }
+        [SerializeField] private RoomSceneRoot[] m_startRooms;
+        public RoomSceneRoot[] startRooms { get { return m_startRooms; } }
 
-        [SerializeField] private Room[] m_availableRooms;
-        public Room[] availableRooms { get { return m_availableRooms; } }
+        [SerializeField] private RoomSceneRoot[] m_availableRooms;
+        public RoomSceneRoot[] availableRooms { get { return m_availableRooms; } }
 
-        [SerializeField] private Room[] m_endingRooms;
-        public Room[] endingRooms { get { return m_endingRooms; } }
+        [SerializeField] private RoomSceneRoot[] m_endingRooms;
+        public RoomSceneRoot[] endingRooms { get { return m_endingRooms; } }
 
+#if UNITY_EDITOR
         [MenuItem("Assets/Create/LevelData")]
         public static void CreateMyAsset()
         {
@@ -55,5 +56,6 @@ namespace UntitledFPS
 
             Selection.activeObject = asset;
         }
+#endif
     }
 }

@@ -13,6 +13,7 @@ namespace UntitledFPS
 
         [SerializeField] private Transform m_voxelParent;
 
+#if UNITY_EDITOR
         [ContextMenu("CHECK SELECTIONS")]
         public void CheckSelections()
         {
@@ -33,25 +34,22 @@ namespace UntitledFPS
                 volumes.Add(vol);
             }
 
-            bool overlap = volumes[0].CheckVolume(volumes[1]); //, true);
+            bool overlap = volumes[0].CheckVolume(volumes[1], true);
             Debug.Log("OVERLAP: " + overlap);
         }
+#endif
 
         public bool CheckVolume(RoomVolume volume, bool debug = false)
         {
             Vector3 distance = volume.transform.position - transform.position;
-            Vector3 ourSize = m_roomSize;
-            if (transform.rotation.eulerAngles.y / 90f == 1 || transform.rotation.eulerAngles.y / 90f == 3)
-                ourSize = new Vector3(m_roomSize.z, m_roomSize.y, m_roomSize.x);
 
-            Vector3 theirSize = volume.m_roomSize;
-            if (volume.transform.rotation.eulerAngles.y / 90f == 1 || volume.transform.rotation.eulerAngles.y / 90f == 3)
-                theirSize = new Vector3(volume.m_roomSize.z, volume.m_roomSize.y, volume.m_roomSize.x);
+            Vector3 ourSize = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one) * m_roomSize;
+            Vector3 theirSize = Matrix4x4.TRS(volume.transform.position, volume.transform.rotation, Vector3.one) * volume.m_roomSize;
 
             if (
-                Mathf.Abs(distance.x) > (ourSize.x * m_roomScale / 2) + (theirSize.x * volume.m_roomScale / 2) ||
-                Mathf.Abs(distance.y) > (ourSize.y * m_roomScale / 2) + (theirSize.y * volume.m_roomScale / 2) ||
-                Mathf.Abs(distance.z) > (ourSize.z * m_roomScale / 2) + (theirSize.z * volume.m_roomScale / 2)
+                Mathf.Abs(distance.x) > (Mathf.Abs(ourSize.x) * m_roomScale / 2f) + (Mathf.Abs(theirSize.x) * volume.m_roomScale / 2f) ||
+                Mathf.Abs(distance.y) > (Mathf.Abs(ourSize.y) * m_roomScale / 2f) + (Mathf.Abs(theirSize.y) * volume.m_roomScale / 2f) ||
+                Mathf.Abs(distance.z) > (Mathf.Abs(ourSize.z) * m_roomScale / 2f) + (Mathf.Abs(theirSize.z) * volume.m_roomScale / 2f)
                 )
             {
                 if (debug) Debug.Log("TOO FAR AWAY TO CHECK VOXELS: " + distance + ", " + ourSize + ", " + theirSize);
@@ -128,14 +126,16 @@ namespace UntitledFPS
             {
 #if UNITY_EDITOR
                 Color gizmoColors = Gizmos.color;
-                Gizmos.color = Color.red;
+                Matrix4x4 gizmoMatrix = Gizmos.matrix;
 
-                Vector3 size = m_roomSize;
-                if (transform.rotation.eulerAngles.y / 90f == 1 || transform.rotation.eulerAngles.y / 90f == 3)
-                    size = new Vector3(m_roomSize.z, m_roomSize.y, m_roomSize.x);
-                Gizmos.DrawWireCube(transform.position, size * m_roomScale);
+                Gizmos.color = Color.red;
+                Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                Gizmos.matrix = rotationMatrix;
+
+                Gizmos.DrawWireCube(Vector3.zero, m_roomSize * m_roomScale);
 
                 Gizmos.color = gizmoColors;
+                Gizmos.matrix = gizmoMatrix;
 #endif
             }
         }
