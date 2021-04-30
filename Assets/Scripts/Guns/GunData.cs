@@ -37,6 +37,7 @@ namespace UntitledFPS
         [SerializeField] private float m_shotSpeed;
         public float shotSpeed { get { return m_shotSpeed; } }
 
+#if UNITY_EDITOR
         [MenuItem("Assets/Create/GunData")]
         public static void CreateMyAsset()
         {
@@ -49,5 +50,6 @@ namespace UntitledFPS
 
             Selection.activeObject = asset;
         }
+#endif
     }
 }

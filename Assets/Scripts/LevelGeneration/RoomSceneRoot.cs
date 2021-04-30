@@ -80,9 +80,11 @@ namespace UntitledFPS
 
         public void DestroyLighting()
         {
-            Destroy(m_lighting.gameObject);
+            if (m_lighting != null)
+                Destroy(m_lighting.gameObject);
         }
 
+#if UNITY_EDITOR
         [ContextMenu("Bake Lighting")]
         public void BakeLighting()
         {
@@ -91,6 +93,7 @@ namespace UntitledFPS
                 o.gameObject.isStatic = true;
 
             Lightmapping.bakeCompleted += setNonStatic;
+            // Lightmapping.
 
             Lightmapping.Clear();
             bool worked = Lightmapping.BakeAsync();
@@ -103,6 +106,8 @@ namespace UntitledFPS
                 o.gameObject.isStatic = false;
 
             Lightmapping.bakeCompleted -= setNonStatic;
+
         }
+#endif
     }
 }

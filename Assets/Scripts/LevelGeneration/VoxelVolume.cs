@@ -30,6 +30,7 @@ namespace UntitledFPS
             return voxel;
         }
 
+#if UNITY_EDITOR
         [ContextMenu("CHECK SELECTIONS")]
         public void CheckSelections()
         {
@@ -54,6 +55,7 @@ namespace UntitledFPS
             bool overlap = volumes[0].CheckOverlap(volumes[1], true);
             Debug.Log("OVERLAP: " + overlap);
         }
+#endif
 
         [ContextMenu("Print Position")]
         public void PrintPosition()
@@ -82,12 +84,12 @@ namespace UntitledFPS
             float distance = (volume.transform.position - transform.position).magnitude + 0.00001f;
             if (debug)
             {
-                Debug.Log("(" + volume.xMin + ">" + xMin + "&&" + volume.xMin + "<" + xMax + ") || (" + volume.xMax + ">" + xMin + "&&" + volume.xMax + "<" + xMax + ")");
-                Debug.Log("(" + volume.yMin + ">" + yMin + "&&" + volume.yMin + "<" + yMax + ") || (" + volume.yMax + ">" + yMin + "&&" + volume.yMax + "<" + yMax + ")");
-                Debug.Log("(" + volume.zMin + ">" + zMin + "&&" + volume.zMin + "<" + zMax + ") || (" + volume.zMax + ">" + zMin + "&&" + volume.zMax + "<" + zMax + ")");
-                Debug.Log(xOverlap + ", " + yOverlap + ", " + zOverlap + ", " + distance + "<" + (m_size / 2) + "+" + (volume.size / 2));
+                Debug.Log($"X ({volume.xMin}>{xMin} && {volume.xMin}<{xMax}) || ({volume.xMax}>{xMin} && {volume.xMax}<{xMax})");
+                Debug.Log($"Y ({volume.yMin}>{yMin} && {volume.yMin}<{yMax}) || ({volume.yMax}>{yMin} && {volume.yMax}<{yMax})");
+                Debug.Log($"Z ({volume.zMin}>{zMin} && {volume.zMin}<{zMax}) || ({volume.zMax}>{zMin} && {volume.zMax}<{zMax})");
+                Debug.Log($"{xOverlap}, {yOverlap}, {zOverlap}, {distance}, {(m_size / 2)}, {(volume.size / 2)}");
             }
-            return (xOverlap && yOverlap && zOverlap && distance < (m_size / 2 + volume.size / 2)) || distance < (m_size / 2 + volume.size / 2);
+            return (xOverlap && yOverlap && zOverlap) || distance < (m_size / 2 + volume.size / 2);
         }
 
         public static bool operator ==(VoxelVolume volumeA, VoxelVolume volumeB)
