@@ -48,8 +48,8 @@ namespace UntitledFPS
 
         private IEnumerator afterSceneLoaded(Scene scene)
         {
-            while (scene.isLoaded == false) yield return new WaitForEndOfFrame();
             while (Generator.Instance.finishedGenerating == false) yield return new WaitForEndOfFrame();
+            Debug.Log("GENERATRO DOEN");
             Go.to(m_instance.m_transitionImage, 0.5f, new GoTweenConfig().anchoredPosition(new Vector2(-m_instance.m_transitionImage.rect.size.x, 0)).setEaseType(GoEaseType.SineIn));
         }
     }

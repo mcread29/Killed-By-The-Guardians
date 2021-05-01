@@ -16,6 +16,10 @@ namespace UntitledFPS
         [Range(-90, 90)]
         [SerializeField] private int m_maxRotation = 0;
 
+        public static float JumpDropRate = 0f;
+        public static float HealthDropRate = 0f;
+        public static HealthDrop HealthDrop;
+
         private Health m_health;
         public Health health
         {
@@ -37,7 +41,21 @@ namespace UntitledFPS
         void die()
         {
             //DO OTHER DEATH THINGS HERE
-            Debug.Log("DIE DIE DIE");
+
+            float dropPercentage = Random.Range(0f, 1f);
+            Debug.Log($"WILL DROP? {dropPercentage}");
+            if (dropPercentage <= Turret.JumpDropRate)
+            {
+                Debug.Log("DROP JUPM");
+            }
+            else if (dropPercentage <= Turret.HealthDropRate)
+            {
+                if (Turret.HealthDrop != null)
+                {
+                    Debug.Log("HEALT DRPO");
+                    Instantiate(Turret.HealthDrop, transform.position, transform.rotation);
+                }
+            }
             gameObject.SetActive(false);
         }
 

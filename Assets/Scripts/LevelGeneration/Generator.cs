@@ -35,7 +35,13 @@ namespace UntitledFPS
             if (m_instance != null)
                 Destroy(gameObject);
             else
+            {
                 m_instance = this;
+
+                Turret.HealthDropRate = m_data.turretHealthDropRate;
+                Turret.JumpDropRate = m_data.turretJumpDropRate;
+                Turret.HealthDrop = m_data.healthDropPrefab;
+            }
         }
 
         private void Start()
@@ -51,7 +57,7 @@ namespace UntitledFPS
 
             bool successfullGeneration = false;
             int attempts = 0;
-            while (successfullGeneration == false && attempts < m_numAttempts)
+            while (successfullGeneration == false) // && attempts < m_numAttempts)
             {
                 if (m_useCustomSeed == false || m_randomSeed == -1) m_randomSeed = new System.Random().Next();
                 Random.InitState(m_randomSeed);
@@ -80,10 +86,9 @@ namespace UntitledFPS
                     root.SetPlayer(m_player);
 
                 root.room.AttachDoors();
-
-                m_player.gameObject.SetActive(true);
-                m_finishedGenerating = true;
             }
+            //if faild it will fail
+            m_player.gameObject.SetActive(true);
             m_finishedGenerating = true;
         }
 

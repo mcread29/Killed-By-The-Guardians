@@ -16,6 +16,9 @@ namespace UntitledFPS
         [SerializeField] private float m_hitStun = 1;
         private float m_stunTimer = 0;
 
+        [SerializeField] private bool m_canHeal = false;
+        public bool canHeal { get { return m_canHeal; } }
+
         private Shields m_shields;
         public Shields shields { get { return m_shields; } }
 
@@ -54,13 +57,18 @@ namespace UntitledFPS
 
         public void Heal(int heal)
         {
-            m_health = Mathf.Min(m_health + heal);
+            m_health = Mathf.Min(m_health + heal, m_maxHealth);
             healthChanged();
         }
 
         private void healthChanged()
         {
             if (updateHealth != null) updateHealth(m_health, m_maxHealth);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+
         }
     }
 }
