@@ -8,7 +8,7 @@ namespace UntitledFPS
 {
     public class RoomSceneRoot : MonoBehaviour
     {
-        [SerializeField] private GameObject m_lighting;
+        // [SerializeField] private GameObject m_lighting;
         [SerializeField] private Room m_room;
         public Room room { get { return m_room; } }
 
@@ -28,41 +28,18 @@ namespace UntitledFPS
         private void Awake()
         {
             m_sectionsComplete = 0;
-            bool inGenerator = false;
-            for (int i = 0; i < SceneManager.sceneCount; i++)
-            {
-                if (SceneManager.GetSceneAt(i).name == "LevelGeneration") inGenerator = true;
-            }
-
-            if (inGenerator)
-            {
-                DestroyLighting();
-            }
-            else
-            {
-                StartRoom();
-            }
         }
 
         public void SetPlayer(Player player)
         {
+            if (m_player != null) DestroyImmediate(m_player.gameObject);
+
             m_player = player;
             if (m_sections != null)
             {
                 foreach (RoomSection section in m_sections)
                 {
                     section.SetTurretLookAt(player.transform);
-                    section.sectionComplete += sectionComplete;
-                }
-            }
-        }
-
-        public void StartRoom()
-        {
-            if (m_sections != null)
-            {
-                foreach (RoomSection section in m_sections)
-                {
                     section.sectionComplete += sectionComplete;
                 }
             }
@@ -76,12 +53,6 @@ namespace UntitledFPS
             {
                 m_room.FinishRoom();
             }
-        }
-
-        public void DestroyLighting()
-        {
-            if (m_lighting != null)
-                Destroy(m_lighting.gameObject);
         }
 
 #if UNITY_EDITOR

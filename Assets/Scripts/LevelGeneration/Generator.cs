@@ -40,7 +40,8 @@ namespace UntitledFPS
 
         private void Start()
         {
-            Generate();
+            if (transform.childCount < 1)
+                Generate();
         }
 
         [ContextMenu("GENERATE")]
@@ -70,17 +71,13 @@ namespace UntitledFPS
 
             foreach (RoomSceneRoot root in m_rooms)
             {
-                root.DestroyLighting();
-
                 if (root.player != null && m_player == null)
                 {
                     m_player = root.player;
                     m_player.gameObject.SetActive(false);
                 }
-                else if (root.player != null)
-                    DestroyImmediate(root.player.gameObject);
-
-                root.SetPlayer(m_player);
+                else
+                    root.SetPlayer(m_player);
 
                 root.room.AttachDoors();
 
