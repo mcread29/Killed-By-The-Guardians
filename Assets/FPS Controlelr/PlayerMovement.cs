@@ -1,6 +1,7 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace FPSController
@@ -44,7 +45,7 @@ namespace FPSController
 
         //Input
         float x, y;
-        bool jumping, sprinting, crouching;
+        bool sprinting, crouching;
 
         //Sliding
         private Vector3 normalVector = Vector3.up;
@@ -77,11 +78,11 @@ namespace FPSController
         /// <summary>
         /// Find user input. Should put this in its own class but im lazy
         /// </summary>
+        bool spaceDown = false;
         private void MyInput()
         {
             x = Input.GetAxisRaw("Horizontal");
             y = Input.GetAxisRaw("Vertical");
-            jumping = Input.GetButton("Jump");
             crouching = Input.GetKey(KeyCode.LeftControl);
 
             //Crouching
@@ -89,6 +90,15 @@ namespace FPSController
                 StartCrouch();
             if (Input.GetKeyUp(KeyCode.LeftControl))
                 StopCrouch();
+
+            if (spaceDown == false && readyToJump && Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(initiateJump());
+            }
+            else if (spaceDown == true && Input.GetKeyUp(KeyCode.Space))
+            {
+                spaceDown = false;
+            }
         }
 
         private void StartCrouch()
@@ -124,9 +134,6 @@ namespace FPSController
             //Counteract sliding and sloppy movement
             CounterMovement(x, y, mag);
 
-            //If holding jump && ready to jump, then jump
-            if (readyToJump && jumping) Jump();
-
             //Set max speed
             float maxSpeed = this.maxSpeed;
 
@@ -159,6 +166,22 @@ namespace FPSController
             //Apply forces to move player
             rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV * transform.localScale.y);
             rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier * transform.localScale.y);
+
+            RaycastHit hit;
+            Vector3 p1 = new Vector3(transform.position.x, transform.position.y - 0.99f, transform.position.z);
+            bool closeToGround = Physics.SphereCast(p1, 1f, Vector3.down, out hit, 0.25f, whatIsGround);
+            if (grounded && closeToGround && hit.distance > 0.05f)
+            {
+                Vector3 newPosition = new Vector3(transform.position.x, transform.position.y - hit.distance, transform.position.z);
+                transform.SetPositionAndRotation(newPosition, transform.rotation);
+            }
+        }
+
+        private IEnumerator initiateJump()
+        {
+            yield return new WaitForFixedUpdate();
+            Jump();
+            yield break;
         }
 
         private void Jump()
@@ -214,7 +237,7 @@ namespace FPSController
 
         private void CounterMovement(float x, float y, Vector2 mag)
         {
-            if (!grounded || jumping) return;
+            if (!grounded) return;
 
             //Slow down sliding
             if (crouching)
