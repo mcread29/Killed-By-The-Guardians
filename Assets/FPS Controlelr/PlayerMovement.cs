@@ -159,6 +159,15 @@ namespace FPSController
             //Apply forces to move player
             rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV * transform.localScale.y);
             rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier * transform.localScale.y);
+
+            RaycastHit hit;
+            Vector3 p1 = new Vector3(transform.position.x, transform.position.y - 0.99f, transform.position.z);
+            bool closeToGround = Physics.SphereCast(p1, 1f, Vector3.down, out hit, 0.25f, whatIsGround);
+            if (jumping == false && closeToGround && hit.distance > 0.05f)
+            {
+                Vector3 newPosition = new Vector3(transform.position.x, transform.position.y - hit.distance, transform.position.z);
+                transform.SetPositionAndRotation(newPosition, transform.rotation);
+            }
         }
 
         private void Jump()
