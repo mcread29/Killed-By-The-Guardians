@@ -26,8 +26,8 @@ namespace UntitledFPS
         [SerializeField] private HealthDrop m_healthDropPrefab;
         public HealthDrop healthDropPrefab { get { return m_healthDropPrefab; } }
 
-        // [SerializeField] private JumpDrop m_jumpDropPrefab;
-        // public JumpDrop jumpDropPrefab { get { return m_jumpDropPrefab; } }
+        [SerializeField] private JumpDrop m_jumpDropPrefab;
+        public JumpDrop jumpDropPrefab { get { return m_jumpDropPrefab; } }
 
         [SerializeField] private float m_turretJumpDropRate = 0.01f;
         public float turretJumpDropRate { get { return m_turretJumpDropRate; } }

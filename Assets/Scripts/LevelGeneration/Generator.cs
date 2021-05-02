@@ -39,8 +39,9 @@ namespace UntitledFPS
                 m_instance = this;
 
                 Turret.HealthDropRate = m_data.turretHealthDropRate;
-                Turret.JumpDropRate = m_data.turretJumpDropRate;
                 Turret.HealthDrop = m_data.healthDropPrefab;
+                Turret.JumpDropRate = m_data.turretJumpDropRate;
+                Turret.JumpDrop = m_data.jumpDropPrefab;
             }
         }
 
@@ -70,7 +71,6 @@ namespace UntitledFPS
                 {
                     m_rooms.Remove(startRoom);
                     DestroyImmediate(startRoom.gameObject);
-                    Debug.Log($"FAILED ATTEMPT {attempts + 1}");
                     attempts++;
                 }
             }
@@ -112,7 +112,6 @@ namespace UntitledFPS
                 RoomSceneRoot nextRoom = Instantiate(availableRooms[roomInd], Vector3.zero, availableRooms[roomInd].transform.rotation, transform);
                 untriedRooms.RemoveAt(roomInd);
 
-                //SHOULD CHANGE TO nextRoom.room.name == previousRoom.room.name when we have more in the new system
                 bool sameAsPreviousRoom = nextRoom.room.name == previousRoom.room.name;
 
                 if (sameAsPreviousRoom == false)

@@ -17,6 +17,7 @@ namespace UntitledFPS
         [SerializeField] private int m_maxRotation = 0;
 
         public static float JumpDropRate = 0f;
+        public static JumpDrop JumpDrop;
         public static float HealthDropRate = 0f;
         public static HealthDrop HealthDrop;
 
@@ -46,13 +47,15 @@ namespace UntitledFPS
             Debug.Log($"WILL DROP? {dropPercentage}");
             if (dropPercentage <= Turret.JumpDropRate)
             {
-                Debug.Log("DROP JUPM");
+                if (Turret.JumpDrop != null)
+                {
+                    Instantiate(Turret.JumpDrop, transform.position, transform.rotation);
+                }
             }
-            else if (dropPercentage <= Turret.HealthDropRate)
+            else if (dropPercentage <= Turret.HealthDropRate + Turret.JumpDropRate)
             {
                 if (Turret.HealthDrop != null)
                 {
-                    Debug.Log("HEALT DRPO");
                     Instantiate(Turret.HealthDrop, transform.position, transform.rotation);
                 }
             }
