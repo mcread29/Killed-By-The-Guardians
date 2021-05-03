@@ -3437,6 +3437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 200
   m_hitStun: 0.2
+  m_canHeal: 0
 --- !u!114 &2055761823746370599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19582,9 +19583,17 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4066163198787806065, guid: 1126da41220143542a1fdc37b7c44114, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -49.38
+      objectReference: {fileID: 0}
     - target: {fileID: 4066163198844555718, guid: 1126da41220143542a1fdc37b7c44114, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066163198844555719, guid: 1126da41220143542a1fdc37b7c44114, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -49.39
       objectReference: {fileID: 0}
     - target: {fileID: 4240703062715837114, guid: 1126da41220143542a1fdc37b7c44114, type: 3}
       propertyPath: m_StaticEditorFlags
