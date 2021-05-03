@@ -30,6 +30,8 @@ namespace UntitledFPS
         private List<(Room, RoomSceneRoot)> m_roomSceneRoots;
         private List<Door> m_allDoors;
 
+        private Dictionary<string, int> m_roomCounts;
+
         private void Awake()
         {
             if (m_instance != null)
@@ -54,7 +56,20 @@ namespace UntitledFPS
         [ContextMenu("GENERATE")]
         public void Generate()
         {
+            m_roomCounts = new Dictionary<string, int>();
+
             int numRooms = m_numRooms = Random.Range(m_data.minLength, m_data.maxLength);
+
+            foreach (RoomSceneRoot room in m_data.availableRooms)
+            {
+                if (m_roomCounts.ContainsKey(room.room.name) == false)
+                    m_roomCounts.Add(room.room.name, 0);
+            }
+            foreach (RoomSceneRoot room in m_data.endingRooms)
+            {
+                if (m_roomCounts.ContainsKey(room.room.name) == false)
+                    m_roomCounts.Add(room.room.name, 0);
+            }
 
             bool successfullGeneration = false;
             int attempts = 0;
@@ -99,6 +114,27 @@ namespace UntitledFPS
             m_rooms.Add(startRoom);
             return startRoom;
         }
+
+        private string getMostUsedRoom()
+        {
+            KeyValuePair<string, int> mostUsed = new KeyValuePair<string, int>("", -1);
+            foreach (KeyValuePair<string, int> pair in m_roomCounts)
+            {
+                if (pair.Value > mostUsed.Value) mostUsed = pair;
+            }
+            return mostUsed.Key;
+        }
+
+        private int getLeastUsedRoom()
+        {
+            KeyValuePair<string, int> leastUsed = new KeyValuePair<string, int>("", 1000);
+            foreach (KeyValuePair<string, int> pair in m_roomCounts)
+            {
+                if (pair.Value < leastUsed.Value) leastUsed = pair;
+            }
+            return leastUsed.Value;
+        }
+
         private bool newRoom(RoomSceneRoot previousRoom, int roomCount)
         {
             bool finalRoom = roomCount < 1;
@@ -113,8 +149,16 @@ namespace UntitledFPS
                 untriedRooms.RemoveAt(roomInd);
 
                 bool sameAsPreviousRoom = nextRoom.room.name == previousRoom.room.name;
+                bool isMostUsedRoom = getMostUsedRoom() == nextRoom.room.name;
+                bool usedWayMoreThanLeastRoom = getLeastUsedRoom() + 2 < m_roomCounts[nextRoom.room.name];
 
-                if (sameAsPreviousRoom == false)
+                if (finalRoom == false)
+                {
+                    m_roomCounts[nextRoom.room.name]++;
+                }
+
+                m_rooms.Add(nextRoom);
+                if (sameAsPreviousRoom == false && isMostUsedRoom == false && usedWayMoreThanLeastRoom == false) // && getLeastUsedRoom() + 2 >= m_roomCounts[nextRoom.room.name])
                 {
                     List<Door> untriedNewDoors = new List<Door>(nextRoom.room.doors);
                     while (untriedNewDoors.Count > 0)
@@ -138,6 +182,7 @@ namespace UntitledFPS
 
                             foreach (var roomRoot in m_rooms)
                             {
+                                if (roomRoot == nextRoom) continue;
                                 bool checkOverlap = nextRoom.room.volume.CheckVolume(roomRoot.room.volume);
                                 overlap = overlap || checkOverlap;
                                 if (overlap) break;
@@ -146,8 +191,7 @@ namespace UntitledFPS
                             if (overlap) continue;
                             else
                             {
-                                m_rooms.Add(nextRoom);
-                                bool success = roomCount < 1 || newRoom(nextRoom, roomCount - 1);
+                                bool success = finalRoom || newRoom(nextRoom, roomCount - 1);
                                 if (success)
                                 {
                                     doorToAttach.Attach(nextDoor);
@@ -160,10 +204,15 @@ namespace UntitledFPS
                 }
 
                 m_rooms.Remove(nextRoom);
+                if (finalRoom == false)
+                {
+                    m_roomCounts[nextRoom.room.name]--;
+                }
                 DestroyImmediate(nextRoom.gameObject);
             }
             return false;
         }
+
         private void alignRoomToDoor2(RoomSceneRoot nextRoom, Door nextDoor, Door doorToAttach)
         {
             Vector3 nextLocalPos = nextDoor.transform.localPosition;
