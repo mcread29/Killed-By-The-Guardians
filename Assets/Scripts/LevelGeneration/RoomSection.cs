@@ -6,6 +6,8 @@ namespace UntitledFPS
 {
     public class RoomSection : MonoBehaviour
     {
+        [SerializeField] private float m_spawnTimer = -1f;
+
         [SerializeField] private Spawnable[] m_enemiesForSection;
 
         private List<Turret> m_turrets;
@@ -13,6 +15,7 @@ namespace UntitledFPS
         private bool m_spawnedInitial = false;
 
         public System.Action<RoomSection> sectionComplete;
+        public System.Action sectionStarted;
 
         public void SetTurretLookAt(Transform transform)
         {
@@ -42,19 +45,34 @@ namespace UntitledFPS
             }
         }
 
+        private IEnumerator startSectionTimer()
+        {
+            if (m_spawnTimer < 0) yield break;
+
+            yield return new WaitForSeconds(m_spawnTimer);
+            if (m_spawnedInitial == false)
+                startSection();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             bool generatorCheck = Generator.Instance == null || Generator.Instance.finishedGenerating;
             if (generatorCheck && m_spawnedInitial == false && other.tag == "Player")
             {
-                if (m_enemiesForSection != null)
+                startSection();
+                if (sectionStarted != null) sectionStarted();
+            }
+        }
+
+        private void startSection()
+        {
+            if (m_enemiesForSection != null)
+            {
+                foreach (Spawnable t in m_enemiesForSection)
                 {
-                    foreach (Spawnable t in m_enemiesForSection)
-                    {
-                        if (t != null) t.Spawn();
-                    }
-                    m_spawnedInitial = true;
+                    if (t != null) t.Spawn();
                 }
+                m_spawnedInitial = true;
             }
         }
 

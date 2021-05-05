@@ -41,6 +41,7 @@ namespace UntitledFPS
                 {
                     section.SetTurretLookAt(player.transform);
                     section.sectionComplete += sectionComplete;
+                    section.sectionStarted += roomStarted;
                 }
             }
         }
@@ -53,6 +54,12 @@ namespace UntitledFPS
             {
                 m_room.FinishRoom();
             }
+        }
+
+        private void roomStarted()
+        {
+            foreach (RoomSection section in m_sections)
+                section.sectionStarted -= roomStarted;
         }
 
 #if UNITY_EDITOR
