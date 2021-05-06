@@ -14,6 +14,11 @@ namespace UntitledFPS
             m_firing = true;
         }
 
+        public void StopFiring()
+        {
+            m_firing = false;
+        }
+
         protected override void Update()
         {
             if (m_fireDelay < 0)

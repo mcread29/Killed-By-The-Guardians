@@ -11,6 +11,7 @@ namespace UntitledFPS
         [SerializeField] private Spawnable[] m_enemiesForSection;
 
         private List<Turret> m_turrets;
+        public int TurretCount { get { return m_turrets != null ? m_turrets.Count : 0; } }
 
         private bool m_spawnedInitial = false;
 
@@ -34,6 +35,7 @@ namespace UntitledFPS
                             remove = () =>
                             {
                                 m_turrets.Remove(t);
+                                UI.Instance.KillEnemy();
                                 if (m_turrets.Count <= 0 && sectionComplete != null) sectionComplete(this);
                                 t.health.onDeath -= remove;
                             };
@@ -45,7 +47,7 @@ namespace UntitledFPS
             }
         }
 
-        private IEnumerator startSectionTimer()
+        public IEnumerator startSectionTimer()
         {
             if (m_spawnTimer < 0) yield break;
 
@@ -72,7 +74,20 @@ namespace UntitledFPS
                 {
                     if (t != null) t.Spawn();
                 }
+                UI.Instance.AddEnemies(m_turrets.Count);
                 m_spawnedInitial = true;
+            }
+        }
+
+        public void StopShooting()
+        {
+            foreach (Spawnable t in m_enemiesForSection)
+            {
+                if (t != null)
+                {
+                    StaticTurret staticTurret = t.GetComponent<StaticTurret>();
+                    if (staticTurret != null) staticTurret.StopFiring();
+                }
             }
         }
 

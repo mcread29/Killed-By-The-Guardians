@@ -52,6 +52,8 @@ namespace UntitledFPS
             m_sectionsComplete++;
             if (m_sectionsComplete >= m_sections.Length)
             {
+                foreach (RoomSection roomSection in m_sections)
+                    roomSection.StopShooting();
                 m_room.FinishRoom();
             }
         }
@@ -59,7 +61,10 @@ namespace UntitledFPS
         private void roomStarted()
         {
             foreach (RoomSection section in m_sections)
+            {
                 section.sectionStarted -= roomStarted;
+                StartCoroutine(section.startSectionTimer());
+            }
         }
 
 #if UNITY_EDITOR

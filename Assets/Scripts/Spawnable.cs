@@ -10,5 +10,14 @@ namespace UntitledFPS
         {
             gameObject.SetActive(true);
         }
+
+        public void Despawn()
+        {
+            Disolver disolver = GetComponent<Disolver>();
+            if (disolver != null)
+            {
+                disolver.DisolveOut((t) => gameObject.SetActive(false));
+            }
+        }
     }
 }

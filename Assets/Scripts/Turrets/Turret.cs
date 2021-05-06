@@ -44,7 +44,7 @@ namespace UntitledFPS
             //DO OTHER DEATH THINGS HERE
 
             float dropPercentage = Random.Range(0f, 1f);
-            Debug.Log($"WILL DROP? {dropPercentage}");
+            // Debug.Log($"WILL DROP? {dropPercentage}");
             if (dropPercentage <= Turret.JumpDropRate)
             {
                 if (Turret.JumpDrop != null)
