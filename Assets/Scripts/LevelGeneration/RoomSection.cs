@@ -58,9 +58,16 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
+            StartCoroutine(WaitToSpawn(other.tag));
+        }
+
+        private IEnumerator WaitToSpawn(string tag)
+        {
             bool generatorCheck = Generator.Instance == null || Generator.Instance.finishedGenerating;
-            if (generatorCheck && m_spawnedInitial == false && other.tag == "Player")
+            if (generatorCheck && m_spawnedInitial == false && tag == "Player")
             {
+                while (UI.Instance == null || m_turrets == null)
+                    yield return new WaitForEndOfFrame();
                 startSection();
                 if (sectionStarted != null) sectionStarted();
             }
