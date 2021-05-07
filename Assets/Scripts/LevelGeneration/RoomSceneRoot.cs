@@ -30,9 +30,15 @@ namespace UntitledFPS
             m_sectionsComplete = 0;
         }
 
+        private void Start()
+        {
+            if (Generator.Instance == null)
+                SetPlayer(m_player);
+        }
+
         public void SetPlayer(Player player)
         {
-            if (m_player != null) DestroyImmediate(m_player.gameObject);
+            if (m_player != null && player != m_player) DestroyImmediate(m_player.gameObject);
 
             m_player = player;
             if (m_sections != null)

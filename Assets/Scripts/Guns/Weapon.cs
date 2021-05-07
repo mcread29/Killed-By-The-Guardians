@@ -14,9 +14,9 @@ namespace UntitledFPS
 
         protected virtual void Update()
         {
+            m_fireTimer += Time.deltaTime;
             if (m_firing)
             {
-                m_fireTimer += Time.deltaTime;
                 if (m_fireTimer >= 1 / m_data.fireRate)
                 {
                     m_fireTimer = 0;
