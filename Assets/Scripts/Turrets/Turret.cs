@@ -21,6 +21,8 @@ namespace UntitledFPS
         public static float HealthDropRate = 0f;
         public static HealthDrop HealthDrop;
 
+        private bool m_inView = false;
+
         private Health m_health;
         public Health health
         {
@@ -42,9 +44,7 @@ namespace UntitledFPS
         void die()
         {
             //DO OTHER DEATH THINGS HERE
-
             float dropPercentage = Random.Range(0f, 1f);
-            // Debug.Log($"WILL DROP? {dropPercentage}");
             if (dropPercentage <= Turret.JumpDropRate)
             {
                 if (Turret.JumpDrop != null)
@@ -70,18 +70,32 @@ namespace UntitledFPS
                 m_barrelParent.LookAt(m_playerTransform);
 
                 Vector3 rotation = m_barrelParent.transform.localRotation.eulerAngles;
+                m_firing = false;
                 if (((rotation.x + 90) % 360) - 90 > m_maxRotation)
                 {
                     m_barrelParent.rotation = prevRotation;
-                    m_firing = false;
                 }
-                else
+                else if (m_inView)
                 {
                     m_firing = true;
                 }
             }
 
             base.Update();
+        }
+
+        private void FixedUpdate()
+        {
+            m_inView = false;
+            RaycastHit hit;
+            foreach (Barrel barrel in m_barrels)
+            {
+                Transform t = barrel.transform;
+                if (Physics.Raycast(t.position, t.forward, out hit))
+                {
+                    m_inView = m_inView || hit.collider.gameObject.layer == m_playerTransform.gameObject.layer;
+                }
+            }
         }
 
         public void SetTransformLookat(Transform lookAt)
