@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UntitledFPS
 {
@@ -21,6 +22,8 @@ namespace UntitledFPS
 
         [SerializeField] private Crosshair m_crosshair;
         [SerializeField] private HealthBar m_healthBar;
+        [SerializeField] private Text m_emenyCountText;
+        private int m_enemyCount = 0;
 
         private void Awake()
         {
@@ -40,6 +43,18 @@ namespace UntitledFPS
         public void SetShields(float percent)
         {
             m_healthBar.SetShields(percent);
+        }
+
+        public void AddEnemies(int enemies)
+        {
+            m_enemyCount += enemies;
+            m_emenyCountText.text = m_enemyCount.ToString();
+        }
+
+        public void KillEnemy()
+        {
+            m_enemyCount--;
+            m_emenyCountText.text = m_enemyCount.ToString();
         }
     }
 }
