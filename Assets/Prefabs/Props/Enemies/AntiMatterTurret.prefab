@@ -434,7 +434,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3978227123652924960
 Transform:
@@ -15873,7 +15873,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -16075,6 +16075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 150
   m_hitStun: 0.1
+  m_canHeal: 0
 --- !u!114 &7105763407302659851
 MonoBehaviour:
   m_ObjectHideFlags: 0
