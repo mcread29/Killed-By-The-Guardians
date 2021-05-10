@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2091.705, g: 2590.9995, b: 3430.0498, a: 1}
+  m_IndirectSpecularColor: {r: 1478.8593, g: 1831.9368, b: 2425.4312, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2815,17 +2815,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 682458113370236653, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4978647717706910150, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
       propertyPath: m_Name
       value: GlobalLighting
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647717706910150, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4978647717706910151, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
       propertyPath: m_RootOrder
@@ -2869,30 +2861,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4978647717706910151, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647718467795262, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647718467795262, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647718632266097, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647718632266097, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978647718632266101, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_UseScreenSpaceShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9106367676374490064, guid: b813f7c7d3bbfbd4885f96ab27b1916f, type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12095,11 +12063,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1642609145 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2055761823902872837, guid: a1bf0b2663be49a4fa927eabed8ba581, type: 3}
-  m_PrefabInstance: {fileID: 2055761824453889276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1642812570
 Mesh:
   m_ObjectHideFlags: 0
@@ -13288,10 +13251,7 @@ MonoBehaviour:
   m_Script: {fileID: 1365033929}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1642609145}
+  m_Entries: []
 --- !u!4 &1789020151
 Transform:
   m_ObjectHideFlags: 19
@@ -16461,6 +16421,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1417176527}
+    - target: {fileID: 5188376082201898128, guid: 37b12433bd47c104eb77aeed468eed63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5188376082209643913, guid: 37b12433bd47c104eb77aeed468eed63, type: 3}
       propertyPath: m_Mesh
       value: 
