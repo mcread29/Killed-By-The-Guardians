@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -13,14 +14,14 @@ namespace UntitledFPS
 
         private static bool m_drawVolume = true;
 
-        float xMin { get { return transform.position.x - (m_size / 2); } }
-        float xMax { get { return transform.position.x + (m_size / 2); } }
+        float xMin { get { return MyMath.Round(transform.position.x - (m_size / 2), 4); } }
+        float xMax { get { return MyMath.Round(transform.position.x + (m_size / 2), 4); } }
 
-        float yMin { get { return transform.position.y - (m_size / 2); } }
-        float yMax { get { return transform.position.y + (m_size / 2); } }
+        float yMin { get { return MyMath.Round(transform.position.y - (m_size / 2), 4); } }
+        float yMax { get { return MyMath.Round(transform.position.y + (m_size / 2), 4); } }
 
-        float zMin { get { return transform.position.z - (m_size / 2); } }
-        float zMax { get { return transform.position.z + (m_size / 2); } }
+        float zMin { get { return MyMath.Round(transform.position.z - (m_size / 2), 4); } }
+        float zMax { get { return MyMath.Round(transform.position.z + (m_size / 2), 4); } }
 
         public static VoxelVolume CreateVoxel(float size)
         {
@@ -84,10 +85,10 @@ namespace UntitledFPS
             float distance = (volume.transform.position - transform.position).magnitude + 0.00001f;
             if (debug)
             {
-                Debug.Log($"X ({volume.xMin}>{xMin} && {volume.xMin}<{xMax}) || ({volume.xMax}>{xMin} && {volume.xMax}<{xMax})");
+                Debug.Log($"X ({volume.xMin}>{xMin}={volume.xMin > xMin} && {volume.xMin}<{xMax}={volume.xMin < xMax}) || ({volume.xMax}>{xMin}={volume.xMax > xMin} && {volume.xMax}<{xMax}={volume.xMax < xMax})");
                 Debug.Log($"Y ({volume.yMin}>{yMin} && {volume.yMin}<{yMax}) || ({volume.yMax}>{yMin} && {volume.yMax}<{yMax})");
                 Debug.Log($"Z ({volume.zMin}>{zMin} && {volume.zMin}<{zMax}) || ({volume.zMax}>{zMin} && {volume.zMax}<{zMax})");
-                Debug.Log($"{xOverlap}, {yOverlap}, {zOverlap}, {distance}, {(m_size / 2)}, {(volume.size / 2)}");
+                Debug.Log($"{xOverlap}, {yOverlap}, {zOverlap}, {distance}, {distance < (m_size / 2 + volume.size / 2)}, {(m_size / 2)}, {(volume.size / 2)}");
             }
             return (xOverlap && yOverlap && zOverlap) || distance < (m_size / 2 + volume.size / 2);
         }

@@ -10,6 +10,7 @@ namespace UntitledFPS
     {
         public static System.Action<Transform> SetLookAt;
 
+        [SerializeField] private LayerMask m_layerToIgnore;
         [SerializeField] private Transform m_barrelParent;
         [SerializeField] private Transform m_playerTransform;
 
@@ -91,7 +92,7 @@ namespace UntitledFPS
             foreach (Barrel barrel in m_barrels)
             {
                 Transform t = barrel.transform;
-                if (Physics.Raycast(t.position, t.forward, out hit))
+                if (Physics.Raycast(t.position, t.forward, out hit, Mathf.Infinity, ~m_layerToIgnore))
                 {
                     m_inView = m_inView || hit.collider.gameObject.layer == m_playerTransform.gameObject.layer;
                 }

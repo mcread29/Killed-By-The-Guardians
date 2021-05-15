@@ -60,6 +60,11 @@ namespace UntitledFPS
 
             int numRooms = m_numRooms = Random.Range(m_data.minLength, m_data.maxLength);
 
+            foreach (RoomSceneRoot room in m_data.startRooms)
+            {
+                if (m_roomCounts.ContainsKey(room.room.name) == false)
+                    m_roomCounts.Add(room.room.name, 0);
+            }
             foreach (RoomSceneRoot room in m_data.availableRooms)
             {
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
@@ -73,8 +78,9 @@ namespace UntitledFPS
 
             bool successfullGeneration = false;
             int attempts = 0;
-            while (successfullGeneration == false) // && attempts < m_numAttempts)
+            while (successfullGeneration == false && attempts < m_numAttempts)
             {
+                Debug.Log("ATTEMPT " + attempts);
                 if (m_useCustomSeed == false || m_randomSeed == -1) m_randomSeed = new System.Random().Next();
                 Random.InitState(m_randomSeed);
 
@@ -85,6 +91,7 @@ namespace UntitledFPS
                 if (successfullGeneration == false)
                 {
                     m_rooms.Remove(startRoom);
+                    m_roomCounts[startRoom.room.name]--;
                     DestroyImmediate(startRoom.gameObject);
                     attempts++;
                 }
@@ -112,6 +119,7 @@ namespace UntitledFPS
             int ind = Random.Range(0, m_data.startRooms.Length);
             RoomSceneRoot startRoom = Instantiate(m_data.startRooms[ind], Vector3.zero, m_data.startRooms[ind].transform.rotation, transform);
             m_rooms.Add(startRoom);
+            m_roomCounts[startRoom.room.name]++;
             return startRoom;
         }
 
@@ -145,12 +153,13 @@ namespace UntitledFPS
             while (untriedRooms.Count > 0)
             {
                 int roomInd = Random.Range(0, untriedRooms.Count);
-                RoomSceneRoot nextRoom = Instantiate(availableRooms[roomInd], Vector3.zero, availableRooms[roomInd].transform.rotation, transform);
+                RoomSceneRoot nextRoom = Instantiate(untriedRooms[roomInd], Vector3.zero, untriedRooms[roomInd].transform.rotation, transform);
                 untriedRooms.RemoveAt(roomInd);
 
                 bool sameAsPreviousRoom = nextRoom.room.name == previousRoom.room.name;
                 bool isMostUsedRoom = getMostUsedRoom() == nextRoom.room.name;
                 bool usedWayMoreThanLeastRoom = getLeastUsedRoom() + 2 < m_roomCounts[nextRoom.room.name];
+
 
                 if (finalRoom == false)
                 {
@@ -158,7 +167,7 @@ namespace UntitledFPS
                 }
 
                 m_rooms.Add(nextRoom);
-                if (sameAsPreviousRoom == false && isMostUsedRoom == false && usedWayMoreThanLeastRoom == false) // && getLeastUsedRoom() + 2 >= m_roomCounts[nextRoom.room.name])
+                if (sameAsPreviousRoom == false && isMostUsedRoom == false && usedWayMoreThanLeastRoom == false)
                 {
                     List<Door> untriedNewDoors = new List<Door>(nextRoom.room.doors);
                     while (untriedNewDoors.Count > 0)
@@ -176,7 +185,7 @@ namespace UntitledFPS
                             Door doorToAttach = untriedOldDoors[newInd];
                             untriedOldDoors.RemoveAt(newInd);
 
-                            if (Mathf.Abs(doorToAttach.transform.rotation.eulerAngles.y - nextDoor.transform.rotation.eulerAngles.y) != 180) continue;
+                            if (Mathf.Abs(MyMath.Round(doorToAttach.transform.rotation.eulerAngles.y, 1) - MyMath.Round(nextDoor.transform.rotation.eulerAngles.y, 1)) != 180) continue;
 
                             alignRoomToDoor2(nextRoom, nextDoor, doorToAttach);
 
