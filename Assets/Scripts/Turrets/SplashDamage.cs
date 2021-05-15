@@ -9,6 +9,7 @@ namespace UntitledFPS
     {
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.name);
             Health health = other.GetComponentInParent<Health>();
             if (other.gameObject.layer != gameObject.layer && IsInLayerMask(other.gameObject, m_damageLayer) && health != null)
             {
