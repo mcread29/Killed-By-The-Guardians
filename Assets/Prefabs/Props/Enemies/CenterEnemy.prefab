@@ -697,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 200
   m_hitStun: 0.2
+  m_canHeal: 0
 --- !u!114 &8295619252606086194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +725,9 @@ MonoBehaviour:
   m_data: {fileID: 11400000, guid: a397780146646b54db32a6b4de471c23, type: 2}
   m_barrels:
   - {fileID: 4642457764478611693}
+  m_layerToIgnore:
+    serializedVersion: 2
+    m_Bits: 2048
   m_barrelParent: {fileID: 1604318125224715124}
   m_playerTransform: {fileID: 0}
   m_maxRotation: 90
