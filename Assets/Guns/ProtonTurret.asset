@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af771a1f6825d64ab301af4ef7d55d0, type: 3}
+  m_Name: ProtonTurret
+  m_EditorClassIdentifier: 
+  m_fireType: 0
+  m_fireRate: 1.2
+  m_damage: 50
+  m_damageLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  m_projectile: {fileID: 8409939538336499671, guid: 6741463020dae484d82082e659030193, type: 3}
+  m_muzzleFlash: {fileID: 1196331808689420, guid: 45302e59714de7c4cbffdd72d12fbf85, type: 3}
+  m_hitExplosion: {fileID: 5869223676956556396, guid: 2323841149c58e84b883bb9f6b4417a7, type: 3}
+  m_shotSpeed: 1500
