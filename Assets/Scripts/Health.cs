@@ -37,7 +37,7 @@ namespace UntitledFPS
 
         public void TakeDamage(int damage)
         {
-            if (m_stunTimer > 0) return;
+            if (m_stunTimer > 0 || enabled == false) return;
 
             if (m_shields != null)
             {
@@ -49,7 +49,8 @@ namespace UntitledFPS
             {
                 m_health = Mathf.Max(m_health - damage);
                 m_stunTimer = m_hitStun;
-                if (m_health < 1) if (onDeath != null) onDeath();
+                if (m_health < 1)
+                    if (onDeath != null) onDeath();
             }
 
             healthChanged();
@@ -59,6 +60,11 @@ namespace UntitledFPS
         {
             m_health = Mathf.Min(m_health + heal, m_maxHealth);
             healthChanged();
+        }
+
+        public void FullHeal()
+        {
+            Heal(m_maxHealth);
         }
 
         private void healthChanged()

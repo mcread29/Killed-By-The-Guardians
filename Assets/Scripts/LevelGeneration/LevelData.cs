@@ -52,6 +52,9 @@ namespace UntitledFPS
         [SerializeField] private RoomSceneRoot[] m_availableRooms;
         public RoomSceneRoot[] availableRooms { get { return m_availableRooms; } }
 
+        [SerializeField] private RoomSceneRoot[] m_bossRooms;
+        public RoomSceneRoot[] bossRooms { get { return m_bossRooms; } }
+
         [SerializeField] private RoomSceneRoot[] m_endingRooms;
         public RoomSceneRoot[] endingRooms { get { return m_endingRooms; } }
 

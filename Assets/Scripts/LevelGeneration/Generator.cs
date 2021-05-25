@@ -70,6 +70,12 @@ namespace UntitledFPS
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
                     m_roomCounts.Add(room.room.name, 0);
             }
+            foreach (RoomSceneRoot room in m_data.bossRooms)
+            {
+                if (m_roomCounts.ContainsKey(room.room.name) == false)
+                    m_roomCounts.Add(room.room.name, 0);
+                Debug.Log($"{room.room.name} { m_roomCounts[room.room.name]}");
+            }
             foreach (RoomSceneRoot room in m_data.endingRooms)
             {
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
@@ -146,7 +152,10 @@ namespace UntitledFPS
         private bool newRoom(RoomSceneRoot previousRoom, int roomCount)
         {
             bool finalRoom = roomCount < 1;
-            RoomSceneRoot[] availableRooms = finalRoom ? m_data.endingRooms : m_data.availableRooms;
+            bool bossRoom = roomCount == 1;
+            RoomSceneRoot[] availableRooms = bossRoom ?
+                m_data.bossRooms : finalRoom ?
+                    m_data.endingRooms : m_data.availableRooms;
 
             List<RoomSceneRoot> untriedRooms = new List<RoomSceneRoot>(availableRooms);
 
@@ -156,10 +165,10 @@ namespace UntitledFPS
                 RoomSceneRoot nextRoom = Instantiate(untriedRooms[roomInd], Vector3.zero, untriedRooms[roomInd].transform.rotation, transform);
                 untriedRooms.RemoveAt(roomInd);
 
+                Debug.Log($"{nextRoom.room.name} {m_roomCounts.ContainsKey(nextRoom.room.name)}");
                 bool sameAsPreviousRoom = nextRoom.room.name == previousRoom.room.name;
                 bool isMostUsedRoom = getMostUsedRoom() == nextRoom.room.name;
                 bool usedWayMoreThanLeastRoom = getLeastUsedRoom() + 2 < m_roomCounts[nextRoom.room.name];
-
 
                 if (finalRoom == false)
                 {

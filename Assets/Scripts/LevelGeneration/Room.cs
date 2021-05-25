@@ -27,7 +27,7 @@ namespace UntitledFPS
             m_volume = GetComponent<RoomVolume>();
         }
 
-        public void AttachDoors()
+        public virtual void AttachDoors()
         {
             foreach (Door door in m_doors)
             {
@@ -47,7 +47,7 @@ namespace UntitledFPS
             }
         }
 
-        public void FinishRoom()
+        public virtual void FinishRoom()
         {
             m_roomFinished = true;
             foreach (Door door in m_doors)
