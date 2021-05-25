@@ -73,7 +73,7 @@ namespace UntitledFPS
             }
         }
 
-        private void startSection()
+        public void startSection()
         {
             if (m_enemiesForSection != null)
             {

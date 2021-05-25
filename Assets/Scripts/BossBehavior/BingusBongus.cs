@@ -11,17 +11,25 @@ namespace UntitledFPS
         [SerializeField] private GameObject m_shield;
 
         [SerializeField] private ShieldGenerator m_1stGenerator;
-        [SerializeField] private ShieldGenerator m_2ndGenerator;
-        [SerializeField] private ShieldGenerator m_3rdGenerator;
-        [SerializeField] private ShieldGenerator m_4thGenerator;
+        [SerializeField] private RoomSection m_1stSection;
+        [Space]
 
-        private int m_stage = 1;
+        [SerializeField] private ShieldGenerator m_2ndGenerator;
+        [SerializeField] private RoomSection m_2ndSection;
+        [Space]
+
+        [SerializeField] private ShieldGenerator m_3rdGenerator;
+        [SerializeField] private RoomSection m_3rdSection;
+        [Space]
+
+        [SerializeField] private ShieldGenerator m_4thGenerator;
+        [SerializeField] private RoomSection m_4thSection;
+
+        private int m_stage = 0;
         private int m_activeGenerators = 1;
         private Health m_health;
 
-        private void Awake()
-        {
-        }
+        private bool m_started = false;
 
         private void nextStage()
         {
@@ -35,28 +43,33 @@ namespace UntitledFPS
                 m_3rdGenerator.gameObject.SetActive(false);
                 m_4thGenerator.gameObject.SetActive(false);
                 gameObject.SetActive(false);
-                if (bossKilled != null) bossKilled();
+                m_bossKilled = true;
+                if (onBossKilled != null) onBossKilled();
             }
             else
             {
                 if (m_stage >= 1)
                 {
                     m_1stGenerator.Activate();
+                    m_1stSection.startSection();
                     m_activeGenerators++;
                 }
                 if (m_stage >= 2)
                 {
                     m_2ndGenerator.Activate();
+                    m_2ndSection.startSection();
                     m_activeGenerators++;
                 }
                 if (m_stage >= 3)
                 {
                     m_3rdGenerator.Activate();
+                    m_3rdSection.startSection();
                     m_activeGenerators++;
                 }
                 if (m_stage >= 4)
                 {
                     m_4thGenerator.Activate();
+                    m_4thSection.startSection();
                     m_activeGenerators++;
                 }
 
@@ -80,6 +93,9 @@ namespace UntitledFPS
 
         public override void StartBoss()
         {
+            if (m_started) return;
+
+            m_started = true;
             gameObject.SetActive(true);
 
             m_rigidBody = GetComponent<Rigidbody>();
@@ -100,7 +116,7 @@ namespace UntitledFPS
             m_4thGenerator.generatorDestroyed = generatorDestroyed;
 
             m_rigidBody.velocity = new Vector3(20, 20, 20);
-            m_1stGenerator.Activate();
+            nextStage();
         }
     }
 }
