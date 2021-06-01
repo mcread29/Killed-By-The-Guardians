@@ -6,6 +6,7 @@ namespace UntitledFPS
 {
     public class Crosshair : MonoBehaviour
     {
+        [SerializeField] private RectTransform m_hitMarker;
         [SerializeField] private RectTransform m_top;
         [SerializeField] private RectTransform m_bottom;
         [SerializeField] private RectTransform m_right;
@@ -21,6 +22,13 @@ namespace UntitledFPS
             m_bottom.position.Set(0, -m_space, 0);
             m_right.position.Set(m_space, 0, 0);
             m_left.position.Set(-m_space, 0, 0);
+        }
+
+        public void Hit()
+        {
+            Go.killAllTweensWithTarget(m_hitMarker);
+            m_hitMarker.localScale = new Vector3(1f, 1f, 1f);
+            Go.to(m_hitMarker, 0.2f, new GoTweenConfig().scale(0));
         }
     }
 }

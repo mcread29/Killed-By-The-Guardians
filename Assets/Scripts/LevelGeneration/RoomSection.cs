@@ -31,6 +31,11 @@ namespace UntitledFPS
                         if (t != null)
                         {
                             m_turrets.Add(t);
+
+                            System.Action<float, float> hit = null;
+                            hit = (float h, float mh) => UI.Instance.HitEnemy();
+                            t.health.updateHealth += hit;
+
                             System.Action remove = null;
                             remove = () =>
                             {
@@ -38,8 +43,10 @@ namespace UntitledFPS
                                 UI.Instance.KillEnemy();
                                 if (m_turrets.Count <= 0 && sectionComplete != null) sectionComplete(this);
                                 t.health.onDeath -= remove;
+                                t.health.updateHealth -= hit;
                             };
                             t.health.onDeath += remove;
+
                             t.SetTransformLookat(transform);
                         }
                     }

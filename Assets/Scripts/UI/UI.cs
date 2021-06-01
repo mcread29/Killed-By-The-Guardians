@@ -51,6 +51,11 @@ namespace UntitledFPS
             m_emenyCountText.text = m_enemyCount.ToString();
         }
 
+        public void HitEnemy()
+        {
+            m_crosshair.Hit();
+        }
+
         public void KillEnemy()
         {
             m_enemyCount--;

@@ -49,11 +49,12 @@ namespace UntitledFPS
             {
                 m_health = Mathf.Max(m_health - damage);
                 m_stunTimer = m_hitStun;
+
+                healthChanged();
+
                 if (m_health < 1)
                     if (onDeath != null) onDeath();
             }
-
-            healthChanged();
         }
 
         public void Heal(int heal)
