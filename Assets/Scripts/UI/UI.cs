@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UntitledFPS
@@ -24,6 +25,7 @@ namespace UntitledFPS
         [SerializeField] private HealthBar m_healthBar;
         [SerializeField] private Text m_emenyCountText;
         private int m_enemyCount = 0;
+        [SerializeField] private CanvasGroup m_deathScreen;
 
         private void Awake()
         {
@@ -49,17 +51,32 @@ namespace UntitledFPS
         {
             m_enemyCount += enemies;
             m_emenyCountText.text = m_enemyCount.ToString();
+            // PLAY SOUND ADDING ENEMIES
         }
 
         public void HitEnemy()
         {
             m_crosshair.Hit();
+            // PLAY HIT SOUND
         }
 
         public void KillEnemy()
         {
             m_enemyCount--;
             m_emenyCountText.text = m_enemyCount.ToString();
+            // PLAY ENEMY KILL SOUND
+            // MAYBE PLAY SOUND WHEN <= 5?
+        }
+
+        public void PlayerKilled()
+        {
+            GoTweenConfig config = new GoTweenConfig();
+
+            ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => m_deathScreen.alpha = val);
+            config.addTweenProperty(p);
+            config.onComplete((t) => SceneManager.LoadSceneAsync("TempMenu"));
+
+            Go.to(this, 2f, config);
         }
     }
 }

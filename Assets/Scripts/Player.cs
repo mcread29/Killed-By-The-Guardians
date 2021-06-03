@@ -19,12 +19,21 @@ namespace UntitledFPS
         private void Start()
         {
             m_health.updateHealth += changeHealth;
+            m_health.onDeath += Death;
             if (m_health.shields) m_health.shields.updateShileds += changeShields;
+        }
+
+        private void Death()
+        {
+            m_health.updateHealth -= changeHealth;
+            m_health.onDeath -= Death;
+
+            m_movement.Lock();
+            UI.Instance.PlayerKilled();
         }
 
         private void OnDestroy()
         {
-            m_health.updateHealth -= changeHealth;
         }
 
         private void changeHealth(float newHealth, float maxHealth)

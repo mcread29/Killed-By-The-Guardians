@@ -7,10 +7,14 @@ namespace UntitledFPS
 {
     public class MainMenu : MonoBehaviour
     {
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) StartLevel();
+        }
+
         public void StartLevel()
         {
             ScreenTransition.To("LevelGeneration");
-            // SceneManager.LoadScene("LevelGeneration", LoadSceneMode.Single);
         }
     }
 }

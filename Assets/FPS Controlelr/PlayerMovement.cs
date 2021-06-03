@@ -52,9 +52,10 @@ namespace FPSController
         private Vector3 normalVector = Vector3.up;
         private Vector3 wallNormalVector;
 
-        void Awake()
+        private bool m_locked = false;
+        public void Lock()
         {
-            // rb = GetComponent<Rigidbody>();
+            m_locked = true;
         }
 
         void Start()
@@ -67,11 +68,15 @@ namespace FPSController
 
         private void FixedUpdate()
         {
+            if (m_locked) return;
+            
             Movement();
         }
 
         private void Update()
         {
+            if (m_locked) return;
+            
             MyInput();
             Look();
         }
