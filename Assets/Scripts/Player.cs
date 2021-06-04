@@ -18,14 +18,11 @@ namespace UntitledFPS
 
         private void Start()
         {
-            m_health.updateHealth += changeHealth;
             m_health.onDeath += Death;
-            if (m_health.shields) m_health.shields.updateShileds += changeShields;
         }
 
         private void Death()
         {
-            m_health.updateHealth -= changeHealth;
             m_health.onDeath -= Death;
 
             m_movement.Lock();
@@ -34,16 +31,6 @@ namespace UntitledFPS
 
         private void OnDestroy()
         {
-        }
-
-        private void changeHealth(float newHealth, float maxHealth)
-        {
-            UI.Instance.SetHealth(newHealth / maxHealth);
-        }
-
-        private void changeShields(float newShields, float maxShields)
-        {
-            UI.Instance.SetShields(newShields / maxShields);
         }
 
         void MoveToLayer(Transform root, int layer)

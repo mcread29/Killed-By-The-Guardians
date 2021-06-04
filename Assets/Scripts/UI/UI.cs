@@ -22,7 +22,6 @@ namespace UntitledFPS
         }
 
         [SerializeField] private Crosshair m_crosshair;
-        [SerializeField] private HealthBar m_healthBar;
         [SerializeField] private Text m_emenyCountText;
         private int m_enemyCount = 0;
         [SerializeField] private CanvasGroup m_deathScreen;
@@ -35,16 +34,6 @@ namespace UntitledFPS
                 return;
             }
             m_instance = this;
-        }
-
-        public void SetHealth(float percent)
-        {
-            m_healthBar.SetHealth(percent);
-        }
-
-        public void SetShields(float percent)
-        {
-            m_healthBar.SetShields(percent);
         }
 
         public void AddEnemies(int enemies)

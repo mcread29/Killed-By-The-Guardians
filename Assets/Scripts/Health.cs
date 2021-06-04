@@ -19,6 +19,8 @@ namespace UntitledFPS
         [SerializeField] private bool m_canHeal = false;
         public bool canHeal { get { return m_canHeal; } }
 
+        [SerializeField] private HealthBar m_healthBar;
+
         private Shields m_shields;
         public Shields shields { get { return m_shields; } }
 
@@ -71,6 +73,7 @@ namespace UntitledFPS
         private void healthChanged()
         {
             if (updateHealth != null) updateHealth(m_health, m_maxHealth);
+            if (m_healthBar != null) m_healthBar.SetHealth((float)m_health / (float)m_maxHealth);
         }
 
         private void OnTriggerEnter(Collider other)

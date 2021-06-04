@@ -14,6 +14,8 @@ namespace UntitledFPS
         [SerializeField] private Transform m_barrelParent;
         [SerializeField] private Transform m_playerTransform;
 
+        [SerializeField] private Transform m_healthBar;
+
         [Range(-90, 90)]
         [SerializeField] private int m_maxRotation = 0;
 
@@ -81,6 +83,8 @@ namespace UntitledFPS
                     m_firing = true;
                 }
             }
+
+            if (m_healthBar != null && m_playerTransform != null) m_healthBar.LookAt(m_playerTransform);
 
             base.Update();
         }

@@ -12,6 +12,7 @@ namespace UntitledFPS
         public int shields { get { return m_shields; } }
         [SerializeField] private float m_rechargeTime;
         [SerializeField] private float m_rechargeDelay;
+        [SerializeField] private HealthBar m_healthBar;
 
         public System.Action<float, float> updateShileds;
 
@@ -59,6 +60,7 @@ namespace UntitledFPS
         private void shieldsChanged()
         {
             if (updateShileds != null) updateShileds(m_shields, m_maxShields);
+            if (m_healthBar != null) m_healthBar.SetShields((float)m_shields / (float)m_maxShields);
         }
     }
 }
