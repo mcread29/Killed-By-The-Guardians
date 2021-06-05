@@ -25,6 +25,7 @@ namespace UntitledFPS
         [SerializeField] private Text m_emenyCountText;
         private int m_enemyCount = 0;
         [SerializeField] private CanvasGroup m_deathScreen;
+        [SerializeField] private UIJumpCounter m_jumpcounter;
 
         private void Awake()
         {
@@ -66,6 +67,21 @@ namespace UntitledFPS
             config.onComplete((t) => SceneManager.LoadSceneAsync("TempMenu"));
 
             Go.to(this, 2f, config);
+        }
+
+        public void Jump()
+        {
+            m_jumpcounter.Jump();
+        }
+
+        public void JumpReset()
+        {
+            m_jumpcounter.Reset();
+        }
+
+        public void AddJump()
+        {
+            m_jumpcounter.AddJump();
         }
     }
 }

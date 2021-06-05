@@ -52,6 +52,9 @@ namespace FPSController
         private Vector3 normalVector = Vector3.up;
         private Vector3 wallNormalVector;
 
+        public System.Action jump;
+        public System.Action jumpReset;
+
         private bool m_locked = false;
         public void Lock()
         {
@@ -69,14 +72,14 @@ namespace FPSController
         private void FixedUpdate()
         {
             if (m_locked) return;
-            
+
             Movement();
         }
 
         private void Update()
         {
             if (m_locked) return;
-            
+
             MyInput();
             Look();
         }
@@ -199,6 +202,8 @@ namespace FPSController
 
                 ForceJump(jumpForce);
 
+                if (jump != null) jump();
+
                 Invoke(nameof(ResetJump), jumpCooldown);
             }
         }
@@ -315,6 +320,7 @@ namespace FPSController
                 //FLOOR
                 if (IsFloor(normal))
                 {
+                    if (grounded == false && jumpReset != null) jumpReset();
                     grounded = true;
                     extraJumps = maxExtraJumps;
                     cancellingGrounded = false;

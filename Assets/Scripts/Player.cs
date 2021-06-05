@@ -19,11 +19,17 @@ namespace UntitledFPS
         private void Start()
         {
             m_health.onDeath += Death;
+
+            m_movement.jump += UI.Instance.Jump;
+            m_movement.jumpReset += UI.Instance.JumpReset;
         }
 
         private void Death()
         {
             m_health.onDeath -= Death;
+
+            m_movement.jump -= UI.Instance.Jump;
+            m_movement.jumpReset -= UI.Instance.JumpReset;
 
             m_movement.Lock();
             UI.Instance.PlayerKilled();

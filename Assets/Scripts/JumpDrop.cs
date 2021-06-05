@@ -15,6 +15,7 @@ namespace UntitledFPS
             if (player != null)
             {
                 player.maxExtraJumps += m_numJumps;
+                UI.Instance.AddJump();
                 Destroy(gameObject);
             }
         }
