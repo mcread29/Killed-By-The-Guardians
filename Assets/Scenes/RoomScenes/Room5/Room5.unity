@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d2d148ffdd1f4c54db880c48d7ebde61, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: afa9ea23b14b940449c2408e26c26497, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Entries:
   - id: 0
     category: 0
-    gameObject: {fileID: 1722044714}
+    gameObject: {fileID: 899968119716049763}
   - id: 1
     category: 0
     gameObject: {fileID: 0}
@@ -178,6 +178,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &685934613
+GameObject:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685934615}
+  - component: {fileID: 685934614}
+  m_Layer: 0
+  m_Name: SceneIDMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &685934614
+MonoBehaviour:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685934613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1380510717}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Entries:
+  - id: 0
+    category: 0
+    gameObject: {fileID: 899968119716049763}
+  - id: 1
+    category: 0
+    gameObject: {fileID: 5695301889045839606}
+--- !u!4 &685934615
+Transform:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685934613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &822917769
 PrefabInstance:
@@ -281,6 +331,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!115 &1380510717
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: SceneObjectIDMapSceneAsset
+  m_Namespace: UnityEngine.Rendering.HighDefinition
 --- !u!1 &1498722771
 GameObject:
   m_ObjectHideFlags: 19
@@ -319,7 +383,7 @@ MonoBehaviour:
     gameObject: {fileID: 0}
   - id: 2
     category: 0
-    gameObject: {fileID: 1722044714}
+    gameObject: {fileID: 899968119716049763}
   - id: 3
     category: 0
     gameObject: {fileID: 0}
@@ -351,12 +415,12 @@ MonoScript:
   m_ExecutionOrder: 0
   m_ClassName: SceneObjectIDMapSceneAsset
   m_Namespace: UnityEngine.Rendering.HighDefinition
---- !u!1 &1722044714 stripped
+--- !u!1 &899968119716049763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6165421573741177865, guid: 31be605065dad5d458682de29682ff8e, type: 3}
-  m_PrefabInstance: {fileID: 6481434669887168362}
+  m_PrefabInstance: {fileID: 6837196935873294294}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1869169922482269001
+--- !u!1001 &3884382209061550112
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -453,7 +517,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
---- !u!1001 &6481434669887168362
+--- !u!1 &5695301889045839606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6267153333553092031, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
+  m_PrefabInstance: {fileID: 3884382209061550112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6837196935873294294
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
