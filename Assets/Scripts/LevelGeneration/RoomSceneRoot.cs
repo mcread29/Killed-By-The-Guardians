@@ -45,7 +45,7 @@ namespace UntitledFPS
             {
                 foreach (RoomSection section in m_sections)
                 {
-                    section.SetTurretLookAt(player.transform);
+                    if (player != null) section.SetTurretLookAt(player.transform);
                     section.sectionComplete += sectionComplete;
                     section.sectionStarted += roomStarted;
                 }

@@ -46,17 +46,17 @@ namespace UntitledFPS
         [SerializeField] private int m_branches;
         public int branches { get { return m_branches; } }
 
-        [SerializeField] private RoomSceneRoot[] m_startRooms;
-        public RoomSceneRoot[] startRooms { get { return m_startRooms; } }
+        [SerializeField] private string[] m_startRoomFolders;
+        public string[] startRoomFolders { get { return m_startRoomFolders; } }
 
-        [SerializeField] private RoomSceneRoot[] m_availableRooms;
-        public RoomSceneRoot[] availableRooms { get { return m_availableRooms; } }
+        [SerializeField] private string[] m_availableRoomFolders;
+        public string[] availableRoomFolders { get { return m_availableRoomFolders; } }
 
-        [SerializeField] private RoomSceneRoot[] m_bossRooms;
-        public RoomSceneRoot[] bossRooms { get { return m_bossRooms; } }
+        [SerializeField] private string[] m_bossRoomFolders;
+        public string[] bossRoomFolders { get { return m_bossRoomFolders; } }
 
-        [SerializeField] private RoomSceneRoot[] m_endingRooms;
-        public RoomSceneRoot[] endingRooms { get { return m_endingRooms; } }
+        [SerializeField] private string[] m_endingRoomFolders;
+        public string[] endingRoomFolders { get { return m_endingRoomFolders; } }
 
 #if UNITY_EDITOR
         [MenuItem("Assets/Create/LevelData")]

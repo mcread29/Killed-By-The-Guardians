@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1478.8593, g: 1831.9368, b: 2425.4312, a: 1}
+  m_IndirectSpecularColor: {r: 185.22192, g: 229.48584, b: 303.80615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,6 +178,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &594729676
+GameObject:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 594729678}
+  - component: {fileID: 594729677}
+  m_Layer: 0
+  m_Name: SceneIDMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &594729677
+MonoBehaviour:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594729676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1923337306}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Entries:
+  - id: 0
+    category: 0
+    gameObject: {fileID: 5695301889045839606}
+  - id: 1
+    category: 0
+    gameObject: {fileID: 899968119716049763}
+--- !u!4 &594729678
+Transform:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594729676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &685934613
 GameObject:
@@ -415,6 +465,20 @@ MonoScript:
   m_ExecutionOrder: 0
   m_ClassName: SceneObjectIDMapSceneAsset
   m_Namespace: UnityEngine.Rendering.HighDefinition
+--- !u!115 &1923337306
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 5
+  m_Script: 
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_ExecutionOrder: 0
+  m_ClassName: SceneObjectIDMapSceneAsset
+  m_Namespace: UnityEngine.Rendering.HighDefinition
 --- !u!1 &899968119716049763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6165421573741177865, guid: 31be605065dad5d458682de29682ff8e, type: 3}
@@ -427,6 +491,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6267153333553092032, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
+      propertyPath: m_BakedTexture
+      value: 
+      objectReference: {fileID: 8900000, guid: 7a4ead0de87697642a455fdac97d9b97, type: 3}
     - target: {fileID: 6267153335247103064, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
       propertyPath: m_Name
       value: Room5.90
@@ -517,6 +585,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
+--- !u!1 &3884382209061550113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6267153335247103064, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
+  m_PrefabInstance: {fileID: 3884382209061550112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3884382209061550114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884382209061550113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a326fae8abf016e44b741671aa0da54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo: []
+  m_Lightmaps: []
+  m_LightmapsDir: []
+  m_ShadowMasks: []
+  m_LightInfo: []
 --- !u!1 &5695301889045839606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6267153333553092031, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
@@ -577,6 +667,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6165421573741177974, guid: 31be605065dad5d458682de29682ff8e, type: 3}
+      propertyPath: m_BakedTexture
+      value: 
+      objectReference: {fileID: 8900000, guid: 6f11ff6cf449d054082fea97deabf204, type: 3}
     - target: {fileID: 7759636715017686260, guid: 31be605065dad5d458682de29682ff8e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -619,3 +713,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31be605065dad5d458682de29682ff8e, type: 3}
+--- !u!1 &6837196935873294295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6165421572011580910, guid: 31be605065dad5d458682de29682ff8e, type: 3}
+  m_PrefabInstance: {fileID: 6837196935873294294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6837196935873294296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837196935873294295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a326fae8abf016e44b741671aa0da54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo: []
+  m_Lightmaps: []
+  m_LightmapsDir: []
+  m_ShadowMasks: []
+  m_LightInfo: []

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using System.IO;
 
 namespace UntitledFPS
 {
@@ -32,6 +33,71 @@ namespace UntitledFPS
 
         private Dictionary<string, int> m_roomCounts;
 
+        private List<RoomSceneRoot> m_startRooms;
+        private List<RoomSceneRoot> m_availableRooms;
+        private List<RoomSceneRoot> m_bossRooms;
+
+        float startTime;
+        private string[] possibleRotations = { "0", "90", "180", "270" };
+        private IEnumerator getAssetBundle()
+        {
+            startTime = Time.time;
+            Debug.Log($"STARTING COROUTINE {startTime}");
+            AssetBundleCreateRequest a = AssetBundle.LoadFromFileAsync(Path.Combine(Application.streamingAssetsPath, "level1"));
+            Debug.Log(a);
+            yield return a;
+
+            AssetBundle b = a.assetBundle;
+
+            if (b == null)
+            {
+                Debug.LogError("YA FUCKED UP");
+                yield break;
+            }
+            Debug.Log($"{b} {Time.time - startTime}");
+
+            m_startRooms = new List<RoomSceneRoot>();
+            foreach (string folder in m_data.startRoomFolders)
+            {
+                foreach (string r in possibleRotations)
+                {
+                    AssetBundleRequest req = b.LoadAssetAsync<GameObject>($"{folder}.{r}");
+                    yield return req;
+                    GameObject o = req.asset as GameObject;
+                    if (o != null) m_startRooms.Add(o.GetComponent<RoomSceneRoot>());
+                }
+            }
+
+            m_availableRooms = new List<RoomSceneRoot>();
+            foreach (string folder in m_data.availableRoomFolders)
+            {
+                foreach (string r in possibleRotations)
+                {
+                    AssetBundleRequest req = b.LoadAssetAsync<GameObject>($"{folder}.{r}");
+                    yield return req;
+                    GameObject o = req.asset as GameObject;
+                    if (o != null) m_availableRooms.Add(o.GetComponent<RoomSceneRoot>());
+                }
+            }
+
+            m_bossRooms = new List<RoomSceneRoot>();
+            foreach (string folder in m_data.bossRoomFolders)
+            {
+                foreach (string r in possibleRotations)
+                {
+                    AssetBundleRequest req = b.LoadAssetAsync<GameObject>($"{folder}.{r}");
+                    yield return req;
+                    GameObject o = req.asset as GameObject;
+                    if (o != null) m_bossRooms.Add(o.GetComponent<RoomSceneRoot>());
+                }
+            }
+
+            b.Unload(false);
+
+            Debug.Log($"ASSETS LOADED {Time.time - startTime} {m_startRooms.Count} {m_availableRooms.Count} {m_bossRooms.Count}");
+            Generate();
+        }
+
         private void Awake()
         {
             if (m_instance != null)
@@ -49,34 +115,28 @@ namespace UntitledFPS
 
         private void Start()
         {
-            if (transform.childCount < 1)
-                Generate();
+            StartCoroutine(getAssetBundle());
         }
 
         [ContextMenu("GENERATE")]
         public void Generate()
         {
+            Debug.Log($"Starting Generation at {Time.time - startTime}");
             m_roomCounts = new Dictionary<string, int>();
 
             int numRooms = m_numRooms = Random.Range(m_data.minLength, m_data.maxLength);
 
-            foreach (RoomSceneRoot room in m_data.startRooms)
+            foreach (RoomSceneRoot room in m_startRooms)
             {
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
                     m_roomCounts.Add(room.room.name, 0);
             }
-            foreach (RoomSceneRoot room in m_data.availableRooms)
+            foreach (RoomSceneRoot room in m_availableRooms)
             {
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
                     m_roomCounts.Add(room.room.name, 0);
             }
-            foreach (RoomSceneRoot room in m_data.bossRooms)
-            {
-                if (m_roomCounts.ContainsKey(room.room.name) == false)
-                    m_roomCounts.Add(room.room.name, 0);
-                Debug.Log($"{room.room.name} { m_roomCounts[room.room.name]}");
-            }
-            foreach (RoomSceneRoot room in m_data.endingRooms)
+            foreach (RoomSceneRoot room in m_bossRooms)
             {
                 if (m_roomCounts.ContainsKey(room.room.name) == false)
                     m_roomCounts.Add(room.room.name, 0);
@@ -116,14 +176,15 @@ namespace UntitledFPS
                 root.room.AttachDoors();
             }
             //if faild it will fail
+            Debug.Log($"Finished Generation at {Time.time - startTime} {successfullGeneration}");
             m_player.gameObject.SetActive(true);
             m_finishedGenerating = true;
         }
 
         private RoomSceneRoot addStartRoom()
         {
-            int ind = Random.Range(0, m_data.startRooms.Length);
-            RoomSceneRoot startRoom = Instantiate(m_data.startRooms[ind], Vector3.zero, m_data.startRooms[ind].transform.rotation, transform);
+            int ind = Random.Range(0, m_startRooms.Count);
+            RoomSceneRoot startRoom = Instantiate(m_startRooms[ind], Vector3.zero, m_startRooms[ind].transform.rotation, transform);
             m_rooms.Add(startRoom);
             m_roomCounts[startRoom.room.name]++;
             return startRoom;
@@ -152,10 +213,7 @@ namespace UntitledFPS
         private bool newRoom(RoomSceneRoot previousRoom, int roomCount)
         {
             bool finalRoom = roomCount < 1;
-            bool bossRoom = roomCount == 1;
-            RoomSceneRoot[] availableRooms = bossRoom ?
-                m_data.bossRooms : finalRoom ?
-                    m_data.endingRooms : m_data.availableRooms;
+            List<RoomSceneRoot> availableRooms = finalRoom ? m_bossRooms : m_availableRooms;
 
             List<RoomSceneRoot> untriedRooms = new List<RoomSceneRoot>(availableRooms);
 
@@ -165,7 +223,6 @@ namespace UntitledFPS
                 RoomSceneRoot nextRoom = Instantiate(untriedRooms[roomInd], Vector3.zero, untriedRooms[roomInd].transform.rotation, transform);
                 untriedRooms.RemoveAt(roomInd);
 
-                Debug.Log($"{nextRoom.room.name} {m_roomCounts.ContainsKey(nextRoom.room.name)}");
                 bool sameAsPreviousRoom = nextRoom.room.name == previousRoom.room.name;
                 bool isMostUsedRoom = getMostUsedRoom() == nextRoom.room.name;
                 bool usedWayMoreThanLeastRoom = getLeastUsedRoom() + 2 < m_roomCounts[nextRoom.room.name];

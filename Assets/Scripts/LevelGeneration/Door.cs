@@ -22,6 +22,7 @@ namespace UntitledFPS
         private bool m_attached = false;
         public bool attached { get { return m_attached; } }
         private Door m_attachedDoor = null;
+        public Door attachedDoor { get { return m_attachedDoor; } }
 
         public System.Action enterDoor;
 

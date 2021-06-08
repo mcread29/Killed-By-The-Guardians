@@ -20,34 +20,18 @@ MonoBehaviour:
   m_maxLength: 6
   m_straightness: 0.5
   m_branches: 0
-  m_startRooms:
-  - {fileID: 5116135104147736854, guid: 07ea0f9f18a209544a11c5d04543e3ce, type: 3}
-  - {fileID: 7268212902147360350, guid: d7af73fc38cb6a043bf6674971570212, type: 3}
-  - {fileID: 3145733621695552458, guid: 38ed585947f4a934fbcbfcceca46e2b5, type: 3}
-  - {fileID: 6820059254841661177, guid: 89c4c9603a4415f4e80756ba67bc4bbd, type: 3}
-  m_availableRooms:
-  - {fileID: 3495676901951155260, guid: 00897b84209833f4494a4ae4f625cc9b, type: 3}
-  - {fileID: 730310841795437553, guid: 9be072a7b2148b64bb223c4893967f70, type: 3}
-  - {fileID: 2849714896164796276, guid: 47c3e62bafe44a44fa28fef726d89d4a, type: 3}
-  - {fileID: 8640432305597838022, guid: ced2f48b263770f49bd3c6fca4193b4c, type: 3}
-  - {fileID: 3109431597233772245, guid: 8efc6eadb77a89441844b39668119454, type: 3}
-  - {fileID: 4217787318256182092, guid: 0ae32f41dcc5b8e4dbd687359232ba15, type: 3}
-  - {fileID: 2055761825290230375, guid: a1bf0b2663be49a4fa927eabed8ba581, type: 3}
-  - {fileID: 2457092154746845352, guid: 37b12433bd47c104eb77aeed468eed63, type: 3}
-  - {fileID: 6165421572011580908, guid: 31be605065dad5d458682de29682ff8e, type: 3}
-  - {fileID: 6267153335247103066, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
-  - {fileID: 1919092964732766114, guid: 438aa90d6ee205349aadd1be21e9080c, type: 3}
-  - {fileID: 8598859047208884565, guid: cc3ec629300819847a2bbe348e24911c, type: 3}
-  - {fileID: 2241721605884560933, guid: b641a52fe4b45504791831bb4c689830, type: 3}
-  - {fileID: 7974334111774894030, guid: 840db086b83ce2345adc64df85aebcba, type: 3}
-  - {fileID: 5259428872092704299, guid: 8612fa21ff077ca46a1c595187cf959f, type: 3}
-  - {fileID: 3661460774798215239, guid: 013d95ba0025de2419c111b33fe2d771, type: 3}
-  - {fileID: 3661326638006562079, guid: 630fcb70e7abd4c439dbf0ede56900d7, type: 3}
-  - {fileID: 3424936606133502438, guid: 601b363146c6879449b5d431a1a2d3e2, type: 3}
-  m_bossRooms:
-  - {fileID: 2735617024772618726, guid: d5870006c797297429f153c178ed0fd4, type: 3}
-  m_endingRooms:
-  - {fileID: 1845950489522286815, guid: 54f94783c66a65d48838a4099d539740, type: 3}
-  - {fileID: 1871040206438833124, guid: b362c22699688ff4185cee0857deaf2e, type: 3}
-  - {fileID: 1528186354507223141, guid: de15adf20898e094ea5bf78b144b6025, type: 3}
-  - {fileID: 4820597169447861310, guid: fee7188268cfd8146b1c3d599b98177e, type: 3}
+  m_startRoomFolders:
+  - RoughRoomStart
+  m_availableRoomFolders:
+  - Room1
+  - Room2
+  - Room3
+  - Room4
+  - Room5
+  - Room6
+  - Room7
+  - Room8
+  m_bossRoomFolders:
+  - BingusBongusRoom
+  m_endingRoomFolders:
+  - RoomEnd1

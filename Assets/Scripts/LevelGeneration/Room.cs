@@ -52,7 +52,7 @@ namespace UntitledFPS
             m_roomFinished = true;
             foreach (Door door in m_doors)
             {
-                if (door.attached)
+                if (door.attached && door.attachedDoor.room.m_roomFinished == false && door.attachedDoor.room.m_startRoom == false)
                     door.Open();
             }
         }
