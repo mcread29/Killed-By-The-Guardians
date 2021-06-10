@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 184.8574, g: 228.9921, b: 303.1789, a: 1}
+  m_IndirectSpecularColor: {r: 369.7148, g: 457.9842, b: 606.3578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b2870c417c3e0c046afe5de2deb6517e, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: afa9ea23b14b940449c2408e26c26497, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Entries:
   - id: 1
     category: 0
-    gameObject: {fileID: 899968119716049763}
+    gameObject: {fileID: 823420006950929375}
 --- !u!4 &895969300
 Transform:
   m_ObjectHideFlags: 19
@@ -447,7 +447,13 @@ MonoBehaviour:
   m_Script: {fileID: 71747667}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
+  m_Entries:
+  - id: 0
+    category: 0
+    gameObject: {fileID: 6146696306506273122}
+  - id: 1
+    category: 0
+    gameObject: {fileID: 823420006950929375}
 --- !u!4 &1498722773
 Transform:
   m_ObjectHideFlags: 19
@@ -462,12 +468,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &899968119716049763 stripped
+--- !u!1 &823420006950929375 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6165421573741177865, guid: 31be605065dad5d458682de29682ff8e, type: 3}
-  m_PrefabInstance: {fileID: 6837196935873294294}
+  m_PrefabInstance: {fileID: 7821818518607593304}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2544434731817444968
+--- !u!1001 &4232262368156076044
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -524,7 +530,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
---- !u!1001 &6837196935873294294
+--- !u!1 &6146696306506273122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8503594690810361610, guid: 8c65dbf97c42d48468181201691439ed, type: 3}
+  m_PrefabInstance: {fileID: 4232262368156076044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7821818518607593304
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
