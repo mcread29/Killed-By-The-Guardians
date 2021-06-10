@@ -19,12 +19,20 @@ namespace UntitledFPS
 
         public void SetHealth(float percent)
         {
-            m_healthFill.sizeDelta = new Vector2(m_maxWidth * percent, m_healthFill.sizeDelta.y);
+            Go.killAllTweensWithTarget(m_healthFill);
+            GoTweenConfig config = new GoTweenConfig();
+            config.sizeDelta(new Vector2(m_maxWidth * percent, m_healthFill.sizeDelta.y));
+            config.setEaseType(GoEaseType.QuadInOut);
+            Go.to(m_healthFill, 0.12f, config);
         }
 
         public void SetShields(float percent)
         {
-            m_shieldsFill.sizeDelta = new Vector2(m_maxWidth * percent, m_shieldsFill.sizeDelta.y);
+            Go.killAllTweensWithTarget(m_shieldsFill);
+            GoTweenConfig config = new GoTweenConfig();
+            config.sizeDelta(new Vector2(m_maxWidth * percent, m_shieldsFill.sizeDelta.y));
+            config.setEaseType(GoEaseType.QuadInOut);
+            Go.to(m_shieldsFill, 0.12f, config);
         }
     }
 }

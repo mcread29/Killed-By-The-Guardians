@@ -27,9 +27,10 @@ namespace UntitledFPS
 
         private int m_stage = 0;
         private int m_activeGenerators = 1;
-        private Health m_health;
 
         private bool m_started = false;
+
+        [SerializeField] private RectTransform m_healthBar;
 
         private void nextStage()
         {
@@ -48,6 +49,10 @@ namespace UntitledFPS
             }
             else
             {
+                GoTweenConfig config = new GoTweenConfig();
+                config.anchoredPosition(new Vector3(0, 25, 0));
+                Go.to(m_healthBar, 0.25f, config);
+
                 if (m_stage >= 1)
                 {
                     m_1stGenerator.Activate();
@@ -88,6 +93,10 @@ namespace UntitledFPS
             {
                 m_health.enabled = true;
                 m_shield.SetActive(false);
+
+                GoTweenConfig config = new GoTweenConfig();
+                config.anchoredPosition(new Vector3(0, -65, 0));
+                Go.to(m_healthBar, 0.25f, config);
             }
         }
 
@@ -96,12 +105,15 @@ namespace UntitledFPS
             if (m_started) return;
 
             m_started = true;
-            gameObject.SetActive(true);
 
             m_rigidBody = GetComponent<Rigidbody>();
             m_health = GetComponent<Health>();
             m_health.enabled = false;
             m_health.onDeath += nextStage;
+
+            System.Action<float, float> hit = null;
+            hit = (float h, float mh) => UI.Instance.HitEnemy();
+            m_health.updateHealth += hit;
 
             m_1stGenerator.SetLineEnd(transform);
             m_1stGenerator.generatorDestroyed = generatorDestroyed;

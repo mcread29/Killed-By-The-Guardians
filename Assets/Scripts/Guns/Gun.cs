@@ -17,7 +17,7 @@ namespace UntitledFPS
             if (Input.GetMouseButtonUp(0))
             {
                 m_firing = false;
-                m_fireTimer = 1f / m_data.fireRate;
+                // m_fireTimer = 1f / m_data.fireRate;
             }
             base.Update();
         }

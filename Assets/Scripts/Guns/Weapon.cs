@@ -12,10 +12,22 @@ namespace UntitledFPS
         protected bool m_firing = false;
         protected float m_fireTimer = 0;
 
+        private bool m_enabled = true;
+
+        public void Enable()
+        {
+            m_enabled = true;
+        }
+
+        public void Disable()
+        {
+            m_enabled = false;
+        }
+
         protected virtual void Update()
         {
             m_fireTimer += Time.deltaTime;
-            if (m_firing)
+            if (m_firing && m_enabled)
             {
                 if (m_fireTimer >= 1 / m_data.fireRate)
                 {

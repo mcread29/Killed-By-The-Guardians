@@ -9,6 +9,11 @@ namespace UntitledFPS
         public void Spawn()
         {
             gameObject.SetActive(true);
+            Health health = gameObject.GetComponent<Health>();
+            if (health != null)
+            {
+                health.FullHeal();
+            }
         }
 
         public void Despawn()

@@ -10,6 +10,14 @@ public class FiringAnimator : MonoBehaviour
     {
     }
 
+    public bool isFiring
+    {
+        get
+        {
+            return anim.GetCurrentAnimatorStateInfo(0).IsName("Firing");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
