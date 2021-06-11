@@ -11,11 +11,10 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            FPSController.PlayerMovement player = other.GetComponentInParent<FPSController.PlayerMovement>();
+            Player player = other.GetComponentInParent<Player>();
             if (player != null)
             {
-                player.maxExtraJumps += m_numJumps;
-                UI.Instance.AddJump();
+                player.AddJump();
                 Destroy(gameObject);
             }
         }

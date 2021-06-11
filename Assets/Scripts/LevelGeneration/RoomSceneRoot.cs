@@ -48,6 +48,7 @@ namespace UntitledFPS
                     if (player != null) section.SetTurretLookAt(player.transform);
                     section.sectionComplete += sectionComplete;
                     section.sectionStarted += roomStarted;
+                    section.sectionStarted += player.SectionStarted;
                 }
             }
         }
@@ -55,12 +56,14 @@ namespace UntitledFPS
         private void sectionComplete(RoomSection section)
         {
             section.sectionComplete -= sectionComplete;
+            section.sectionStarted -= player.SectionStarted;
             m_sectionsComplete++;
             if (m_sectionsComplete >= m_sections.Length)
             {
                 foreach (RoomSection roomSection in m_sections)
                     roomSection.StopShooting();
                 m_room.FinishRoom();
+                player.RoomFinished();
             }
         }
 

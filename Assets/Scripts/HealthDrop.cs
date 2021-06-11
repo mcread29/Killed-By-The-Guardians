@@ -11,10 +11,10 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            Health health = other.GetComponentInParent<Health>();
-            if (health != null && health.canHeal)
+            Player player = other.GetComponentInParent<Player>();
+            if (player != null)
             {
-                health.Heal(healAmount);
+                player.AddHealth(healAmount);
                 Destroy(gameObject);
             }
         }
