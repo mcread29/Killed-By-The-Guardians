@@ -41,7 +41,7 @@ namespace UntitledFPS
         public void AddJump()
         {
             m_movement.maxExtraJumps += 1;
-            m_sounds.Jump();
+            m_sounds.JumpPickup();
             UI.Instance.AddJump();
         }
 
