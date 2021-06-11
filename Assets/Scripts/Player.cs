@@ -61,6 +61,11 @@ namespace UntitledFPS
             m_sounds.NextRoom();
         }
 
+        public void Kill()
+        {
+            m_sounds.Kill();
+        }
+
         void MoveToLayer(Transform root, int layer)
         {
             root.gameObject.layer = layer;

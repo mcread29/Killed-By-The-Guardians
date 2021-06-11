@@ -18,7 +18,7 @@ namespace UntitledFPS
         public System.Action<RoomSection> sectionComplete;
         public System.Action sectionStarted;
 
-        public void SetTurretLookAt(Transform transform)
+        public void SetTurretLookAt(Player player)
         {
             m_turrets = new List<Turret>();
             if (m_enemiesForSection != null)
@@ -42,12 +42,14 @@ namespace UntitledFPS
                                 m_turrets.Remove(t);
                                 UI.Instance.KillEnemy();
                                 if (m_turrets.Count <= 0 && sectionComplete != null) sectionComplete(this);
+                                t.health.onDeath -= player.Kill;
                                 t.health.onDeath -= remove;
                                 t.health.updateHealth -= hit;
                             };
+                            t.health.onDeath += player.Kill;
                             t.health.onDeath += remove;
 
-                            t.SetTransformLookat(transform);
+                            t.SetTransformLookat(player.transform);
                         }
                     }
                 }
