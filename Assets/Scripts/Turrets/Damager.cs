@@ -7,6 +7,7 @@ namespace UntitledFPS
     public class Damager : MonoBehaviour
     {
         [SerializeField] private int m_overrideDamage = -1;
+        [SerializeField] private LayerMask m_overrideLayer = -1;
         protected int m_damage;
         protected LayerMask m_damageLayer;
 
@@ -14,6 +15,8 @@ namespace UntitledFPS
         {
             if (m_overrideDamage != -1)
                 m_damage = m_overrideDamage;
+            if (m_overrideLayer != -1)
+                m_damageLayer = m_overrideLayer;
         }
 
         public virtual void SetData(GunData data)
