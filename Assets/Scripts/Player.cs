@@ -6,6 +6,7 @@ namespace UntitledFPS
 {
     public class Player : MonoBehaviour
     {
+        [SerializeField] private bool m_godMode = false;
         private FPSController.PlayerMovement m_movement;
         private Health m_health;
         private PlayerSounds m_sounds;
@@ -35,6 +36,8 @@ namespace UntitledFPS
 
         private void Death()
         {
+            if (m_godMode) return;
+
             removeListeners();
 
             m_movement.Lock();

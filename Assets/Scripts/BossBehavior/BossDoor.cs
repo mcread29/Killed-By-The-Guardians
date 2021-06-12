@@ -11,7 +11,6 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other);
             if (other.tag == "Player")
             {
                 if (enterDoor != null) enterDoor();

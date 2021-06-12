@@ -180,9 +180,20 @@ namespace UntitledFPS
             }
             //if faild it will fail
             Debug.Log($"Finished Generation at {Time.time - startTime} {successfullGeneration}");
+
             m_audioListener.enabled = false;
+
+            StartCoroutine(fadeMusic());
+
             m_player.gameObject.SetActive(true);
             m_finishedGenerating = true;
+        }
+
+        private IEnumerator fadeMusic()
+        {
+            MusicManager.Instance.fadeOutMusic(1f);
+            yield return new WaitForSeconds(1f);
+            MusicManager.Instance.fadeInGame(1f);
         }
 
         private RoomSceneRoot addStartRoom()

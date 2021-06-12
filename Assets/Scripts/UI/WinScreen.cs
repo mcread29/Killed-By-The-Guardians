@@ -15,6 +15,9 @@ namespace UntitledFPS
 
         public void Show(float time)
         {
+            MusicManager.Instance.fadeOutEnemies(1.5f);
+            StartCoroutine(fadeMusic());
+
             TimeSpan span = TimeSpan.FromSeconds(time);
             m_timeText.text = span.ToString(@"mm\:ss\:ff");
 
@@ -26,6 +29,13 @@ namespace UntitledFPS
             config.onComplete((t) => StartCoroutine(hideWinText()));
 
             Go.to(this, 2f, config);
+        }
+
+        private IEnumerator fadeMusic()
+        {
+            MusicManager.Instance.fadeOutMusic(0.85f);
+            yield return new WaitForSeconds(0.85f);
+            MusicManager.Instance.fadeInGame(0.5f);
         }
 
         private IEnumerator hideWinText()
