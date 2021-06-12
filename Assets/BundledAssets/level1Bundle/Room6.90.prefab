@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnTimer: -1
+  m_bossRoom: 0
   m_enemiesForSection:
   - {fileID: 3364193911907844549}
   - {fileID: 3616008154809989520}
@@ -547,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2241721605193894608
 Transform:
   m_ObjectHideFlags: 0
@@ -625,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnTimer: -1
+  m_bossRoom: 0
   m_enemiesForSection:
   - {fileID: 8589944800992895669}
   - {fileID: 4367274988916236784}
@@ -5838,6 +5840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnTimer: -1
+  m_bossRoom: 0
   m_enemiesForSection:
   - {fileID: 3506239016498480931}
   - {fileID: 212121075926003303}
@@ -12680,6 +12683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackHoleTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 2383261165736813626, guid: 9f1cb03f711afcc4eb273e902fbff679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2383261165736813629, guid: 9f1cb03f711afcc4eb273e902fbff679, type: 3}
       propertyPath: m_RootOrder
       value: 48
@@ -12841,6 +12848,10 @@ PrefabInstance:
     - target: {fileID: 2383261165736813626, guid: 9f1cb03f711afcc4eb273e902fbff679, type: 3}
       propertyPath: m_Name
       value: BlackHoleTurret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2383261165736813626, guid: 9f1cb03f711afcc4eb273e902fbff679, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2383261165736813629, guid: 9f1cb03f711afcc4eb273e902fbff679, type: 3}
       propertyPath: m_RootOrder
