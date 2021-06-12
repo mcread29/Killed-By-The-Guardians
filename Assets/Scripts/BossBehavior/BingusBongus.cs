@@ -50,7 +50,7 @@ namespace UntitledFPS
             else
             {
                 GoTweenConfig config = new GoTweenConfig();
-                config.anchoredPosition(new Vector3(0, 25, 0));
+                config.anchoredPosition(new Vector3(0, -65, 0));
                 Go.to(m_healthBar, 0.25f, config);
 
                 if (m_stage >= 1)
@@ -95,7 +95,7 @@ namespace UntitledFPS
                 m_shield.SetActive(false);
 
                 GoTweenConfig config = new GoTweenConfig();
-                config.anchoredPosition(new Vector3(0, -65, 0));
+                config.anchoredPosition(new Vector3(0, 25, 0));
                 Go.to(m_healthBar, 0.25f, config);
             }
         }

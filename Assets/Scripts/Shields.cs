@@ -54,7 +54,6 @@ namespace UntitledFPS
                 m_shields += 1;
                 shieldsChanged();
             }
-            Debug.Log(m_shields + ", " + m_maxShields);
         }
 
         private void shieldsChanged()

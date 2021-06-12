@@ -22,10 +22,13 @@ namespace UntitledFPS
         }
 
         [SerializeField] private Crosshair m_crosshair;
-        [SerializeField] private Text m_emenyCountText;
+        [SerializeField] private Text m_enemyCountText;
         private int m_enemyCount = 0;
         [SerializeField] private CanvasGroup m_deathScreen;
         [SerializeField] private UIJumpCounter m_jumpcounter;
+        [SerializeField] private WinScreen m_winScreen;
+
+        private GoTweenChain m_enemyCountScale;
 
         private void Awake()
         {
@@ -37,11 +40,29 @@ namespace UntitledFPS
             m_instance = this;
         }
 
+        private void Start()
+        {
+            m_enemyCountScale = new GoTweenChain();
+
+            GoTweenConfig scaleOutConfig = new GoTweenConfig();
+            scaleOutConfig.scale(2);
+            scaleOutConfig.setEaseType(GoEaseType.QuadOut);
+
+            GoTweenConfig scaleBackConfig = new GoTweenConfig();
+            scaleBackConfig.scale(1);
+
+            scaleBackConfig.setEaseType(GoEaseType.QuadIn);
+
+            m_enemyCountScale.append(new GoTween(m_enemyCountText.rectTransform, 0.25f, scaleOutConfig));
+            m_enemyCountScale.append(new GoTween(m_enemyCountText.rectTransform, 0.35f, scaleBackConfig));
+        }
+
         public void AddEnemies(int enemies)
         {
             m_enemyCount += enemies;
-            m_emenyCountText.text = m_enemyCount.ToString();
-            // PLAY SOUND ADDING ENEMIES
+            m_enemyCountText.text = m_enemyCount.ToString();
+
+            m_enemyCountScale.goToAndPlay(0);
         }
 
         public void HitEnemy()
@@ -53,7 +74,7 @@ namespace UntitledFPS
         public void KillEnemy()
         {
             m_enemyCount--;
-            m_emenyCountText.text = m_enemyCount.ToString();
+            m_enemyCountText.text = m_enemyCount.ToString();
             // PLAY ENEMY KILL SOUND
             // MAYBE PLAY SOUND WHEN <= 5?
         }
@@ -65,6 +86,18 @@ namespace UntitledFPS
             ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => m_deathScreen.alpha = val);
             config.addTweenProperty(p);
             config.onComplete((t) => SceneManager.LoadSceneAsync("TempMenu"));
+
+            Go.to(this, 2f, config);
+        }
+
+        public void PlayerWon()
+        {
+            GoTweenConfig config = new GoTweenConfig();
+
+            CanvasGroup group = m_winScreen.GetComponent<CanvasGroup>();
+            ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => group.alpha = val);
+            config.addTweenProperty(p);
+            config.onComplete((t) => m_winScreen.Show());
 
             Go.to(this, 2f, config);
         }

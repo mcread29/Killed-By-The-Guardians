@@ -12,11 +12,12 @@ namespace UntitledFPS
 
         [SerializeField] private bOSS m_boss;
 
+        public static System.Action bossFinished;
+
         public void Start()
         {
             foreach (BossDoor door in m_bossDoors)
             {
-                Debug.Log(door.name);
                 door.enterDoor += startBoss;
             }
             m_boss.onBossKilled += FinishRoom;
@@ -27,12 +28,7 @@ namespace UntitledFPS
             if (m_boss.bossKilled == false) return;
 
             base.FinishRoom();
-
-            foreach (BossDoor door in m_bossDoors)
-            {
-                Debug.Log(door.name);
-                door.Open();
-            }
+            if (bossFinished != null) bossFinished();
         }
 
         private void startBoss()

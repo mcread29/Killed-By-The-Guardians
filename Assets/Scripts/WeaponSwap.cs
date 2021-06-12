@@ -21,12 +21,12 @@ namespace UntitledFPS
             {
                 if (i == m_activeWeapon)
                 {
-                    m_weapons[i].transform.parent.rotation = Quaternion.Euler(0, 0, 0);
+                    m_weapons[i].transform.parent.localRotation = Quaternion.Euler(0, 0, 0);
                     m_weapons[i].Enable();
                 }
                 else
                 {
-                    m_weapons[i].transform.parent.rotation = Quaternion.Euler(180, 0, 0);
+                    m_weapons[i].transform.parent.localRotation = Quaternion.Euler(180, 0, 0);
                     m_weapons[i].Disable();
                 }
             }

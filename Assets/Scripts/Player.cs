@@ -25,17 +25,35 @@ namespace UntitledFPS
             m_movement.jump += m_sounds.Jump;
             m_movement.jump += UI.Instance.Jump;
             m_movement.jumpReset += UI.Instance.JumpReset;
+
+            BossRoom.bossFinished += Win;
         }
 
         private void Death()
         {
-            m_health.onDeath -= Death;
-
-            m_movement.jump -= UI.Instance.Jump;
-            m_movement.jumpReset -= UI.Instance.JumpReset;
+            removeListeners();
 
             m_movement.Lock();
             UI.Instance.PlayerKilled();
+        }
+
+        public void Win()
+        {
+            removeListeners();
+
+            m_movement.Lock();
+            UI.Instance.PlayerWon();
+        }
+
+        private void removeListeners()
+        {
+            m_health.onDeath -= Death;
+
+            m_movement.jump -= m_sounds.Jump;
+            m_movement.jump -= UI.Instance.Jump;
+            m_movement.jumpReset -= UI.Instance.JumpReset;
+
+            BossRoom.bossFinished -= Win;
         }
 
         public void AddJump()

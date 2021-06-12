@@ -28,6 +28,8 @@ namespace UntitledFPS
             ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => m_group.alpha = val);
             config.addTweenProperty(p);
 
+            m_group.alpha = 0;
+
             if (m_fadeType == FadeType.IN) { }
             if (m_fadeType == FadeType.IN_OUT)
             {

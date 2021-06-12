@@ -18,10 +18,8 @@ namespace UntitledFPS
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("WOWZA");
             if (other.tag == "Player")
             {
-                Debug.Log("YEET");
                 other.transform.parent.GetComponent<FPSController.PlayerMovement>().ForceJump(m_yeetForce);
                 m_clip.Play(m_audioSource);
             }

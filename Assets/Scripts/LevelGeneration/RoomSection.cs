@@ -8,10 +8,13 @@ namespace UntitledFPS
     {
         [SerializeField] private float m_spawnTimer = -1f;
 
+        [SerializeField] private bool m_bossRoom = false;
+
         [SerializeField] private Spawnable[] m_enemiesForSection;
 
         private List<Turret> m_turrets;
-        public int TurretCount { get { return m_turrets != null ? m_turrets.Count : 0; } }
+        private int m_turretCount = 0;
+        public int TurretCount { get { return m_turretCount; } }
 
         private bool m_spawnedInitial = false;
 
@@ -39,12 +42,15 @@ namespace UntitledFPS
                             System.Action remove = null;
                             remove = () =>
                             {
-                                m_turrets.Remove(t);
+                                m_turretCount--;
                                 UI.Instance.KillEnemy();
-                                if (m_turrets.Count <= 0 && sectionComplete != null) sectionComplete(this);
-                                t.health.onDeath -= player.Kill;
-                                t.health.onDeath -= remove;
-                                t.health.updateHealth -= hit;
+                                if (m_turretCount <= 0 && sectionComplete != null) sectionComplete(this);
+                                if (m_bossRoom == false)
+                                {
+                                    t.health.onDeath -= player.Kill;
+                                    t.health.onDeath -= remove;
+                                    t.health.updateHealth -= hit;
+                                }
                             };
                             t.health.onDeath += player.Kill;
                             t.health.onDeath += remove;
@@ -54,6 +60,7 @@ namespace UntitledFPS
                     }
                 }
             }
+            m_turretCount = m_turrets.Count;
         }
 
         public IEnumerator startSectionTimer()
@@ -90,7 +97,8 @@ namespace UntitledFPS
                 {
                     if (t != null) t.Spawn();
                 }
-                UI.Instance.AddEnemies(m_turrets.Count);
+                m_turretCount = m_turrets.Count;
+                UI.Instance.AddEnemies(m_turretCount);
                 m_spawnedInitial = true;
             }
         }
