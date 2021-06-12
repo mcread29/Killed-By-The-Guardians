@@ -13,6 +13,7 @@ namespace UntitledFPS
         // Start is called before the first frame update
         void Start()
         {
+            MusicManager.Instance.fadeInMenu();
             MainMenu.previousScene = SceneManager.GetActiveScene().name;
             StartCoroutine(goToMenu());
         }

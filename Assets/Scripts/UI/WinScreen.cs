@@ -16,8 +16,16 @@ namespace UntitledFPS
         public void Show(float time)
         {
             TimeSpan span = TimeSpan.FromSeconds(time);
-            m_timeText.text = span.ToString();
-            StartCoroutine(hideWinText());
+            m_timeText.text = span.ToString("c");
+
+            GoTweenConfig config = new GoTweenConfig();
+
+            CanvasGroup group = GetComponent<CanvasGroup>();
+            ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => group.alpha = val);
+            config.addTweenProperty(p);
+            config.onComplete((t) => StartCoroutine(hideWinText()));
+
+            Go.to(this, 2f, config);
         }
 
         private IEnumerator hideWinText()

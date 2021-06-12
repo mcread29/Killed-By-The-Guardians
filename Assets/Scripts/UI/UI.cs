@@ -92,14 +92,7 @@ namespace UntitledFPS
 
         public void PlayerWon(float time)
         {
-            GoTweenConfig config = new GoTweenConfig();
-
-            CanvasGroup group = m_winScreen.GetComponent<CanvasGroup>();
-            ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => group.alpha = val);
-            config.addTweenProperty(p);
-            config.onComplete((t) => m_winScreen.Show(time));
-
-            Go.to(this, 2f, config);
+            m_winScreen.Show(time);
         }
 
         public void Jump()

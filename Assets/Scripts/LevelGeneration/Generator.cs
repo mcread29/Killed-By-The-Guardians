@@ -37,6 +37,8 @@ namespace UntitledFPS
         private List<RoomSceneRoot> m_availableRooms;
         private List<RoomSceneRoot> m_bossRooms;
 
+        private AudioListener m_audioListener;
+
         float startTime;
         private string[] possibleRotations = { "0", "90", "180", "270" };
         private IEnumerator getAssetBundle()
@@ -110,6 +112,7 @@ namespace UntitledFPS
                 Turret.HealthDrop = m_data.healthDropPrefab;
                 Turret.JumpDropRate = m_data.turretJumpDropRate;
                 Turret.JumpDrop = m_data.jumpDropPrefab;
+                m_audioListener = GetComponent<AudioListener>();
             }
         }
 
@@ -177,6 +180,7 @@ namespace UntitledFPS
             }
             //if faild it will fail
             Debug.Log($"Finished Generation at {Time.time - startTime} {successfullGeneration}");
+            m_audioListener.enabled = false;
             m_player.gameObject.SetActive(true);
             m_finishedGenerating = true;
         }
