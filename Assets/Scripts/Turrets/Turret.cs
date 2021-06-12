@@ -19,6 +19,8 @@ namespace UntitledFPS
         [Range(-90, 90)]
         [SerializeField] private int m_maxRotation = 0;
 
+        [SerializeField] private Transform m_lookAtTransform;
+
         public static float JumpDropRate = 0f;
         public static JumpDrop JumpDrop;
         public static float HealthDropRate = 0f;
@@ -93,13 +95,11 @@ namespace UntitledFPS
         {
             m_inView = false;
             RaycastHit hit;
-            foreach (Barrel barrel in m_barrels)
+
+            if (Physics.Raycast(m_lookAtTransform.position, m_lookAtTransform.forward, out hit, Mathf.Infinity, ~m_layerToIgnore))
             {
-                Transform t = barrel.transform;
-                if (Physics.Raycast(t.position, t.forward, out hit, Mathf.Infinity, ~m_layerToIgnore))
-                {
-                    m_inView = m_inView || hit.collider.gameObject.layer == m_playerTransform.gameObject.layer;
-                }
+                Debug.Log($"{hit.collider.name} {hit.collider.gameObject.layer}");
+                m_inView = m_inView || hit.collider.gameObject.layer == m_playerTransform.gameObject.layer;
             }
         }
 

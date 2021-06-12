@@ -81,6 +81,9 @@ namespace UntitledFPS
 
         public void PlayerKilled()
         {
+            MusicManager.Instance.fadeOutEnemies(0.5f);
+            StartCoroutine(fadeMusic());
+
             GoTweenConfig config = new GoTweenConfig();
 
             ActionTweenProperty p = new ActionTweenProperty(0, 1, (val) => m_deathScreen.alpha = val);
@@ -88,6 +91,13 @@ namespace UntitledFPS
             config.onComplete((t) => SceneManager.LoadSceneAsync("TempMenu"));
 
             Go.to(this, 2f, config);
+        }
+
+        private IEnumerator fadeMusic()
+        {
+            MusicManager.Instance.fadeOutMusic(0.85f);
+            yield return new WaitForSeconds(0.85f);
+            MusicManager.Instance.fadeInGame(0.5f);
         }
 
         public void PlayerWon(float time)
