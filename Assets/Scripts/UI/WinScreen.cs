@@ -16,7 +16,7 @@ namespace UntitledFPS
         public void Show(float time)
         {
             TimeSpan span = TimeSpan.FromSeconds(time);
-            m_timeText.text = span.ToString("c");
+            m_timeText.text = span.ToString(@"mm\:ss\:ff");
 
             GoTweenConfig config = new GoTweenConfig();
 
