@@ -6,8 +6,15 @@ namespace UntitledFPS
 {
     public class Damager : MonoBehaviour
     {
+        [SerializeField] private int m_overrideDamage = -1;
         protected int m_damage;
         protected LayerMask m_damageLayer;
+
+        private void Awake()
+        {
+            if (m_overrideDamage != -1)
+                m_damage = m_overrideDamage;
+        }
 
         public virtual void SetData(GunData data)
         {
