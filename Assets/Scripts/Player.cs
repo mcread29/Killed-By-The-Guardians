@@ -10,6 +10,8 @@ namespace UntitledFPS
         private Health m_health;
         private PlayerSounds m_sounds;
 
+        private float m_startTime = 0;
+
         private void Awake()
         {
             m_movement = GetComponent<FPSController.PlayerMovement>();
@@ -27,6 +29,8 @@ namespace UntitledFPS
             m_movement.jumpReset += UI.Instance.JumpReset;
 
             BossRoom.bossFinished += Win;
+
+            m_startTime = Time.time;
         }
 
         private void Death()
@@ -42,7 +46,7 @@ namespace UntitledFPS
             removeListeners();
 
             m_movement.Lock();
-            UI.Instance.PlayerWon();
+            UI.Instance.PlayerWon(Time.time - m_startTime);
         }
 
         private void removeListeners()

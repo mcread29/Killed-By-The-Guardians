@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace UntitledFPS
 {
@@ -12,8 +13,10 @@ namespace UntitledFPS
         [SerializeField] private CanvasGroup m_creditsText;
         [SerializeField] private CanvasGroup m_thanksText;
 
-        public void Show()
+        public void Show(float time)
         {
+            TimeSpan span = TimeSpan.FromSeconds(time);
+            m_timeText.text = span.ToString();
             StartCoroutine(hideWinText());
         }
 
