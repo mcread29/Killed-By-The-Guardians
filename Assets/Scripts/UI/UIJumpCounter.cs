@@ -13,6 +13,7 @@ namespace UntitledFPS
 
         public void Jump()
         {
+            if (m_jumpIndex > m_icons.Count) return;
             m_icons[m_jumpIndex].Jump();
             m_jumpIndex++;
         }
