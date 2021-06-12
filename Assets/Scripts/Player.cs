@@ -7,6 +7,7 @@ namespace UntitledFPS
     public class Player : MonoBehaviour
     {
         [SerializeField] private bool m_godMode = false;
+        [SerializeField] private GameObject m_tutorial;
         private FPSController.PlayerMovement m_movement;
         private Health m_health;
         private PlayerSounds m_sounds;
@@ -31,6 +32,23 @@ namespace UntitledFPS
 
             BossRoom.bossFinished += Win;
 
+            m_movement.Lock();
+            Gun.Deactivate();
+
+            // Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
+            // m_startTime = Time.time;
+        }
+
+        public void CloseTutorial()
+        {
+            Gun.Activate();
+            m_movement.UnLock();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            m_tutorial.SetActive(false);
+            Time.timeScale = 1;
             m_startTime = Time.time;
         }
 

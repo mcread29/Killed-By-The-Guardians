@@ -42,7 +42,7 @@ namespace UntitledFPS
         // Update is called once per frame
         void Update()
         {
-            if (m_switching) return;
+            if (m_switching || Gun.active == false) return;
 
             if (m_activeWeapon != 1 && Input.GetKeyDown("1") && m_weapons[0].GetComponent<FiringAnimator>().isFiring == false)
             {

@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiringAnimator : MonoBehaviour
+namespace UntitledFPS
 {
-    public Animator anim;
-    // Start is called before the first frame update
-    void Start()
+    public class FiringAnimator : MonoBehaviour
     {
-    }
+        public Animator anim;
 
-    public bool isFiring
-    {
-        get
+        public bool isFiring
         {
-            return anim.GetCurrentAnimatorStateInfo(0).IsName("Firing");
+            get
+            {
+                return anim.GetCurrentAnimatorStateInfo(0).IsName("Firing");
+            }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
+        // Update is called once per frame
+        void Update()
         {
-            anim.Play("Firing");
+            if (Gun.active == false) return;
+            if (Input.GetMouseButton(0))
+            {
+                anim.Play("Firing");
+            }
         }
     }
 }

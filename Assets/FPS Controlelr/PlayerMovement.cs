@@ -61,11 +61,16 @@ namespace FPSController
             m_locked = true;
         }
 
+        public void UnLock()
+        {
+            m_locked = false;
+        }
+
         void Start()
         {
             playerScale = orientation.transform.localScale;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
         }
 
 

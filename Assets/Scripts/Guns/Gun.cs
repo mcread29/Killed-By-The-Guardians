@@ -6,12 +6,24 @@ namespace UntitledFPS
 {
     public class Gun : Weapon
     {
-        private void Awake()
+
+        private static bool m_active = true;
+        public static bool active { get { return m_active; } }
+
+        public static void Activate()
         {
+            m_active = true;
+        }
+
+        public static void Deactivate()
+        {
+            m_active = false;
         }
 
         protected override void Update()
         {
+            if (m_active == false) return;
+
             if (Input.GetMouseButtonDown(0))
                 m_firing = true;
             if (Input.GetMouseButtonUp(0))
