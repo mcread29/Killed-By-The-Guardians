@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace UntitledFPS
 {
@@ -35,7 +36,7 @@ namespace UntitledFPS
         {
             MusicManager.Instance.fadeOutMusic(0.85f);
             yield return new WaitForSeconds(0.85f);
-            MusicManager.Instance.fadeInGame(0.5f);
+            MusicManager.Instance.fadeInMenu(0.5f);
         }
 
         private IEnumerator hideWinText()
@@ -94,7 +95,7 @@ namespace UntitledFPS
 
             ActionTweenProperty p = new ActionTweenProperty(1, 0, (val) => m_creditsText.alpha = val);
             config.addTweenProperty(p);
-            config.onComplete((t) => UI.Instance.PlayerKilled());
+            config.onComplete((t) => SceneManager.LoadSceneAsync("TempMenu"));
 
             Go.to(this, 2f, config);
         }

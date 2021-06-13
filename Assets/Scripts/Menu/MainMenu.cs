@@ -19,6 +19,7 @@ namespace UntitledFPS
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space)) StartLevel();
+            if (Input.GetKeyDown(KeyCode.Escape)) Quit();
         }
 
         private void fadeIn()
@@ -36,6 +37,11 @@ namespace UntitledFPS
         public void StartLevel()
         {
             ScreenTransition.To("LevelGeneration");
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }
