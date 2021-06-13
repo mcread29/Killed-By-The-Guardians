@@ -47,8 +47,10 @@ MonoBehaviour:
   m_mixer: {fileID: 24100000, guid: aea0ac1fd607766449421908401e286a, type: 2}
   m_startMenu: 0
   m_menuMusic: {fileID: 8300000, guid: 3bdb06d3627da304c9aee7129e542b7b, type: 3}
+  m_defaultMenuMusicVolume: 0.1
   m_startGame: 0
   m_gameplayMusic: {fileID: 8300000, guid: b55be641dbbd19a409bf952ff5232932, type: 3}
+  m_defaultGameMusicVolume: 0.4
 --- !u!82 &8230226659310646442
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,7 +63,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8973052705410878687, guid: aea0ac1fd607766449421908401e286a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
